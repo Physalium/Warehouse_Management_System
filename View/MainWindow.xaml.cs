@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Warehouse_Management
+namespace Warehouse_Management.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
