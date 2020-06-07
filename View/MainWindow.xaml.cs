@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Warehouse_Management
+namespace Warehouse_Management.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,6 +23,11 @@ namespace Warehouse_Management
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void TabItem_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
+        {
+
         }
     }
 }
