@@ -24,5 +24,10 @@ namespace Warehouse_Management.View
         {
             InitializeComponent();
         }
+
+        private void TabItem_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
+        {
+
+        }
     }
 }

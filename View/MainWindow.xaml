@@ -4,20 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Warehouse_Management.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
         mc:Ignorable="d"
-        Title="Projekt Zliczeniowy" Height="450" Width="800"
-       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
+        Title="Warehouse Manager" Height="900" Width="800"
         FontFamily="{DynamicResource MaterialDesignFont}">
-        
-    <Grid>
-        <materialDesign:Card Padding="32" Margin="16">
-            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">My First Material Design App</TextBlock>
-        </materialDesign:Card>
-    </Grid>
+    <dragablz:TabablzControl>
+        <dragablz:TabablzControl.InterTabController>
+            <dragablz:InterTabController />
+        </dragablz:TabablzControl.InterTabController>
+        <TabItem Header="Map">
+            <StackPanel Height="500" Orientation="Vertical">
+                <TextBlock FontSize="25" Padding="25"
+                           Foreground="#013284" FontWeight="ExtraBold" >
+                   Mapa
+                </TextBlock>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Warehouses">
+            <StackPanel  Height="500" Orientation="Vertical">
+                <ListBox FontSize="25" Padding="25" Foreground="#013284">
+                    [lista magazynów]
+                </ListBox>
+            </StackPanel>
+        </TabItem>
+       
+    </dragablz:TabablzControl>
 </Window>
