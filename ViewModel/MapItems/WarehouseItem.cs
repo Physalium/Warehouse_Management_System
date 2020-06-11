@@ -10,7 +10,7 @@ namespace Warehouse_Management.ViewModel.MapItems
 
         #region Props
 
-
+            
         #endregion
     }
 }

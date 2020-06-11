@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Warehouse_Management.View"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:vm="clr-namespace:Warehouse_Management.ViewModel"
         xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
         mc:Ignorable="d"
@@ -21,15 +21,7 @@
             <dragablz:InterTabController />
         </dragablz:TabablzControl.InterTabController>
         <TabItem Header="Map" DataContext="{Binding Path=MapVM}">
-            <StackPanel Height="800" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
-
-                <Canvas Height="800" Width="750">
-                    <Image Source="{Binding MapImage}" 
-                           Stretch="None" />
-                </Canvas>
-
-                
-            </StackPanel>
+            <local:MapControl MapImage="{Binding MapImage}" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </TabItem>
         <TabItem Header="Warehouses">
             <StackPanel  Height="500" Orientation="Vertical">
