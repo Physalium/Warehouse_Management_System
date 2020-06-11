@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using Warehouse_Management.ViewModel.Base;
+﻿using Warehouse_Management.ViewModel.Base;
 
 namespace Warehouse_Management.ViewModel
 {
-    class MainVM : BaseViewModel
+    internal class MainVM : BaseViewModel
     {
         private MapVM mapVM = new MapVM();
 

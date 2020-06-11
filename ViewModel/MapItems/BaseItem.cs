@@ -1,13 +1,14 @@
 using System.IO;
 using System.Windows.Media.Imaging;
+
 using Warehouse_Management.ViewModel.Base;
 
 namespace Warehouse_Management.ViewModel.MapItems
 {
-    class BaseItem : BaseViewModel
+    internal class BaseItem : BaseViewModel
     {
-
         #region Props
+
         private BitmapImage itemImage;
 
         public BitmapImage ItemImage
@@ -19,9 +20,41 @@ namespace Warehouse_Management.ViewModel.MapItems
                 OnPropertyChanged(nameof(ItemImage));
             }
         }
-        #endregion
+
+        private double xPos;
+
+        public double XPos
+        {
+            get
+            {
+                return xPos;
+            }
+            set
+            {
+                xPos = value;
+                OnPropertyChanged(nameof(XPos));
+            }
+        }
+
+        private double yPos;
+
+        public double YPos
+        {
+            get
+            {
+                return yPos;
+            }
+            set
+            {
+                yPos = value;
+                OnPropertyChanged(nameof(YPos));
+            }
+        }
+
+        #endregion Props
 
         #region Private methods
+
         protected BitmapImage createBitmap(byte[] data)
         {
             using (Stream stream = new MemoryStream(data))
@@ -36,6 +69,7 @@ namespace Warehouse_Management.ViewModel.MapItems
                 return image;
             }
         }
-        #endregion
+
+        #endregion Private methods
     }
 }

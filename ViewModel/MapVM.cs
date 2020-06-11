@@ -1,15 +1,19 @@
-﻿using System.IO;
+﻿using System.Collections.ObjectModel;
+using System.IO;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
 using Warehouse_Management.ViewModel.Base;
+using Warehouse_Management.ViewModel.MapItems;
 
 namespace Warehouse_Management.ViewModel
 {
     using R = Properties.Resources;
+
     internal class MapVM : BaseViewModel
     {
         #region Props
+
         private BitmapImage mapImage;
 
         public BitmapImage MapImage
@@ -22,13 +26,27 @@ namespace Warehouse_Management.ViewModel
             }
         }
 
-        #endregion
+        private ObservableCollection<BaseItem> mapItems;
+
+        public ObservableCollection<BaseItem> MapItems
+        {
+            get { return mapItems; }
+            set
+            {
+                mapItems = value;
+                OnPropertyChanged(nameof(MapItems));
+            }
+        }
+
+        #endregion Props
+
         public MapVM()
         {
             mapImage = createBitmap(R.MapImage);
         }
 
         #region Private methods
+
         private BitmapImage createBitmap(byte[] data)
         {
             using (Stream stream = new MemoryStream(data))
@@ -43,6 +61,7 @@ namespace Warehouse_Management.ViewModel
                 return image;
             }
         }
-        #endregion
+
+        #endregion Private methods
     }
 }

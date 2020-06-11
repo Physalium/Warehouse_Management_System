@@ -11,8 +11,8 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
-        TextOptions.TextFormattingMode="Ideal" 
-        TextOptions.TextRenderingMode="Auto"        
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         Title="Warehouse Manager" Height="1000" Width="800"
         FontFamily="{DynamicResource MaterialDesignFont}">
@@ -21,7 +21,7 @@
             <dragablz:InterTabController />
         </dragablz:TabablzControl.InterTabController>
         <TabItem Header="Map" DataContext="{Binding Path=MapVM}">
-            <local:MapControl MapImage="{Binding MapImage}" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <local:MapControl MapImage="{Binding MapImage}" VerticalAlignment="Top" HorizontalAlignment="Left" />
         </TabItem>
         <TabItem Header="Warehouses">
             <StackPanel  Height="500" Orientation="Vertical">
@@ -30,6 +30,5 @@
                 </ListBox>
             </StackPanel>
         </TabItem>
-
     </dragablz:TabablzControl>
 </Window>

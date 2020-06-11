@@ -1,36 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Warehouse_Management.ViewModel.Base
 {
-    //tworzymy klasę uniwesalną określającą czym jest dowolne polecenie, gdzie 
+    //tworzymy klasę uniwesalną określającą czym jest dowolne polecenie, gdzie
     //zachowanie tego polecenia wstrzykujemy poprzez metody będące argumentami konstruktora
 
     //klasa żeby mogła określać typ polecenia implementuje interfejs ICommand
-    class RelayCommand : ICommand
+    internal class RelayCommand : ICommand
     {
         #region pola prywatne
 
         //referencje do typów metod zdefiniowanych w interfejsie ICommand
 
-        //delegata Action<object> jest typem określającym metody nic nie 
+        //delegata Action<object> jest typem określającym metody nic nie
         //zwracające o jednym argumencie typu object
 
-        readonly Action<object> _execute;
+        private readonly Action<object> _execute;
         //delegata Predicate<object> oznacza metodę zwracającą zmienną typu
         // bool o argumencie object
 
-        readonly Predicate<object> _canExecute;
+        private readonly Predicate<object> _canExecute;
 
-        #endregion
+        #endregion pola prywatne
 
         #region konstruktor
 
-        //metody składowe interfejsu ICommand zostaną przekazane do tworzonego obiektu 
+        //metody składowe interfejsu ICommand zostaną przekazane do tworzonego obiektu
         //polecenia poprzez konstruktor z zewnątrz
 
         public RelayCommand(Action<object> execute, Predicate<object> canExecute)
@@ -41,9 +37,11 @@ namespace Warehouse_Management.ViewModel.Base
                 _execute = execute;
             _canExecute = canExecute;
         }
-        #endregion
+
+        #endregion konstruktor
 
         #region Składowe interfejsu ICommand
+
         //składowe interfesu ICommand w odniesienu do wstrzykniętych z zewnątrz metod
         //referencje do których przechowujemy w prywatnych polach
 
@@ -77,6 +75,7 @@ namespace Warehouse_Management.ViewModel.Base
         {
             _execute(parameter);
         }
-        #endregion
+
+        #endregion Składowe interfejsu ICommand
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
@@ -18,7 +16,6 @@ namespace Warehouse_Management.View
         }
 
         #region Events
-
 
         //public static readonly RoutedEvent PathChangedEvent =
         //EventManager.RegisterRoutedEvent("PathChanged",
@@ -57,7 +54,6 @@ namespace Warehouse_Management.View
         //         new FrameworkPropertyMetadata(null)
         //     );
 
-
         protected static readonly DependencyProperty MapImageProperty =
             DependencyProperty.Register("MapImage", typeof(BitmapImage), typeof(MapControl));
 
@@ -65,18 +61,14 @@ namespace Warehouse_Management.View
 
         #region Dependency props
 
+        
+         
         public BitmapImage MapImage
         {
             get { return (BitmapImage)GetValue(MapImageProperty); }
             set { SetValue(MapImageProperty, value); }
         }
 
-
         #endregion Dependency props
-
-        #region Internal event handlers
-
-
-        #endregion Internal event handlers
     }
 }
