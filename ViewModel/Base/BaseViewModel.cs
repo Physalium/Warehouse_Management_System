@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mini_tc.ViewModel.Base
+namespace Warehouse_Management.ViewModel.Base
 {
     class BaseViewModel : INotifyPropertyChanged
     {

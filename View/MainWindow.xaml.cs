@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Warehouse_Management.ViewModel;
+
 namespace Warehouse_Management.View
 {
     /// <summary>
@@ -23,11 +25,8 @@ namespace Warehouse_Management.View
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainVM();
         }
 
-        private void TabItem_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
-        {
-
-        }
     }
 }
