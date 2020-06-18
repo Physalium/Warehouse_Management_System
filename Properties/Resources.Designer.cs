@@ -63,9 +63,9 @@ namespace Warehouse_Management.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] MapImage {
+        internal static byte[] PolandMapHQ {
             get {
-                object obj = ResourceManager.GetObject("MapImage", resourceCulture);
+                object obj = ResourceManager.GetObject("PolandMapHQ", resourceCulture);
                 return ((byte[])(obj));
             }
         }

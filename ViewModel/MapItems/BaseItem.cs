@@ -10,10 +10,12 @@ namespace Warehouse_Management.ViewModel.MapItems
         #region Props
 
         private BitmapImage itemImage;
-
         public BitmapImage ItemImage
         {
-            get { return itemImage; }
+            get
+            {
+                return itemImage;
+            }
             set
             {
                 itemImage = value;
@@ -21,55 +23,39 @@ namespace Warehouse_Management.ViewModel.MapItems
             }
         }
 
-        private double xPos;
+        private double left;
 
-        public double XPos
+        public double Left
         {
             get
             {
-                return xPos;
+                return left;
             }
             set
             {
-                xPos = value;
-                OnPropertyChanged(nameof(XPos));
+                left = value;
+                OnPropertyChanged(nameof(Left));
             }
         }
 
-        private double yPos;
+        private double top;
 
-        public double YPos
+        public double Top
         {
             get
             {
-                return yPos;
+                return top;
             }
             set
             {
-                yPos = value;
-                OnPropertyChanged(nameof(YPos));
+                top = value;
+                OnPropertyChanged(nameof(Top));
             }
         }
+
 
         #endregion Props
 
-        #region Private methods
 
-        protected BitmapImage createBitmap(byte[] data)
-        {
-            using (Stream stream = new MemoryStream(data))
-            {
-                BitmapImage image = new BitmapImage();
-                stream.Position = 0;
-                image.BeginInit();
-                image.CacheOption = BitmapCacheOption.OnLoad;
-                image.StreamSource = stream;
-                image.EndInit();
-                image.Freeze();
-                return image;
-            }
-        }
-
-        #endregion Private methods
     }
 }
