@@ -5,10 +5,11 @@ using Warehouse_Management.Model;
 using Warehouse_Management.ViewModel.Base;
 using Warehouse_Management.ViewModel.MapItems;
 
+
 namespace Warehouse_Management.ViewModel
 {
     using R = Properties.Resources;
-
+    using CC = CityCoordConstants;
     internal class MapVM : BaseViewModel
     {
         #region Props
@@ -41,9 +42,11 @@ namespace Warehouse_Management.ViewModel
 
         public MapVM()
         {
+            
             mapImage = ByteArrayConverter.byteArrayToBitmap(R.PolandMapHQ);
-            MapItems.Add(new WarehouseItem() { XPos = 100, YPos = 400 });
-            MapItems.Add(new WarehouseItem() { XPos = 0, YPos = 0 });
+            MapItems.Add(new WarehouseItem(CC.Katowice));
+            MapItems.Add(new WarehouseItem(CC.Opole));
+           
         }
     }
 }
