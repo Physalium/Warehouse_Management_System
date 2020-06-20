@@ -17,6 +17,7 @@ namespace Warehouse_Management.View
         }
 
         #region Events
+
         //private void RaisePathChanged()
         //{
         //    RoutedEventArgs newEventArgs =
@@ -40,10 +41,6 @@ namespace Warehouse_Management.View
         //                 RoutingStrategy.Bubble, typeof(RoutedEventHandler),
         //                 typeof(MapControl));
 
-
-
-
-
         // public event RoutedEventHandler ItemImageChanged
         // {
         //     add
@@ -64,7 +61,6 @@ namespace Warehouse_Management.View
                 new FrameworkPropertyMetadata(null)
             );
 
-
         protected static readonly DependencyProperty MapImageProperty =
             DependencyProperty.Register("MapImage", typeof(BitmapImage), typeof(MapControl));
 
@@ -76,12 +72,9 @@ namespace Warehouse_Management.View
                 new FrameworkPropertyMetadata(null)
             );
 
-
         #endregion Events
 
         #region Dependency props
-
-        
 
         public ObservableCollection<BitmapImage> MapItems
         {

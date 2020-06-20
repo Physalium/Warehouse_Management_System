@@ -9,6 +9,8 @@ namespace Warehouse_Management.ViewModel.MapItems
         public WarehouseItem()
         {
             base.ItemImage = ByteArrayConverter.byteArrayToBitmap(R.warehouseIcon);
+            base.Width = 0.04;
+            base.Height = 0.04;
         }
     }
 }

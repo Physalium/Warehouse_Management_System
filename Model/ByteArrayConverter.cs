@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 using System.Windows.Media.Imaging;
 
 namespace Warehouse_Management.Model
 {
-    static class ByteArrayConverter
+    internal static class ByteArrayConverter
     {
         static public BitmapImage byteArrayToBitmap(byte[] data)
         {

@@ -1,40 +1,37 @@
-﻿<UserControl
-    x:Class="Warehouse_Management.View.MapControl"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:resx="clr-namespace:Warehouse_Management.Properties"
-    d:DesignHeight="800"
-    d:DesignWidth="750"
-    mc:Ignorable="d">
-    <Grid>
-        <Image
-            RenderOptions.BitmapScalingMode="Fant"
-            Source="{Binding Path=MapImage, Mode=OneWay}"
-            Stretch="UniformToFill" />
-        <ItemsControl ItemsSource="{Binding Path=MapItems, Mode=Default}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
+﻿<UserControl x:Class="Warehouse_Management.View.MapControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:resx="clr-namespace:Warehouse_Management.Properties" xmlns:view="clr-namespace:Warehouse_Management.View"
+        d:DesignHeight="800" d:DesignWidth="750" mc:Ignorable="d">
+    <Viewbox Stretch="UniformToFill">
+        <Grid>
+            <Image RenderOptions.BitmapScalingMode="Fant" Source="{Binding Path=MapImage, Mode=OneWay}"
+                    Stretch="UniformToFill" />
+            <ItemsControl ItemsSource="{Binding Path=MapItems, Mode=Default}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
 
-                    <Canvas x:Name="oknoMapy" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                        <view:RelativeLayoutPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="view:RelativeLayoutPanel.RelativeX" Value="{Binding XPos}" />
+                        <Setter Property="view:RelativeLayoutPanel.RelativeY" Value="{Binding YPos}" />
+                        <Setter Property="view:RelativeLayoutPanel.RelativeWidth" Value="{Binding Width}" />
+                        <Setter Property="view:RelativeLayoutPanel.RelativeHeight" Value="{Binding Height}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
 
-                </ItemsPanelTemplate>
-
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemContainerStyle>
-                <Style TargetType="ContentPresenter">
-                    <Setter Property="Canvas.Left" Value="{Binding Left}" />
-                    <Setter Property="Canvas.Top" Value="{Binding Top}" />
-                </Style>
-            </ItemsControl.ItemContainerStyle>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Source="{Binding Path=ItemImage, Mode=OneWay}" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-
-
-    </Grid>
+                        <Image RenderOptions.BitmapScalingMode="Fant" Source="{Binding Path=ItemImage, Mode=OneWay}"
+                                Stretch="UniformToFill" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </Viewbox>
 </UserControl>

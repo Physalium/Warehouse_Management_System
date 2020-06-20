@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
-using System.IO;
-using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+
 using Warehouse_Management.Model;
 using Warehouse_Management.ViewModel.Base;
 using Warehouse_Management.ViewModel.MapItems;
@@ -43,14 +42,8 @@ namespace Warehouse_Management.ViewModel
         public MapVM()
         {
             mapImage = ByteArrayConverter.byteArrayToBitmap(R.PolandMapHQ);
-            MapItems.Add(new WarehouseItem() { Left = 100, Top = 400 });
+            MapItems.Add(new WarehouseItem() { XPos = 100, YPos = 400 });
+            MapItems.Add(new WarehouseItem() { XPos = 0, YPos = 0 });
         }
-
-        #region Private methods
-
-
-        
-
-        #endregion Private methods
     }
 }

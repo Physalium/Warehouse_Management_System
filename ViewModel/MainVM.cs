@@ -1,5 +1,4 @@
-﻿using Warehouse_Management.Model;
-using Warehouse_Management.ViewModel.Base;
+﻿using Warehouse_Management.ViewModel.Base;
 
 namespace Warehouse_Management.ViewModel
 {
