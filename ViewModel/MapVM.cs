@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -50,7 +51,7 @@ namespace Warehouse_Management.ViewModel
                     itemClick = new RelayCommand(
                            execute =>
                            {
-                               // show sidebar
+                               SidebarVisible = true;
                            },
                            canExecute =>
                            {
@@ -60,6 +61,46 @@ namespace Warehouse_Management.ViewModel
                 return itemClick;
             }
             set { itemClick = value; }
+        }
+
+        private ICommand buttonClick;
+
+        public ICommand ButtonClick
+        {
+            get
+            {
+                if (buttonClick is null)
+                {
+                    buttonClick = new RelayCommand(
+                           execute =>
+                           {
+                               SidebarVisible = !SidebarVisible;
+                           },
+                           canExecute =>
+                           {
+                               return true;
+                           });
+                }
+                return buttonClick;
+            }
+            set { buttonClick = value; }
+        }
+
+        private bool sidebarVisible = false;
+
+        public bool SidebarVisible
+        {
+            get
+            {
+                return sidebarVisible;
+            }
+
+            set
+            {
+                if (sidebarVisible != value) Application.Current.MainWindow.Width += !sidebarVisible ? 200 : -200;
+                sidebarVisible = value;
+                OnPropertyChanged(nameof(SidebarVisible));
+            }
         }
 
         #endregion Props

@@ -1,14 +1,20 @@
-﻿<UserControl x:Class="Warehouse_Management.View.MapControl"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:resx="clr-namespace:Warehouse_Management.Properties" xmlns:view="clr-namespace:Warehouse_Management.View"
-        d:DesignHeight="800" d:DesignWidth="750" mc:Ignorable="d">
+﻿<UserControl
+    x:Class="Warehouse_Management.View.MapControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resx="clr-namespace:Warehouse_Management.Properties"
+    xmlns:view="clr-namespace:Warehouse_Management.View"
+    d:DesignHeight="800"
+    d:DesignWidth="750"
+    mc:Ignorable="d">
     <Viewbox Stretch="UniformToFill">
         <Grid>
-            <Image RenderOptions.BitmapScalingMode="Fant" Source="{Binding Path=MapImage, Mode=OneWay}"
-                    Stretch="UniformToFill" />
+            <Image
+                RenderOptions.BitmapScalingMode="Fant"
+                Source="{Binding Path=MapImage, Mode=OneWay}"
+                Stretch="UniformToFill" />
             <ItemsControl ItemsSource="{Binding Path=MapItems, Mode=Default}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -27,9 +33,12 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
 
-                        <Image RenderOptions.BitmapScalingMode="Fant" Opacity="0.8"
-                                Source="{Binding Path=ItemImage, Mode=OneWay}" Stretch="UniformToFill"
-                                MouseLeftButtonUp="Image_MouseLeftButtonUp" />
+                        <Image
+                            MouseLeftButtonUp="Image_MouseLeftButtonUp"
+                            Opacity="0.8"
+                            RenderOptions.BitmapScalingMode="Fant"
+                            Source="{Binding Path=ItemImage, Mode=OneWay}"
+                            Stretch="UniformToFill" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
