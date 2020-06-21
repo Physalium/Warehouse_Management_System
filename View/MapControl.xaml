@@ -27,8 +27,9 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
 
-                        <Image RenderOptions.BitmapScalingMode="Fant" Opacity="0.8" Source="{Binding Path=ItemImage, Mode=OneWay}"
-                                Stretch="UniformToFill" />
+                        <Image RenderOptions.BitmapScalingMode="Fant" Opacity="0.8"
+                                Source="{Binding Path=ItemImage, Mode=OneWay}" Stretch="UniformToFill"
+                                MouseLeftButtonUp="Image_MouseLeftButtonUp" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

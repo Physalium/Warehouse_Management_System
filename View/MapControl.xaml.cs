@@ -18,40 +18,23 @@ namespace Warehouse_Management.View
 
         #region Events
 
-        //private void RaisePathChanged()
-        //{
-        //    RoutedEventArgs newEventArgs =
-        //            new RoutedEventArgs(PathChangedEvent);
-        //    RaiseEvent(newEventArgs);
-        //}
+        private void RaiseItemClicked()
+        {
+            RoutedEventArgs newEventArgs =
+                    new RoutedEventArgs(ItemClickedEvent);
+            RaiseEvent(newEventArgs);
+        }
 
-        //     public static readonly RoutedEvent MapItemsChangedEvent =
-        //     EventManager.RegisterRoutedEvent("MapItemsChanged",
-        //                  RoutingStrategy.Bubble, typeof(RoutedEventHandler),
-        //                  typeof(MapControl));
+        public static readonly RoutedEvent ItemClickedEvent =
+        EventManager.RegisterRoutedEvent("ItemClicked",
+                     RoutingStrategy.Bubble, typeof(RoutedEventHandler),
+                     typeof(MapControl));
 
-        //     public event RoutedEventHandler MapItemsChanged
-        //     {
-        //         add { AddHandler(MapItemsChangedEvent, value); }
-        //         remove { RemoveHandler(MapItemsChangedEvent, value); }
-        //     }
-
-        //     public static readonly RoutedEvent ItemImageChangedEvent =
-        //    EventManager.RegisterRoutedEvent("ItemImageChanged",
-        //                 RoutingStrategy.Bubble, typeof(RoutedEventHandler),
-        //                 typeof(MapControl));
-
-        // public event RoutedEventHandler ItemImageChanged
-        // {
-        //     add
-        //     {
-        //         AddHandler(ItemImageChangedEvent, value);
-        //     }
-        //     remove
-        //     {
-        //         RemoveHandler(ItemImageChangedEvent, value);
-        //     }
-        // }
+        public event RoutedEventHandler ItemClicked
+        {
+            add { AddHandler(ItemClickedEvent, value); }
+            remove { RemoveHandler(ItemClickedEvent, value); }
+        }
 
         public static readonly DependencyProperty MapItemsProperty =
             DependencyProperty.Register(
@@ -95,5 +78,14 @@ namespace Warehouse_Management.View
         }
 
         #endregion Dependency props
+
+        #region Internal Event Handlers
+
+        private void Image_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            RaiseItemClicked();
+        }
+
+        #endregion Internal Event Handlers
     }
 }

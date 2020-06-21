@@ -8,7 +8,7 @@ namespace Warehouse_Management.ViewModel
 
         public MapVM MapVM
         {
-            get => mapVM; set { mapVM = value; OnPropertyChanged(nameof(MapVM)); }
+            get => mapVM;
         }
     }
 }

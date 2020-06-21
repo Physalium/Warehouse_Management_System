@@ -11,8 +11,8 @@ namespace Warehouse_Management.View
     {
         public MainWindow()
         {
-            InitializeComponent();
             DataContext = new MainVM();
+            InitializeComponent();
         }
     }
 }
