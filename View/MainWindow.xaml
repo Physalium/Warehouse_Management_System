@@ -8,18 +8,21 @@
     xmlns:local="clr-namespace:Warehouse_Management.View"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resx="clr-namespace:Warehouse_Management.Properties"
     xmlns:vm="clr-namespace:Warehouse_Management.ViewModel"
     Title="Warehouse Manager"
     Width="800"
     Height="1000"
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{DynamicResource MaterialDesignFont}"
-    ResizeMode="CanResize"
+    ResizeMode="CanResizeWithGrip"
     TextElement.FontSize="13"
     TextElement.FontWeight="Regular"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="SingleBorderWindow"
     mc:Ignorable="d">
     <Window.Resources>
         <materialDesign:BooleanToVisibilityConverter x:Key="BoolToVisConv" />
@@ -73,7 +76,7 @@
                 <Rectangle
                     x:Name="sidebar"
                     Grid.Column="1"
-                    Width="250"
+                    Width="{Binding Path=SidebarWidth}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Stretch"
                     Fill="#99000000"

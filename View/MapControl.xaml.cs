@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -39,7 +40,7 @@ namespace Warehouse_Management.View
         public static readonly DependencyProperty MapItemsProperty =
             DependencyProperty.Register(
                 "MapItems",
-                typeof(ObservableCollection<BitmapImage>),
+                typeof(IEnumerable),
                 typeof(MapControl),
                 new FrameworkPropertyMetadata(null)
             );
@@ -59,9 +60,9 @@ namespace Warehouse_Management.View
 
         #region Dependency props
 
-        public ObservableCollection<BitmapImage> MapItems
+        public IEnumerable MapItems
         {
-            get { return (ObservableCollection<BitmapImage>)GetValue(MapItemsProperty); }
+            get { return (IEnumerable)GetValue(MapItemsProperty); }
             set { SetValue(MapItemsProperty, value); }
         }
 

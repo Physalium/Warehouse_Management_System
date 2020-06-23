@@ -86,6 +86,18 @@ namespace Warehouse_Management.ViewModel
             set { buttonClick = value; }
         }
 
+        private int sidebarWidth = 400;
+
+        public int SidebarWidth
+        {
+            get { return sidebarWidth; }
+            set
+            {
+                sidebarWidth = value;
+                OnPropertyChanged(nameof(SidebarWidth));
+            }
+        }
+
         private bool sidebarVisible = false;
 
         public bool SidebarVisible
@@ -97,7 +109,7 @@ namespace Warehouse_Management.ViewModel
 
             set
             {
-                if (sidebarVisible != value) Application.Current.MainWindow.Width += !sidebarVisible ? 200 : -200;
+                if (sidebarVisible != value) Application.Current.MainWindow.Width += !sidebarVisible ? SidebarWidth : -SidebarWidth;
                 sidebarVisible = value;
                 OnPropertyChanged(nameof(SidebarVisible));
             }
