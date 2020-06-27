@@ -12,7 +12,7 @@
     xmlns:vm="clr-namespace:Warehouse_Management.ViewModel"
     Title="Warehouse Manager"
     Width="800"
-    Height="1000"
+    Height="800"
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{DynamicResource MaterialDesignFont}"
     ResizeMode="CanResizeWithGrip"
@@ -73,14 +73,16 @@
                         <materialDesign:PackIcon Kind="ChevronRight" />
                     </materialDesign:ToggleButtonAssist.OnContent>
                 </ToggleButton>
-                <Rectangle
+
+                <local:Sidebar
+                    DataContext="{Binding sidebarVM}"
                     x:Name="sidebar"
                     Grid.Column="1"
                     Width="{Binding Path=SidebarWidth}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Stretch"
-                    Fill="#99000000"
                     Visibility="{Binding SidebarVisible, Converter={StaticResource BoolToVisConv}}" />
+
             </Grid>
         </TabItem>
         <TabItem Header="Warehouses">

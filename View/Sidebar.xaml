@@ -9,52 +9,46 @@
     d:DesignHeight="800"
     d:DesignWidth="600"
     mc:Ignorable="d">
-    <Grid Width="400">
-        <materialDesign:Card
-            Padding="8"
-            Background="{DynamicResource PrimaryHueLightBrush}"
-            Foreground="{DynamicResource PrimaryHueLightForegroundBrush}">
+    
+    <Grid Width="400" Background="{DynamicResource MaterialDesignBody}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            Style="{StaticResource MaterialDesignHeadline4TextBlock}">
+            Magazyn Katowice
+        </TextBlock>
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <TextBlock
+                Margin="5"
+                HorizontalAlignment="Center"
+                Style="{StaticResource MaterialDesignHeadline5TextBlock}">
+                Products
+            </TextBlock>
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <TextBlock
-                    Grid.Row="0"
-                    HorizontalAlignment="Center"
-                    Style="{StaticResource MaterialDesignHeadline6TextBlock}">
-                    Magazyn Katowice
-                </TextBlock>
-                <StackPanel Grid.Row="1" Orientation="Vertical">
-                    <TextBlock
-                        Margin="5"
-                        HorizontalAlignment="Center"
-                        Background="{DynamicResource PrimaryHueLightBrush}"
-                        Style="{StaticResource MaterialDesignSubtitle2TextBlock}">
-                        Products
-                    </TextBlock>
-                    <ListView
-                        FontSize="15"
-                        Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
-                        ItemsSource="{Binding Products}">
-                        <ListView.View>
-                            <GridView>
+                <ListView ItemsSource="{Binding Products}" Foreground="Black" Style="{DynamicResource MaterialDesignListView}"
+                        ItemContainerStyle="{DynamicResource MaterialDesignGridViewItem}">
 
-                                <GridViewColumn
-                                    Width="80"
-                                    DisplayMemberBinding="{Binding Name}"
-                                    Header="Name" />
-                                <GridViewColumn
-                                    Width="100"
-                                    DisplayMemberBinding="{Binding Quantity}"
-                                    Header="Quantity" />
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                Width="80"
+                                DisplayMemberBinding="{Binding Name}"
+                                Header="Name" />
+                            <GridViewColumn
+                                Width="100"
+                                DisplayMemberBinding="{Binding Quantity}"
+                                Header="Quantity" />
 
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </StackPanel>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </Grid>
-        </materialDesign:Card>
+        </StackPanel>
     </Grid>
 </UserControl>

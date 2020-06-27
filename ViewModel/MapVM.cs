@@ -14,6 +14,8 @@ namespace Warehouse_Management.ViewModel
 
     internal class MapVM : BaseViewModel
     {
+        public SidebarVM sidebarVM = new SidebarVM();
+
         #region Props
 
         private BitmapImage mapImage;
@@ -51,7 +53,7 @@ namespace Warehouse_Management.ViewModel
                     itemClick = new RelayCommand(
                            execute =>
                            {
-                               SidebarVisible = true;
+                               sidebarVM.SidebarVisible = true;
                            },
                            canExecute =>
                            {
@@ -74,7 +76,7 @@ namespace Warehouse_Management.ViewModel
                     buttonClick = new RelayCommand(
                            execute =>
                            {
-                               SidebarVisible = !SidebarVisible;
+                               sidebarVM.SidebarVisible = !sidebarVM.SidebarVisible;
                            },
                            canExecute =>
                            {
@@ -84,35 +86,6 @@ namespace Warehouse_Management.ViewModel
                 return buttonClick;
             }
             set { buttonClick = value; }
-        }
-
-        private int sidebarWidth = 400;
-
-        public int SidebarWidth
-        {
-            get { return sidebarWidth; }
-            set
-            {
-                sidebarWidth = value;
-                OnPropertyChanged(nameof(SidebarWidth));
-            }
-        }
-
-        private bool sidebarVisible = false;
-
-        public bool SidebarVisible
-        {
-            get
-            {
-                return sidebarVisible;
-            }
-
-            set
-            {
-                if (sidebarVisible != value) Application.Current.MainWindow.Width += !sidebarVisible ? SidebarWidth : -SidebarWidth;
-                sidebarVisible = value;
-                OnPropertyChanged(nameof(SidebarVisible));
-            }
         }
 
         #endregion Props
