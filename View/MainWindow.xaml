@@ -52,16 +52,16 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     MapImage="{Binding MapImage}"
-                    MapItems="{Binding MapItems}" />
+                    MapItems="{Binding MapItems}"
+                    SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" />
                 <ToggleButton
                     Grid.Column="0"
                     Width="50"
                     Height="50"
-                    Margin="0,0,25,0"
+                    Margin="0,0,0,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     materialDesign:ShadowAssist.ShadowDepth="Depth3"
-                    Background="White"
                     Command="{Binding Path=ButtonClick}"
                     FontSize="16"
                     Style="{StaticResource MaterialDesignActionToggleButton}"
@@ -75,12 +75,13 @@
                 </ToggleButton>
 
                 <local:Sidebar
-                    DataContext="{Binding sidebarVM}"
                     x:Name="sidebar"
                     Grid.Column="1"
                     Width="{Binding Path=SidebarWidth}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Stretch"
+                    DataContext="{Binding SidebarVM}"
+                    Products="{Binding Path=SelectedWarehouse.Products}"
                     Visibility="{Binding SidebarVisible, Converter={StaticResource BoolToVisConv}}" />
 
             </Grid>

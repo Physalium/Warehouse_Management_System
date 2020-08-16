@@ -3,20 +3,36 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
+using System.Linq;
+using Warehouse_Management.Data;
 using Warehouse_Management.Model;
 using Warehouse_Management.ViewModel.Base;
 using Warehouse_Management.ViewModel.MapItems;
+using System;
 
 namespace Warehouse_Management.ViewModel
 {
-    using CC = CityCoordConstants;
+    using CC = MapConstants;
     using R = Properties.Resources;
 
     internal class MapVM : BaseViewModel
     {
-        public SidebarVM sidebarVM = new SidebarVM();
+        public readonly SidebarVM SidebarVM;
+        public readonly MainVM mainVM;
 
         #region Props
+
+        private WarehouseItem selectedItem;
+
+        public WarehouseItem SelectedItem
+        {
+            get { return selectedItem; }
+            set
+            {
+                selectedItem = value;
+                OnPropertyChanged(nameof(SelectedItem));
+            }
+        }
 
         private BitmapImage mapImage;
 
@@ -53,7 +69,7 @@ namespace Warehouse_Management.ViewModel
                     itemClick = new RelayCommand(
                            execute =>
                            {
-                               sidebarVM.SidebarVisible = true;
+                               SidebarVM.SidebarVisible = true;
                            },
                            canExecute =>
                            {
@@ -76,7 +92,7 @@ namespace Warehouse_Management.ViewModel
                     buttonClick = new RelayCommand(
                            execute =>
                            {
-                               sidebarVM.SidebarVisible = !sidebarVM.SidebarVisible;
+                               SidebarVM.SidebarVisible = !SidebarVM.SidebarVisible;
                            },
                            canExecute =>
                            {
@@ -90,11 +106,28 @@ namespace Warehouse_Management.ViewModel
 
         #endregion Props
 
-        public MapVM()
+        public MapVM(MainVM mainVM)
         {
+            this.mainVM = mainVM;
             mapImage = ByteArrayConverter.byteArrayToBitmap(R.PolandMapHQ);
-            MapItems.Add(new WarehouseItem(CC.Katowice));
-            MapItems.Add(new WarehouseItem(CC.Opole));
+            LoadData();
+            SidebarVM = new SidebarVM(mainVM);
+        }
+
+        private void LoadData()
+        {
+            foreach (var wh in mainVM.Warehouses)
+            {
+                AddWarehouse(wh);
+            }
+            return;
+        }
+
+        private void AddWarehouse(Warehouse wh)
+        {
+            var cc = MapConstants.Cities.Find(x => x.name.Equals(wh.City));
+            var warehouse = new WarehouseItem(cc.xPos, cc.yPos, wh);
+            mapItems.Add(warehouse);
         }
     }
 }

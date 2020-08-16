@@ -56,6 +56,14 @@ namespace Warehouse_Management.View
                 new FrameworkPropertyMetadata(null)
             );
 
+        public static readonly DependencyProperty SelectedItemProperty =
+            DependencyProperty.Register(
+                "SelectedItem",
+                typeof(object),
+                typeof(MapControl),
+                new FrameworkPropertyMetadata(null)
+            );
+
         #endregion Events
 
         #region Dependency props
@@ -64,6 +72,12 @@ namespace Warehouse_Management.View
         {
             get { return (IEnumerable)GetValue(MapItemsProperty); }
             set { SetValue(MapItemsProperty, value); }
+        }
+
+        public object SelectedItem
+        {
+            get { return GetValue(SelectedItemProperty); }
+            set { SetValue(SelectedItemProperty, value); }
         }
 
         public BitmapImage MapImage
@@ -84,6 +98,7 @@ namespace Warehouse_Management.View
 
         private void Image_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            SelectedItem = sender;
             RaiseItemClicked();
         }
 

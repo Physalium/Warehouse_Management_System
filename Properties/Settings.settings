@@ -1,0 +1,10 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Warehouse_Management.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="connectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">"server=localhost;uid=root;pwd=Lineage3;database=warehousemanagement"
+</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

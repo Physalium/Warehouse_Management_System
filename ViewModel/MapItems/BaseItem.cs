@@ -85,10 +85,10 @@ namespace Warehouse_Management.ViewModel.MapItems
 
         #endregion Props
 
-        public BaseItem((double xPos, double yPos) cityCoord)
+        public BaseItem(double xPos, double yPos)
         {
-            XPos = cityCoord.xPos;
-            YPos = cityCoord.yPos;
+            XPos = xPos;
+            YPos = yPos;
         }
     }
 }

@@ -1,7 +1,4 @@
-using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media.Imaging;
 
 using Warehouse_Management.Model;
 using Warehouse_Management.ViewModel.Base;
@@ -9,12 +6,25 @@ using Warehouse_Management.ViewModel.MapItems;
 
 namespace Warehouse_Management.ViewModel
 {
-    using CC = CityCoordConstants;
-    using R = Properties.Resources;
-
     internal class SidebarVM : BaseViewModel
     {
+        public SidebarVM(MainVM mainVM)
+        {
+            this.mainVM = mainVM;
+        }
+
+        private bool sidebarVisible = false;
+        public readonly MainVM mainVM;
+
         #region Props
+
+        private Warehouse selectedWarehouse;
+
+        public Warehouse SelectedWarehouse
+        {
+            get { return selectedWarehouse; }
+            set { selectedWarehouse = value; }
+        }
 
         private int sidebarWidth = 400;
 
@@ -28,8 +38,6 @@ namespace Warehouse_Management.ViewModel
             }
         }
 
-        private bool sidebarVisible = false;
-
         public bool SidebarVisible
         {
             get
@@ -39,7 +47,11 @@ namespace Warehouse_Management.ViewModel
 
             set
             {
-                if (sidebarVisible != value) Application.Current.MainWindow.Width += !sidebarVisible ? SidebarWidth : -SidebarWidth;
+                if (sidebarVisible != value)
+                {
+                    Application.Current.MainWindow.Width += !sidebarVisible ? SidebarWidth : -SidebarWidth;
+                }
+
                 sidebarVisible = value;
                 OnPropertyChanged(nameof(SidebarVisible));
             }
