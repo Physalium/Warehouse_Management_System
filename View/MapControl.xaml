@@ -9,39 +9,41 @@
     d:DesignHeight="800"
     d:DesignWidth="750"
     mc:Ignorable="d">
-    <Viewbox Stretch="UniformToFill">
+    <Viewbox Stretch="Fill">
         <Grid>
             <Image
                 RenderOptions.BitmapScalingMode="Fant"
                 Source="{Binding Path=MapImage, Mode=OneWay}"
                 Stretch="UniformToFill" />
-            <ItemsControl ItemsSource="{Binding Path=MapItems, Mode=Default}">
-                <ItemsControl.ItemsPanel>
+            <ListView ItemsSource="{Binding Path=MapItems}" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      SelectedItem="{Binding SelectedItem}">
+                <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-
                         <view:RelativeLayoutPanel />
                     </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemContainerStyle>
-                    <Style TargetType="ContentPresenter">
+                </ListView.ItemsPanel>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment" Value="Stretch" />
                         <Setter Property="view:RelativeLayoutPanel.RelativeX" Value="{Binding XPos}" />
                         <Setter Property="view:RelativeLayoutPanel.RelativeY" Value="{Binding YPos}" />
                         <Setter Property="view:RelativeLayoutPanel.RelativeWidth" Value="{Binding Width}" />
                         <Setter Property="view:RelativeLayoutPanel.RelativeHeight" Value="{Binding Height}" />
                     </Style>
-                </ItemsControl.ItemContainerStyle>
-                <ItemsControl.ItemTemplate>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
                     <DataTemplate>
-
                         <Image
                             MouseLeftButtonUp="Image_MouseLeftButtonUp"
                             Opacity="0.8"
                             RenderOptions.BitmapScalingMode="Fant"
                             Source="{Binding Path=ItemImage, Mode=OneWay}"
-                            Stretch="UniformToFill" />
+                            Stretch="Fill" />
                     </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </Viewbox>
 </UserControl>

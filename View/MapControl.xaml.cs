@@ -98,7 +98,6 @@ namespace Warehouse_Management.View
 
         private void Image_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            SelectedItem = sender;
             RaiseItemClicked();
         }
 

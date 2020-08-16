@@ -28,10 +28,10 @@ namespace Warehouse_Management.ViewModel
             using (var db = new WarehousemanagementContext())
             {
                 Warehouses = new ObservableCollection<WarehouseVM>();
-                db.Warehouses.ToList().AsParallel().ForAll(x => Warehouses.Add(new WarehouseVM(x)));
+                db.Warehouses.ToList().ForEach(x => Warehouses.Add(new WarehouseVM(x)));
 
                 Cities = new ObservableCollection<CityVM>();
-                db.Cities.ToList().AsParallel().ForAll(x => Cities.Add(new CityVM(x)));
+                db.Cities.ToList().ForEach(x => Cities.Add(new CityVM(x)));
             }
         }
     }
