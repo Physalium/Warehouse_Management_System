@@ -1,14 +1,15 @@
 namespace Warehouse_Management.ViewModel.MapItems
 {
     using Warehouse_Management.Model;
+    using Warehouse_Management.ViewModel.EntitiesVM;
 
     using R = Properties.Resources;
 
     internal class WarehouseItem : BaseItem
     {
-        public Warehouse Warehouse { get; }
+        public WarehouseVM Warehouse { get; }
 
-        public WarehouseItem(double xPos, double yPos, Warehouse warehouse) : base(xPos, yPos)
+        public WarehouseItem(double xPos, double yPos, WarehouseVM warehouse) : base(xPos, yPos)
         {
             base.ItemImage = ByteArrayConverter.byteArrayToBitmap(R.warehouseIcon);
             base.Width = 0.03;

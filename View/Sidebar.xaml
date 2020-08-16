@@ -9,7 +9,7 @@
     d:DesignHeight="800"
     d:DesignWidth="600"
     mc:Ignorable="d">
-    
+
     <Grid Width="400" Background="{DynamicResource MaterialDesignBody}">
 
         <Grid.RowDefinitions>
@@ -20,9 +20,8 @@
         <TextBlock
             Grid.Row="0"
             HorizontalAlignment="Center"
-            Style="{StaticResource MaterialDesignHeadline4TextBlock}">
-            Magazyn Katowice
-        </TextBlock>
+            Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+            Text="{Binding WarehouseName}" />
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <TextBlock
                 Margin="5"
@@ -31,8 +30,11 @@
                 Products
             </TextBlock>
             <Grid>
-                <ListView ItemsSource="{Binding Products}" Foreground="Black" Style="{DynamicResource MaterialDesignListView}"
-                        ItemContainerStyle="{DynamicResource MaterialDesignGridViewItem}">
+                <ListView
+                    Foreground="Black"
+                    ItemContainerStyle="{DynamicResource MaterialDesignGridViewItem}"
+                    ItemsSource="{Binding Products}"
+                    Style="{DynamicResource MaterialDesignListView}">
 
                     <ListView.View>
                         <GridView>

@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Warehouse_Management.Data;
 using Warehouse_Management.Model;
 using Warehouse_Management.ViewModel.Base;
+using Warehouse_Management.ViewModel.EntitiesVM;
 
 namespace Warehouse_Management.ViewModel
 {
@@ -13,17 +14,25 @@ namespace Warehouse_Management.ViewModel
     {
         public MapVM MapVM { get; set; }
 
-        public ObservableCollection<Warehouse> Warehouses { get; set; }
-        public ObservableCollection<City> Cities { get; set; }
+        public ObservableCollection<WarehouseVM> Warehouses { get; set; }
+        public ObservableCollection<CityVM> Cities { get; set; }
 
         public MainVM()
         {
+            LoadData();
+            MapVM = new MapVM(this);
+        }
+
+        private void LoadData()
+        {
             using (var db = new WarehousemanagementContext())
             {
-                Warehouses = new ObservableCollection<Warehouse>(db.Warehouses.ToList());
-                Cities = new ObservableCollection<City>(db.Cities.ToList());
+                Warehouses = new ObservableCollection<WarehouseVM>();
+                db.Warehouses.ToList().AsParallel().ForAll(x => Warehouses.Add(new WarehouseVM(x)));
+
+                Cities = new ObservableCollection<CityVM>();
+                db.Cities.ToList().AsParallel().ForAll(x => Cities.Add(new CityVM(x)));
             }
-            MapVM = new MapVM(this);
         }
     }
 }

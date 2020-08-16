@@ -24,7 +24,7 @@ namespace Warehouse_Management.View
             InitializeComponent();
         }
 
-        #region Events
+        #region Props
 
         public static readonly DependencyProperty ProductsProperty =
           DependencyProperty.Register(
@@ -37,9 +37,8 @@ namespace Warehouse_Management.View
         protected static readonly DependencyProperty ProductsLabelProperty =
             DependencyProperty.Register("ProductsLabel", typeof(string), typeof(Sidebar));
 
-        #endregion Events
-
-        #region Props
+        protected static readonly DependencyProperty WarehouseNameProperty =
+            DependencyProperty.Register("WarehouseName", typeof(string), typeof(Sidebar));
 
         public IEnumerable Products
         {
@@ -51,8 +50,14 @@ namespace Warehouse_Management.View
         {
             get { return (string)GetValue(ProductsLabelProperty); }
             set { SetValue(ProductsLabelProperty, value); }
-
-            #endregion Props
         }
+
+        public string WarehouseName
+        {
+            get { return (string)GetValue(WarehouseNameProperty); }
+            set { SetValue(WarehouseNameProperty, value); }
+        }
+
+        #endregion Props
     }
 }

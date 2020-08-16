@@ -9,7 +9,6 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:resx="clr-namespace:Warehouse_Management.Properties"
-    xmlns:vm="clr-namespace:Warehouse_Management.ViewModel"
     Title="Warehouse Manager"
     Width="800"
     Height="800"
@@ -53,7 +52,7 @@
                     VerticalAlignment="Top"
                     MapImage="{Binding MapImage}"
                     MapItems="{Binding MapItems}"
-                    SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" />
+                    SelectedItem="{Binding SelectedItem}" />
                 <ToggleButton
                     Grid.Column="0"
                     Width="50"
@@ -75,14 +74,14 @@
                 </ToggleButton>
 
                 <local:Sidebar
-                    x:Name="sidebar"
+                    DataContext="{Binding Path=sidebarVM}"
                     Grid.Column="1"
                     Width="{Binding Path=SidebarWidth}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Stretch"
-                    DataContext="{Binding SidebarVM}"
                     Products="{Binding Path=SelectedWarehouse.Products}"
-                    Visibility="{Binding SidebarVisible, Converter={StaticResource BoolToVisConv}}" />
+                    Visibility="{Binding SidebarVisible, Converter={StaticResource BoolToVisConv}}"
+                    WarehouseName="{Binding Path=SelectedWarehouse.Name}" />
 
             </Grid>
         </TabItem>
