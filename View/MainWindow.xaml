@@ -76,6 +76,7 @@
 
                 <local:Sidebar
                     x:Name="sidebar"
+                   
                     DataContext="{Binding Path=SidebarVM}"
                     Grid.Column="1"
                     Width="{Binding Path=SidebarWidth}"

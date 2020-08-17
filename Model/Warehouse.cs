@@ -18,7 +18,7 @@ namespace Warehouse_Management.Model
 
         public virtual City CityNavigation { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
         public virtual ICollection<Semitrailer> Semitrailers { get; set; }
         public virtual ICollection<Truck> Trucks { get; set; }
     }

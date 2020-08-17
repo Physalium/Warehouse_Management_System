@@ -55,7 +55,7 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
         private void LoadProducts(Warehouse wh)
         {
             Products = new ObservableCollection<ProductVM>();
-            wh.Products.ToList().AsParallel().ForAll(x =>
+            wh.Products.ToList().ForEach(x =>
             {
                 var product = new ProductVM(x)
                 {

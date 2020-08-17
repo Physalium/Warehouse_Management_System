@@ -13,9 +13,8 @@
     <Grid Width="400" Background="{DynamicResource MaterialDesignBody}">
 
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="8*" />
         </Grid.RowDefinitions>
         <TextBlock
             x:Name="warehouseName"
@@ -30,51 +29,86 @@
                 HorizontalAlignment="Center"
                 Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                 Text="{Binding ProductsLabel, Mode=TwoWay, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
-            <Grid>
-                <ListView
-                    Foreground="Black"
-                    ItemContainerStyle="{DynamicResource MaterialDesignGridViewItem}"
-                    ItemsSource="{Binding Products, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
-                    Style="{DynamicResource MaterialDesignListView}"
-                    ScrollViewer.VerticalScrollBarVisibility="Visible"
-                    materialDesign:ScrollViewerAssist.CornerRectangleVisibility="Visible"
-                    ScrollViewer.CanContentScroll="True">
 
-                    <ListView.View>
-                        <GridView>
-                            <GridView.ColumnHeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Foreground" Value="Black" />
-                                    <Setter Property="FontWeight" Value="Bold" />
-                                </Style>
-                            </GridView.ColumnHeaderContainerStyle>
-                            <GridViewColumn
-                                Width="60"
-                                DisplayMemberBinding="{Binding Name}"
-                                Header="Name" />
-                            <GridViewColumn
-                                Width="50"
-                                DisplayMemberBinding="{Binding Price, StringFormat='{}{0} pln'}"
-                                Header="Price" />
-                            <GridViewColumn
-                                Width="60"
-                                DisplayMemberBinding="{Binding Quantity}"
-                                Header="Quantity" />
+            <ListView
+                Foreground="Black"
+                ItemsSource="{Binding Products, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                ScrollViewer.CanContentScroll="True"
+                ScrollViewer.VerticalScrollBarVisibility="Visible"
+                Style="{DynamicResource MaterialDesignListView}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Style.Triggers>
+                            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesignTextBoxBorder}" />
+                            </Trigger>
 
-                            <GridViewColumn
-                                Width="60"
-                                DisplayMemberBinding="{Binding Weight, StringFormat='{}{0}kg'}"
-                                Header="Weight" />
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource MaterialDesignDivider}" />
+                            </Trigger>
 
-                            <GridViewColumn
-                                Width="60"
-                                DisplayMemberBinding="{Binding Volume, StringFormat='{}{0}m³'}"
-                                Header="Volume" />
 
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </Grid>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" Value=".56" />
+                            </Trigger>
+
+                        </Style.Triggers>
+                        <Setter Property="Focusable" Value="False" />
+                        <Setter Property="SnapsToDevicePixels" Value="True" />
+                        <Setter Property="OverridesDefaultStyle" Value="True" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="BorderBrush" Value="Transparent" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border
+                                        Name="Border"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                        BorderThickness="0,0,0,1"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                        <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridView.ColumnHeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="Foreground" Value="Black" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                            </Style>
+                        </GridView.ColumnHeaderContainerStyle>
+                        <GridViewColumn
+                            Width="60"
+                            DisplayMemberBinding="{Binding Name}"
+                            Header="Name" />
+                        <GridViewColumn
+                            Width="50"
+                            DisplayMemberBinding="{Binding Price, StringFormat='{}{0} pln'}"
+                            Header="Price" />
+                        <GridViewColumn
+                            Width="60"
+                            DisplayMemberBinding="{Binding Quantity}"
+                            Header="Quantity" />
+
+                        <GridViewColumn
+                            Width="60"
+                            DisplayMemberBinding="{Binding Weight, StringFormat='{}{0}kg'}"
+                            Header="Weight" />
+
+                        <GridViewColumn
+                            Width="60"
+                            DisplayMemberBinding="{Binding Volume, StringFormat='{}{0}m³'}"
+                            Header="Volume" />
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
         </StackPanel>
     </Grid>
 </UserControl>
