@@ -5,6 +5,16 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
 {
     internal class ProductVM : BaseViewModel
     {
+        public ProductVM(Product x)
+        {
+            Price = x.Price;
+            Name = x.Name;
+            Volume = x.Volume;
+            Weight = x.Weight;
+        }
+
+        #region props
+
         private float price;
 
         public float Price
@@ -19,12 +29,6 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
 
         private string name;
 
-        public ProductVM(Product x)
-        {
-            Price = x.Price;
-            Name = x.Name;
-        }
-
         public string Name
         {
             get { return name; }
@@ -34,5 +38,43 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
                 OnPropertyChanged(nameof(Name));
             }
         }
+
+        private int quantity;
+
+        public int Quantity
+        {
+            get { return quantity; }
+            set
+            {
+                quantity = value;
+                OnPropertyChanged(nameof(Quantity));
+            }
+        }
+
+        private int weight;
+
+        public int Weight
+        {
+            get { return weight; }
+            set
+            {
+                weight = value;
+                OnPropertyChanged(nameof(Weight));
+            }
+        }
+
+        private int volume;
+
+        public int Volume
+        {
+            get { return volume; }
+            set
+            {
+                volume = value;
+                OnPropertyChanged(nameof(Volume));
+            }
+        }
+
+        #endregion props
     }
 }

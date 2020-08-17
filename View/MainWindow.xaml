@@ -25,6 +25,7 @@
     mc:Ignorable="d">
     <Window.Resources>
         <materialDesign:BooleanToVisibilityConverter x:Key="BoolToVisConv" />
+        
     </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="ItemClicked" SourceName="map">
@@ -75,7 +76,7 @@
 
                 <local:Sidebar
                     x:Name="sidebar"
-                    DataContext="{Binding SidebarVM}"
+                    DataContext="{Binding Path=SidebarVM}"
                     Grid.Column="1"
                     Width="{Binding Path=SidebarWidth}"
                     HorizontalAlignment="Right"

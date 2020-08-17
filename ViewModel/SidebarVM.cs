@@ -45,7 +45,7 @@ namespace Warehouse_Management.ViewModel
             }
         }
 
-        private string productsLabel = "Prods";
+        private string productsLabel = Properties.Resources.ProductsLabel;
 
         public string ProductsLabel
         {

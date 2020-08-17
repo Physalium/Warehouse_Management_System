@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography;
 
 using Warehouse_Management.Model;
 using Warehouse_Management.ViewModel.Base;
@@ -38,8 +39,7 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
         {
             WarehouseName = x.Name;
             City = x.City;
-            Products = new ObservableCollection<ProductVM>();
-            x.Products.ToList().AsParallel().ForAll(x => Products.Add(new ProductVM(x)));
+            LoadProducts(x);
         }
 
         public ObservableCollection<ProductVM> Products
@@ -50,6 +50,19 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
                 products = value;
                 OnPropertyChanged(nameof(Products));
             }
+        }
+
+        private void LoadProducts(Warehouse wh)
+        {
+            Products = new ObservableCollection<ProductVM>();
+            wh.Products.ToList().AsParallel().ForAll(x =>
+            {
+                var product = new ProductVM(x)
+                {
+                    Quantity = (from p in wh.Products where p.Equals(x) select p).Count()
+                };
+                Products.Add(product);
+            });
         }
     }
 }

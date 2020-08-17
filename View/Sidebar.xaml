@@ -22,31 +22,54 @@
             Grid.Row="0"
             HorizontalAlignment="Center"
             Style="{StaticResource MaterialDesignHeadline4TextBlock}"
-            Text="{Binding WarehouseName, Mode=TwoWay}" />
+            Text="{Binding WarehouseName, Mode=TwoWay, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <TextBlock
                 x:Name="productsLabel"
                 Margin="5"
                 HorizontalAlignment="Center"
                 Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                Text="{Binding ProductsLabel, Mode=TwoWay}" />
+                Text="{Binding ProductsLabel, Mode=TwoWay, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
             <Grid>
                 <ListView
                     Foreground="Black"
                     ItemContainerStyle="{DynamicResource MaterialDesignGridViewItem}"
-                    ItemsSource="{Binding Products}"
-                    Style="{DynamicResource MaterialDesignListView}">
+                    ItemsSource="{Binding Products, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                    Style="{DynamicResource MaterialDesignListView}"
+                    ScrollViewer.VerticalScrollBarVisibility="Visible"
+                    materialDesign:ScrollViewerAssist.CornerRectangleVisibility="Visible"
+                    ScrollViewer.CanContentScroll="True">
 
                     <ListView.View>
                         <GridView>
+                            <GridView.ColumnHeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Foreground" Value="Black" />
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                </Style>
+                            </GridView.ColumnHeaderContainerStyle>
                             <GridViewColumn
-                                Width="80"
+                                Width="60"
                                 DisplayMemberBinding="{Binding Name}"
                                 Header="Name" />
                             <GridViewColumn
-                                Width="100"
+                                Width="50"
+                                DisplayMemberBinding="{Binding Price, StringFormat='{}{0} pln'}"
+                                Header="Price" />
+                            <GridViewColumn
+                                Width="60"
                                 DisplayMemberBinding="{Binding Quantity}"
                                 Header="Quantity" />
+
+                            <GridViewColumn
+                                Width="60"
+                                DisplayMemberBinding="{Binding Weight, StringFormat='{}{0}kg'}"
+                                Header="Weight" />
+
+                            <GridViewColumn
+                                Width="60"
+                                DisplayMemberBinding="{Binding Volume, StringFormat='{}{0}m³'}"
+                                Header="Volume" />
 
                         </GridView>
                     </ListView.View>

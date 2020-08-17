@@ -32,7 +32,7 @@ namespace Warehouse_Management.View
                 new FrameworkPropertyMetadata(null));
 
         public static readonly DependencyProperty WarehouseNameProperty =
-            DependencyProperty.Register("WarehouseName",
+            DependencyProperty.Register(nameof(WarehouseName),
                 typeof(string),
                 typeof(Sidebar),
                 new FrameworkPropertyMetadata(null));

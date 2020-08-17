@@ -121,6 +121,9 @@
   <data name="PolandMapHQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\polandmaphq.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="ProductsLabel" xml:space="preserve">
+    <value>Products</value>
+  </data>
   <data name="warehouseIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\warehouseicon.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
