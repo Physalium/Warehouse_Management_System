@@ -5,7 +5,7 @@ namespace Warehouse_Management.Model
 {
     internal static class ByteArrayConverter
     {
-        static public BitmapImage byteArrayToBitmap(byte[] data)
+        public static BitmapImage byteArrayToBitmap(byte[] data)
         {
             using (Stream stream = new MemoryStream(data))
             {

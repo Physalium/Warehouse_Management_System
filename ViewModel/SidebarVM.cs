@@ -1,26 +1,27 @@
 using System.Windows;
 
-using Warehouse_Management.Model;
 using Warehouse_Management.ViewModel.Base;
 using Warehouse_Management.ViewModel.EntitiesVM;
-using Warehouse_Management.ViewModel.MapItems;
 
 namespace Warehouse_Management.ViewModel
 {
     internal class SidebarVM : BaseViewModel
     {
         public SidebarVM(MapVM mapVM)
-
         {
-            this.mapVM = mapVM;
+            this.MapVM = mapVM;
+        }
+
+        public SidebarVM()
+        {
         }
 
         private bool sidebarVisible = false;
-        public readonly MapVM mapVM;
+        public readonly MapVM MapVM;
 
         #region Props
 
-        private WarehouseVM selectedWarehouse = null;
+        private WarehouseVM selectedWarehouse;
 
         public WarehouseVM SelectedWarehouse
         {
@@ -41,6 +42,18 @@ namespace Warehouse_Management.ViewModel
             {
                 sidebarWidth = value;
                 OnPropertyChanged(nameof(SidebarWidth));
+            }
+        }
+
+        private string productsLabel = "Prods";
+
+        public string ProductsLabel
+        {
+            get { return productsLabel; }
+            set
+            {
+                productsLabel = value;
+                OnPropertyChanged(nameof(ProductsLabel));
             }
         }
 

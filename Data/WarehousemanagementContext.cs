@@ -1,8 +1,5 @@
-﻿using System;
-using System.Configuration;
-
+﻿
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 using Warehouse_Management.Model;
 

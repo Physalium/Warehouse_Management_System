@@ -4,7 +4,6 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 using Warehouse_Management.Data;
-using Warehouse_Management.Model;
 using Warehouse_Management.ViewModel.Base;
 using Warehouse_Management.ViewModel.EntitiesVM;
 
@@ -25,10 +24,10 @@ namespace Warehouse_Management.ViewModel
 
         private void LoadData()
         {
-            using (var db = new WarehousemanagementContext())
+            using (WarehousemanagementContext db = new WarehousemanagementContext())
             {
                 Warehouses = new ObservableCollection<WarehouseVM>();
-                db.Warehouses.ToList().ForEach(x => Warehouses.Add(new WarehouseVM(x)));
+                db.Warehouses.Include(s => s.Products).ToList().ForEach(x => Warehouses.Add(new WarehouseVM(x)));
 
                 Cities = new ObservableCollection<CityVM>();
                 db.Cities.ToList().ForEach(x => Cities.Add(new CityVM(x)));

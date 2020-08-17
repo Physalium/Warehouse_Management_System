@@ -16,7 +16,7 @@ namespace Warehouse_Management.ViewModel.Base
                 //wywołanie zdarzenia dla wszsytkich zgłoszonych do aktualizacji własności
                 //w ten sposób powiadamiamy widok o zmianie stanu własności
                 //w modelu widoku
-                foreach (var prop in namesOfProperties)
+                foreach (string prop in namesOfProperties)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs(prop));
                 }

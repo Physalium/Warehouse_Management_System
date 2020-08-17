@@ -7,7 +7,7 @@ namespace Warehouse_Management.ViewModel.MapItems
 
     internal class WarehouseItem : BaseItem
     {
-        public WarehouseVM Warehouse { get; }
+        public WarehouseVM Warehouse { get; set; }
 
         public WarehouseItem(double xPos, double yPos, WarehouseVM warehouse) : base(xPos, yPos)
         {

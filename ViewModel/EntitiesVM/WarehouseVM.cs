@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 
 using Warehouse_Management.Model;
 using Warehouse_Management.ViewModel.Base;
@@ -23,15 +20,15 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
             }
         }
 
-        private string name;
+        private string warehouseName;
 
-        public string Name
+        public string WarehouseName
         {
-            get { return name; }
+            get { return warehouseName; }
             set
             {
-                name = value;
-                OnPropertyChanged(nameof(Name));
+                warehouseName = value;
+                OnPropertyChanged(nameof(WarehouseName));
             }
         }
 
@@ -39,8 +36,9 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
 
         public WarehouseVM(Warehouse x)
         {
-            Name = x.Name;
+            WarehouseName = x.Name;
             City = x.City;
+            Products = new ObservableCollection<ProductVM>();
             x.Products.ToList().AsParallel().ForAll(x => Products.Add(new ProductVM(x)));
         }
 

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Warehouse_Management.Model
+﻿namespace Warehouse_Management.Model
 {
     public partial class Product
     {

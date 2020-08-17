@@ -1,26 +1,20 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
-using System.Linq;
-using Warehouse_Management.Data;
 using Warehouse_Management.Model;
 using Warehouse_Management.ViewModel.Base;
-using Warehouse_Management.ViewModel.MapItems;
-using System;
 using Warehouse_Management.ViewModel.EntitiesVM;
-using System.Windows.Navigation;
+using Warehouse_Management.ViewModel.MapItems;
 
 namespace Warehouse_Management.ViewModel
 {
-    using CC = MapConstants;
     using R = Properties.Resources;
 
     internal class MapVM : BaseViewModel
     {
-        public SidebarVM sidebarVM { get; set; }
-        public MainVM mainVM { get; set; }
+        public SidebarVM SidebarVM { get; set; }
+        public MainVM MainVM { get; set; }
 
         #region Props
 
@@ -34,7 +28,7 @@ namespace Warehouse_Management.ViewModel
                 selectedItem = value;
                 if (value is WarehouseItem wh)
                 {
-                    sidebarVM.SelectedWarehouse = wh.Warehouse;
+                    SidebarVM.SelectedWarehouse = wh.Warehouse;
                 }
                 OnPropertyChanged(nameof(SelectedItem));
             }
@@ -75,7 +69,7 @@ namespace Warehouse_Management.ViewModel
                     itemClick = new RelayCommand(
                            execute =>
                            {
-                               sidebarVM.SidebarVisible = true;
+                               SidebarVM.SidebarVisible = true;
                            },
                            canExecute =>
                            {
@@ -98,7 +92,7 @@ namespace Warehouse_Management.ViewModel
                     buttonClick = new RelayCommand(
                            execute =>
                            {
-                               sidebarVM.SidebarVisible = !sidebarVM.SidebarVisible;
+                               SidebarVM.SidebarVisible = !SidebarVM.SidebarVisible;
                            },
                            canExecute =>
                            {
@@ -114,19 +108,19 @@ namespace Warehouse_Management.ViewModel
 
         public MapVM(MainVM mainVM)
         {
-            this.mainVM = mainVM;
+            this.MainVM = mainVM;
             mapImage = ByteArrayConverter.byteArrayToBitmap(R.PolandMapHQ);
             LoadData();
-            sidebarVM = new SidebarVM(this);
+            SidebarVM = new SidebarVM(this);
+            SelectedItem = MapItems[0];
         }
 
         private void LoadData()
         {
-            foreach (var wh in mainVM.Warehouses)
+            foreach (WarehouseVM wh in MainVM.Warehouses)
             {
                 AddWarehouse(wh);
             }
-            return;
         }
 
         private void AddWarehouse(WarehouseVM wh)
@@ -135,8 +129,8 @@ namespace Warehouse_Management.ViewModel
             {
                 return;
             }
-            var cc = MapConstants.Cities.Find(x => x.name.Equals(wh.City));
-            var warehouse = new WarehouseItem(cc.xPos, cc.yPos, wh);
+            (double xPos, double yPos, string name) cc = MapConstants.Cities.Find(x => x.name.Equals(wh.City));
+            WarehouseItem warehouse = new WarehouseItem(cc.xPos, cc.yPos, wh);
             mapItems.Add(warehouse);
         }
     }

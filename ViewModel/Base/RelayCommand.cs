@@ -32,9 +32,14 @@ namespace Warehouse_Management.ViewModel.Base
         public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
             if (execute == null)
+            {
                 throw new ArgumentNullException(nameof(execute));
+            }
             else
+            {
                 _execute = execute;
+            }
+
             _canExecute = canExecute;
         }
 
@@ -61,12 +66,18 @@ namespace Warehouse_Management.ViewModel.Base
             //wykonywane wówczas gdy jakąś metodę (value) dołączamy do zdarzenia
             add
             {
-                if (_canExecute != null) CommandManager.RequerySuggested += value;
+                if (_canExecute != null)
+                {
+                    CommandManager.RequerySuggested += value;
+                }
             }
             //wykonywane wówczas, gdy jakąś metodę odpinamy od zdarzenia
             remove
             {
-                if (_canExecute != null) CommandManager.RequerySuggested -= value;
+                if (_canExecute != null)
+                {
+                    CommandManager.RequerySuggested -= value;
+                }
             }
         }
 

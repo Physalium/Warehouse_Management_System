@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -45,7 +44,7 @@ namespace Warehouse_Management.View
                 new FrameworkPropertyMetadata(null)
             );
 
-        protected static readonly DependencyProperty MapImageProperty =
+        public static readonly DependencyProperty MapImageProperty =
             DependencyProperty.Register("MapImage", typeof(BitmapImage), typeof(MapControl));
 
         public static readonly DependencyProperty ItemImageProperty =

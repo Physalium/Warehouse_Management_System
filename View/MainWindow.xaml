@@ -74,14 +74,16 @@
                 </ToggleButton>
 
                 <local:Sidebar
-                    DataContext="{Binding Path=sidebarVM}"
+                    x:Name="sidebar"
+                    DataContext="{Binding SidebarVM}"
                     Grid.Column="1"
                     Width="{Binding Path=SidebarWidth}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Stretch"
                     Products="{Binding Path=SelectedWarehouse.Products}"
+                    ProductsLabel="{Binding ProductsLabel}"
                     Visibility="{Binding SidebarVisible, Converter={StaticResource BoolToVisConv}}"
-                    WarehouseName="{Binding Path=SelectedWarehouse.Name}" />
+                    WarehouseName="{Binding Path=SelectedWarehouse.WarehouseName}" />
 
             </Grid>
         </TabItem>
