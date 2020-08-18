@@ -25,7 +25,7 @@
     mc:Ignorable="d">
     <Window.Resources>
         <materialDesign:BooleanToVisibilityConverter x:Key="BoolToVisConv" />
-        
+
     </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="ItemClicked" SourceName="map">
@@ -39,9 +39,7 @@
         </dragablz:TabablzControl.InterTabController>
         <TabItem DataContext="{Binding Path=MapVM}" Header="Map">
             <Grid Background="AliceBlue">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition />
@@ -64,6 +62,7 @@
                     materialDesign:ShadowAssist.ShadowDepth="Depth3"
                     Command="{Binding Path=ButtonClick}"
                     FontSize="16"
+                    IsChecked="{Binding SidebarButtonChecked}"
                     Style="{StaticResource MaterialDesignActionToggleButton}"
                     ToolTip="Toggle sidebar">
                     <ToggleButton.Content>
@@ -76,7 +75,6 @@
 
                 <local:Sidebar
                     x:Name="sidebar"
-                   
                     DataContext="{Binding Path=SidebarVM}"
                     Grid.Column="1"
                     Width="{Binding Path=SidebarWidth}"
@@ -84,6 +82,10 @@
                     VerticalAlignment="Stretch"
                     Products="{Binding Path=SelectedWarehouse.Products}"
                     ProductsLabel="{Binding ProductsLabel}"
+                    Semitrailers="{Binding Path=SelectedWarehouse.Semitrailers}"
+                    SemitrailersLabel="{Binding SemitrailersLabel}"
+                    Trucks="{Binding Path=SelectedWarehouse.Trucks}"
+                    TrucksLabel="{Binding TrucksLabel}"
                     Visibility="{Binding SidebarVisible, Converter={StaticResource BoolToVisConv}}"
                     WarehouseName="{Binding Path=SelectedWarehouse.WarehouseName}" />
 

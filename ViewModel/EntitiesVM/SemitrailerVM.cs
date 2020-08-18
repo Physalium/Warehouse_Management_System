@@ -15,6 +15,20 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
             MaxVolume = st.MaxVolume;
         }
 
+        #region Properties
+
+        private int quantity;
+
+        public int Quantity
+        {
+            get { return quantity; }
+            set
+            {
+                quantity = value;
+                OnPropertyChanged(nameof(Quantity));
+            }
+        }
+
         private int maxVolume;
 
         public int MaxVolume
@@ -39,4 +53,6 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
             }
         }
     }
+
+    #endregion Properties
 }

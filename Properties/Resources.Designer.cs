@@ -80,6 +80,24 @@ namespace Warehouse_Management.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Semitrailers.
+        /// </summary>
+        public static string SemitrailersLabel {
+            get {
+                return ResourceManager.GetString("SemitrailersLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trucks.
+        /// </summary>
+        public static string TrucksLabel {
+            get {
+                return ResourceManager.GetString("TrucksLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] warehouseIcon {

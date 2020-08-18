@@ -13,7 +13,7 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
             Weight = x.Weight;
         }
 
-        #region props
+        #region Properties
 
         private float price;
 
@@ -75,6 +75,6 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
             }
         }
 
-        #endregion props
+        #endregion Properties
     }
 }

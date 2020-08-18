@@ -12,11 +12,6 @@ namespace Warehouse_Management.ViewModel
             this.MapVM = mapVM;
         }
 
-        public SidebarVM()
-        {
-        }
-
-        private bool sidebarVisible = false;
         public readonly MapVM MapVM;
 
         #region Props
@@ -56,6 +51,32 @@ namespace Warehouse_Management.ViewModel
                 OnPropertyChanged(nameof(ProductsLabel));
             }
         }
+
+        private string trucksLabel = Properties.Resources.TrucksLabel;
+
+        public string TrucksLabel
+        {
+            get { return trucksLabel; }
+            set
+            {
+                trucksLabel = value;
+                OnPropertyChanged(nameof(TrucksLabel));
+            }
+        }
+
+        private string semitrailersLabel = Properties.Resources.SemitrailersLabel;
+
+        public string SemitrailersLabel
+        {
+            get { return semitrailersLabel; }
+            set
+            {
+                semitrailersLabel = value;
+                OnPropertyChanged(nameof(SemitrailersLabel));
+            }
+        }
+
+        private bool sidebarVisible = false;
 
         public bool SidebarVisible
         {

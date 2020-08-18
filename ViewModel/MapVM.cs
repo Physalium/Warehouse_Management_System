@@ -34,6 +34,14 @@ namespace Warehouse_Management.ViewModel
             }
         }
 
+        private bool sidebarButtonChecked;
+
+        public bool SidebarButtonChecked
+        {
+            get { return sidebarButtonChecked; }
+            set { sidebarButtonChecked = value; OnPropertyChanged(nameof(SidebarButtonChecked)); }
+        }
+
         private BitmapImage mapImage;
 
         public BitmapImage MapImage
@@ -70,6 +78,7 @@ namespace Warehouse_Management.ViewModel
                            execute =>
                            {
                                SidebarVM.SidebarVisible = true;
+                               SidebarButtonChecked = true;
                            },
                            canExecute =>
                            {
