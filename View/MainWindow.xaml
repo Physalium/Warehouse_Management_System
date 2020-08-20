@@ -9,6 +9,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:resx="clr-namespace:Warehouse_Management.Properties"
+    
     Title="Warehouse Manager"
     Width="800"
     Height="800"

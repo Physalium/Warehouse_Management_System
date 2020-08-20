@@ -91,28 +91,13 @@
                                     <Setter Property="FontWeight" Value="Bold" />
                                 </Style>
                             </GridView.ColumnHeaderContainerStyle>
-                            <GridViewColumn
-                                Width="60"
-                                DisplayMemberBinding="{Binding Name}"
-                                Header="Name" />
-                            <GridViewColumn
-                                Width="50"
-                                DisplayMemberBinding="{Binding Price, StringFormat='{}{0} pln'}"
-                                Header="Price" />
-                            <GridViewColumn
-                                Width="60"
-                                DisplayMemberBinding="{Binding Quantity}"
-                                Header="Quantity" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Price, StringFormat='{}{0} pln'}" Header="Price" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Quantity}" Header="Quantity" />
 
-                            <GridViewColumn
-                                Width="60"
-                                DisplayMemberBinding="{Binding Weight, StringFormat='{}{0}kg'}"
-                                Header="Weight" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Weight, StringFormat='{}{0}kg'}" Header="Weight" />
 
-                            <GridViewColumn
-                                Width="60"
-                                DisplayMemberBinding="{Binding Volume, StringFormat='{}{0}m³'}"
-                                Header="Volume" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Volume, StringFormat='{}{0}m³'}" Header="Volume" />
 
                         </GridView>
                     </ListView.View>
@@ -143,23 +128,11 @@
                                     <Setter Property="FontWeight" Value="Bold" />
                                 </Style>
                             </GridView.ColumnHeaderContainerStyle>
-                            <GridViewColumn
-                                Width="90"
-                                DisplayMemberBinding="{Binding Manafacturer}"
-                                Header="Manafacturer" />
-                            <GridViewColumn
-                                Width="50"
-                                DisplayMemberBinding="{Binding Model}"
-                                Header="Model" />
-                            <GridViewColumn
-                                Width="70"
-                                DisplayMemberBinding="{Binding ModelYear, StringFormat={}{0:y}}"
-                                Header="Model Year" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Manafacturer}" Header="Manafacturer" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Model}" Header="Model" />
+                            <GridViewColumn DisplayMemberBinding="{Binding ModelYear, StringFormat={}{0:y}}" Header="Model Year" />
 
-                            <GridViewColumn
-                                Width="60"
-                                DisplayMemberBinding="{Binding Mileage, StringFormat='{}{0}km'}"
-                                Header="Mileage" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Mileage, StringFormat='{}{0}km'}" Header="Mileage" />
 
                         </GridView>
                     </ListView.View>
@@ -191,18 +164,9 @@
                                     <Setter Property="FontWeight" Value="Bold" />
                                 </Style>
                             </GridView.ColumnHeaderContainerStyle>
-                            <GridViewColumn
-                                Width="80"
-                                DisplayMemberBinding="{Binding MaxVolume}"
-                                Header="Max Volume" />
-                            <GridViewColumn
-                                Width="90"
-                                DisplayMemberBinding="{Binding MaxAxleLoad}"
-                                Header="Max Axle Load" />
-                            <GridViewColumn
-                                Width="60"
-                                DisplayMemberBinding="{Binding Quantity}"
-                                Header="Quantity" />
+                            <GridViewColumn DisplayMemberBinding="{Binding MaxVolume, StringFormat='{}{0}m³'}" Header="Max Volume" />
+                            <GridViewColumn DisplayMemberBinding="{Binding MaxAxleLoad, StringFormat='{}{0}kg'}" Header="Max Axle Load" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Quantity}" Header="Quantity" />
 
                         </GridView>
                     </ListView.View>

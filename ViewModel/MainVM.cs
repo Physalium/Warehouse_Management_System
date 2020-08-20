@@ -27,7 +27,7 @@ namespace Warehouse_Management.ViewModel
             using (WarehousemanagementContext db = new WarehousemanagementContext())
             {
                 Warehouses = new ObservableCollection<WarehouseVM>();
-                db.Warehouses.Include(s => s.Products).ToList().ForEach(x => Warehouses.Add(new WarehouseVM(x)));
+                db.Warehouses.Include(s => s.Products).Include(s => s.Trucks).Include(s => s.Semitrailers).ToList().ForEach(x => Warehouses.Add(new WarehouseVM(x)));
 
                 Cities = new ObservableCollection<CityVM>();
                 db.Cities.ToList().ForEach(x => Cities.Add(new CityVM(x)));
