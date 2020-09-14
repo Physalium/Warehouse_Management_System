@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="connectionString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">"server=localhost;uid=root;pwd=Lineage3;database=warehousemanagement"
+      <Value Profile="(Default)">"server=Mysql@localhost:3306;uid=root;pwd=Admin;database=warehouse2"
 </Value>
     </Setting>
   </Settings>

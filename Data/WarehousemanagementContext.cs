@@ -28,7 +28,7 @@ namespace Warehouse_Management.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;uid=root;pwd=Lineage3;database=warehousemanagement"
+                optionsBuilder.UseMySql("server=localhost;uid=root;pwd=admin;database=warehouse2"
 , x => x.ServerVersion("8.0.18-mysql"));
             }
         }
