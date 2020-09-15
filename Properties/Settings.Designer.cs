@@ -22,17 +22,5 @@ namespace Warehouse_Management.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"server=localhost;uid=root;pwd=Lineage3;database=warehousemanagement\"\r\n")]
-        public string connectionString {
-            get {
-                return ((string)(this["connectionString"]));
-            }
-            set {
-                this["connectionString"] = value;
-            }
-        }
     }
 }

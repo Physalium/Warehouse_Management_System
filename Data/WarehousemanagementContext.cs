@@ -1,4 +1,5 @@
-﻿
+﻿using System.Configuration;
+
 using Microsoft.EntityFrameworkCore;
 
 using Warehouse_Management.Model;
@@ -28,7 +29,7 @@ namespace Warehouse_Management.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;uid=root;pwd=Lineage3;database=warehousemanagement"
+                optionsBuilder.UseMySql(ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString
 , x => x.ServerVersion("8.0.18-mysql"));
             }
         }
