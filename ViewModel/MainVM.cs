@@ -15,6 +15,7 @@ namespace Warehouse_Management.ViewModel
 
         public ObservableCollection<WarehouseVM> Warehouses { get; set; }
         public ObservableCollection<CityVM> Cities { get; set; }
+        public ObservableCollection<CustomerVM> Customers { get; set; }
 
         public MainVM()
         {
@@ -31,6 +32,9 @@ namespace Warehouse_Management.ViewModel
 
                 Cities = new ObservableCollection<CityVM>();
                 db.Cities.ToList().ForEach(x => Cities.Add(new CityVM(x)));
+
+                Customers = new ObservableCollection<CustomerVM>();
+                db.Customers.ToList().ForEach(x => Customers.Add(new CustomerVM(x)));
             }
         }
     }

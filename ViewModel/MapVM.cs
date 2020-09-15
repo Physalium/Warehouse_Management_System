@@ -126,13 +126,18 @@ namespace Warehouse_Management.ViewModel
 
         private void LoadData()
         {
-            foreach (WarehouseVM wh in MainVM.Warehouses)
+            //trzeba by bylo rownorzednie dwa foreache albo lag mozgu to rozbilem na dwa
+            foreach (WarehouseVM wh in MainVM.Warehouses )
             {
-                AddWarehouse(wh);
+                AddIcon(wh);
+            }
+            foreach (CustomerVM cs in MainVM.Customers )
+            {
+                AddIcon2(cs);
             }
         }
 
-        private void AddWarehouse(WarehouseVM wh)
+        private void AddIcon(WarehouseVM wh)
         {
             if (wh == null)
             {
@@ -141,6 +146,17 @@ namespace Warehouse_Management.ViewModel
             (double xPos, double yPos, string name) cc = MapConstants.Cities.Find(x => x.name.Equals(wh.City));
             WarehouseItem warehouse = new WarehouseItem(cc.xPos, cc.yPos, wh);
             mapItems.Add(warehouse);
+        }
+
+        private void AddIcon2(CustomerVM cs)
+        {
+            if (cs == null)
+            {
+                return;
+            }
+            (double xPos, double yPos, string name) cc2 = MapConstants.Customers.Find(x => x.name.Equals(cs.City));
+            CustomerItem customer = new CustomerItem(cc2.xPos, cc2.yPos, cs);
+            mapItems.Add(customer);
         }
     }
 }
