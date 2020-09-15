@@ -40,41 +40,11 @@ namespace Warehouse_Management.ViewModel
             }
         }
 
-        private string productsLabel = Properties.Resources.ProductsLabel;
+        public string ProductsLabel { get; } = Properties.Resources.ProductsLabel;
 
-        public string ProductsLabel
-        {
-            get { return productsLabel; }
-            set
-            {
-                productsLabel = value;
-                OnPropertyChanged(nameof(ProductsLabel));
-            }
-        }
+        public string TrucksLabel { get; } = Properties.Resources.TrucksLabel;
 
-        private string trucksLabel = Properties.Resources.TrucksLabel;
-
-        public string TrucksLabel
-        {
-            get { return trucksLabel; }
-            set
-            {
-                trucksLabel = value;
-                OnPropertyChanged(nameof(TrucksLabel));
-            }
-        }
-
-        private string semitrailersLabel = Properties.Resources.SemitrailersLabel;
-
-        public string SemitrailersLabel
-        {
-            get { return semitrailersLabel; }
-            set
-            {
-                semitrailersLabel = value;
-                OnPropertyChanged(nameof(SemitrailersLabel));
-            }
-        }
+        public string SemitrailersLabel { get; } = Properties.Resources.SemitrailersLabel;
 
         private bool sidebarVisible = false;
 

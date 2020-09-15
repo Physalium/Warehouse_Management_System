@@ -9,9 +9,12 @@ using Warehouse_Management.ViewModel.EntitiesVM;
 
 namespace Warehouse_Management.ViewModel
 {
+    using R = Properties.Resources;
+
     internal class MainVM : BaseViewModel
     {
         public MapVM MapVM { get; set; }
+        public OrdersPanelVM OrdersPanelVM { get; set; }
 
         public ObservableCollection<WarehouseVM> Warehouses { get; set; }
         public ObservableCollection<CityVM> Cities { get; set; }
@@ -21,21 +24,25 @@ namespace Warehouse_Management.ViewModel
         {
             LoadData();
             MapVM = new MapVM(this);
+            OrdersPanelVM = new OrdersPanelVM(this);
         }
 
         private void LoadData()
         {
-            using (WarehousemanagementContext db = new WarehousemanagementContext())
+            using (WarehouseManagementData db = new WarehouseManagementData())
             {
                 Warehouses = new ObservableCollection<WarehouseVM>();
-                db.Warehouses.Include(s => s.Products).Include(s => s.Trucks).Include(s => s.Semitrailers).ToList().ForEach(x => Warehouses.Add(new WarehouseVM(x)));
+                db.WarehouseRepo.GetAll().ForEach(x => Warehouses.Add(new WarehouseVM(x)));
 
                 Cities = new ObservableCollection<CityVM>();
-                db.Cities.ToList().ForEach(x => Cities.Add(new CityVM(x)));
+                db.CityRepo.GetAll().ForEach(x => Cities.Add(new CityVM(x)));
 
                 Customers = new ObservableCollection<CustomerVM>();
-                db.Customers.ToList().ForEach(x => Customers.Add(new CustomerVM(x)));
+                db.CustomerRepo.GetAll().ForEach(x => Customers.Add(new CustomerVM(x)));
             }
         }
+
+        public string MapTabHeader { get; } = R.MapTabHeader;
+        public string OrdersTabHeader { get; } = R.OrderTabHeader;
     }
 }

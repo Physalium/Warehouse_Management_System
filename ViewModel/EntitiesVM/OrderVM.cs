@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 using Warehouse_Management.Model;
@@ -12,6 +13,9 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
     {
         public OrderVM(Order order)
         {
+            Date = order.Date;
+            Value = order.Value;
+            LoadProducts(order);
         }
 
         #region Props
@@ -28,12 +32,12 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
             }
         }
 
-        private float _value;
+        private float value;
 
         public float Value
         {
-            get { return _value; }
-            set { _value = value; OnPropertyChanged(nameof(Value)); }
+            get { return value; }
+            set { this.value = value; OnPropertyChanged(nameof(Value)); }
         }
 
         private ObservableCollection<ProductVM> products = new ObservableCollection<ProductVM>();
@@ -109,5 +113,17 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
         }
 
         #endregion Props
+
+        private void LoadProducts(Order order)
+        {
+            order.Products.ToList().ForEach(x =>
+            {
+                var product = new ProductVM(x)
+                {
+                    Quantity = (from p in order.Products where p.Equals(x) select p).Count()
+                };
+                Products.Add(product);
+            });
+        }
     }
 }

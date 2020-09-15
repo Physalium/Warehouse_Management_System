@@ -30,6 +30,7 @@ namespace Warehouse_Management.Data
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseMySql(ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString
+
 , x => x.ServerVersion("8.0.18-mysql"));
             }
         }

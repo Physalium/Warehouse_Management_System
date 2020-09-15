@@ -61,6 +61,24 @@ namespace Warehouse_Management.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Map.
+        /// </summary>
+        public static string MapTabHeader {
+            get {
+                return ResourceManager.GetString("MapTabHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orders.
+        /// </summary>
+        public static string OrderTabHeader {
+            get {
+                return ResourceManager.GetString("OrderTabHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] PolandMapHQ {
