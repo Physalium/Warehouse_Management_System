@@ -126,7 +126,6 @@ namespace Warehouse_Management.ViewModel
 
         private void LoadData()
         {
-            //trzeba by bylo rownorzednie dwa foreache albo lag mozgu to rozbilem na dwa
             foreach (WarehouseVM wh in MainVM.Warehouses)
             {
                 AddIcon(wh);

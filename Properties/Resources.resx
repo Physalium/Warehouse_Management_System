@@ -123,6 +123,9 @@
   <data name="OrderTabHeader" xml:space="preserve">
     <value>Orders</value>
   </data>
+  <data name="SupplyTabHeader" xml:space="preserve">
+    <value>Supply</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="PolandMapHQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\polandmaphq.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -138,5 +141,8 @@
   </data>
   <data name="warehouseIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\warehouseicon.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="customerIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\customerIcon.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -44,5 +44,6 @@ namespace Warehouse_Management.ViewModel
 
         public string MapTabHeader { get; } = R.MapTabHeader;
         public string OrdersTabHeader { get; } = R.OrderTabHeader;
+        public string SupplyTabHeader { get; } = R.SupplyTabHeader;
     }
 }
