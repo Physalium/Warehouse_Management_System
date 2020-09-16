@@ -10,15 +10,11 @@ using Warehouse_Management.ViewModel.EntitiesVM;
 
 namespace Warehouse_Management.Data
 {
-    internal class WarehouseManagementData
+    internal class WarehouseData
     {
         public ObservableCollection<WarehouseVM> Warehouses { get; set; }
-        public ObservableCollection<CityVM> Cities { get; set; }
-        public ObservableCollection<CustomerVM> Customers { get; set; }
 
-        // dodanie ciężarówek itd
-
-        public WarehouseManagementData()
+        public WarehouseData()
         {
             LoadData();
         }
@@ -29,12 +25,17 @@ namespace Warehouse_Management.Data
             {
                 Warehouses = new ObservableCollection<WarehouseVM>();
                 db.Warehouses.Include(s => s.Products).Include(s => s.Trucks).Include(s => s.Semitrailers).ToList().ForEach(x => Warehouses.Add(new WarehouseVM(x)));
+            }
+        }
 
-                Cities = new ObservableCollection<CityVM>();
-                db.Cities.ToList().ForEach(x => Cities.Add(new CityVM(x)));
-
-                Customers = new ObservableCollection<CustomerVM>();
-                db.Customers.ToList().ForEach(x => Customers.Add(new CustomerVM(x)));
+        public void AddWarehouse()
+        {
+            using (WarehousemanagementContext db = new WarehousemanagementContext())
+            {
+                //jakaś walidacja danych
+                //Warehouses.Add(cos tam cos tam)
+                //db.Add(cos tam cos tam)
+                //db.SaveChanges();
             }
         }
     }
