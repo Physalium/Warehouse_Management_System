@@ -95,6 +95,15 @@ namespace Warehouse_Management.Properties {
                 return ResourceManager.GetString("OrderTabHeader", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Orders.
+        /// </summary>
+        public static string SupplyTabHeader {
+            get {
+                return ResourceManager.GetString("SupplyTabHeader", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
@@ -166,6 +175,16 @@ namespace Warehouse_Management.Properties {
         public static byte[] warehouseIcon {
             get {
                 object obj = ResourceManager.GetObject("warehouseIcon", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] customerIcon {
+            get {
+                object obj = ResourceManager.GetObject("customerIcon", resourceCulture);
                 return ((byte[])(obj));
             }
         }
