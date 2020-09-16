@@ -7,13 +7,6 @@ namespace Warehouse_Management.ViewModel
 {
     internal class SidebarVM : BaseViewModel
     {
-        public SidebarVM(MapVM mapVM)
-        {
-            this.MapVM = mapVM;
-        }
-
-        public readonly MapVM MapVM;
-
         #region Props
 
         private WarehouseVM selectedWarehouse;

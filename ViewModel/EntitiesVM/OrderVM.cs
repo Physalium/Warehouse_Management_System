@@ -15,6 +15,9 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
         {
             Date = order.Date;
             Value = order.Value;
+            // Customer = new CustomerVM(order.Customer);
+            //Truck = new TruckVM(order.Truck);
+            //Semitrailer = new SemitrailerVM(order.Semitrailer);
             LoadProducts(order);
         }
 

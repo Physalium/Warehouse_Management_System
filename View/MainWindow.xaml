@@ -37,8 +37,8 @@
         <dragablz:TabablzControl.InterTabController>
             <dragablz:InterTabController />
         </dragablz:TabablzControl.InterTabController>
-        <TabItem DataContext="{Binding Path=MapVM}" Header="{Binding Path=MainVM.MapTabHeader}">
-            <Grid Background="AliceBlue">
+        <TabItem  Header="{Binding Path=MapTabHeader}">
+            <Grid Background="AliceBlue" DataContext="{Binding Path=MapVM}">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
@@ -92,7 +92,15 @@
             </Grid>
         </TabItem>
         <TabItem Header="{Binding Path=OrdersTabHeader}">
-            <local:OrdersPanel DataContext="{Binding Path=OrdersPanelVM}" Orders="{Binding Orders}" />
+            <local:OrdersPanel
+                DataContext="{Binding Path=OrdersPanelVM}"
+                CustomerLabel="{Binding CustomerLabel}"
+                DateLabel="{Binding DateLabel}"
+                ValueLabel="{Binding ValueLabel}"
+                Orders="{Binding Orders}"
+                ProductsLabel="{Binding ProductsLabel}"
+                SemitrailerLabel="{Binding SemitrailerLabel}"
+                WarehouseLabel="{Binding WarehouseLabel}" />
         </TabItem>
     </dragablz:TabablzControl>
 </Window>

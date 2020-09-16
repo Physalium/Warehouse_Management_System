@@ -1,58 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
-using Warehouse_Management.Data.Repositories;
+using Microsoft.EntityFrameworkCore;
+
+using Warehouse_Management.ViewModel.EntitiesVM;
 
 namespace Warehouse_Management.Data
 {
-    internal class WarehouseManagementData : IDisposable
+    internal class WarehouseManagementData
     {
-        private bool disposedValue;
+        public ObservableCollection<WarehouseVM> Warehouses { get; set; }
+        public ObservableCollection<CityVM> Cities { get; set; }
+        public ObservableCollection<CustomerVM> Customers { get; set; }
 
-        public WarehousemanagementContext db { get; set; } = new WarehousemanagementContext();
-        public CityRepo CityRepo { get; set; }
-        public CustomerRepo CustomerRepo { get; set; }
-        public TruckRepo TruckRepo { get; set; }
-        public WarehouseRepo WarehouseRepo { get; set; }
-        public OrderRepo OrderRepo { get; set; }
+        // dodanie ciężarówek itd
 
         public WarehouseManagementData()
         {
-            CityRepo = new CityRepo(db);
-            CustomerRepo = new CustomerRepo(db);
-            TruckRepo = new TruckRepo(db);
-            WarehouseRepo = new WarehouseRepo(db);
-            OrderRepo = new OrderRepo(db);
+            LoadData();
         }
 
-        protected virtual void Dispose(bool disposing)
+        private void LoadData()
         {
-            if (!disposedValue)
+            using (WarehousemanagementContext db = new WarehousemanagementContext())
             {
-                if (disposing)
-                {
-                    // TODO: dispose managed state (managed objects)
-                }
+                Warehouses = new ObservableCollection<WarehouseVM>();
+                db.Warehouses.Include(s => s.Products).Include(s => s.Trucks).Include(s => s.Semitrailers).ToList().ForEach(x => Warehouses.Add(new WarehouseVM(x)));
 
-                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
-                // TODO: set large fields to null
-                disposedValue = true;
+                Cities = new ObservableCollection<CityVM>();
+                db.Cities.ToList().ForEach(x => Cities.Add(new CityVM(x)));
+
+                Customers = new ObservableCollection<CustomerVM>();
+                db.Customers.ToList().ForEach(x => Customers.Add(new CustomerVM(x)));
             }
-        }
-
-        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
-        // ~WarehouseManagementData()
-        // {
-        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-        //     Dispose(disposing: false);
-        // }
-
-        public void Dispose()
-        {
-            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
         }
     }
 }

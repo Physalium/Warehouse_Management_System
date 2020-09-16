@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
+using Warehouse_Management.Data;
 using Warehouse_Management.Model;
 using Warehouse_Management.ViewModel.Base;
 using Warehouse_Management.ViewModel.EntitiesVM;
@@ -14,7 +15,6 @@ namespace Warehouse_Management.ViewModel
     internal class MapVM : BaseViewModel
     {
         public SidebarVM SidebarVM { get; set; }
-        public MainVM MainVM { get; set; }
 
         #region Props
 
@@ -66,6 +66,10 @@ namespace Warehouse_Management.ViewModel
             }
         }
 
+        #endregion Props
+
+        #region Commands
+
         private ICommand itemClick;
 
         public ICommand ItemClick
@@ -91,6 +95,7 @@ namespace Warehouse_Management.ViewModel
         }
 
         private ICommand buttonClick;
+        private WarehouseManagementData data;
 
         public ICommand ButtonClick
         {
@@ -113,25 +118,25 @@ namespace Warehouse_Management.ViewModel
             set { buttonClick = value; }
         }
 
-        #endregion Props
+        #endregion Commands
 
-        public MapVM(MainVM mainVM)
+        public MapVM(WarehouseManagementData data)
         {
-            this.MainVM = mainVM;
+            this.data = data;
             mapImage = ByteArrayConverter.byteArrayToBitmap(R.PolandMapHQ);
             LoadData();
-            SidebarVM = new SidebarVM(this);
+            SidebarVM = new SidebarVM();
             SelectedItem = MapItems[0];
         }
 
         private void LoadData()
         {
             //trzeba by bylo rownorzednie dwa foreache albo lag mozgu to rozbilem na dwa
-            foreach (WarehouseVM wh in MainVM.Warehouses)
+            foreach (WarehouseVM wh in data.Warehouses)
             {
                 AddIcon(wh);
             }
-            foreach (CustomerVM cs in MainVM.Customers)
+            foreach (CustomerVM cs in data.Customers)
             {
                 AddIcon2(cs);
             }

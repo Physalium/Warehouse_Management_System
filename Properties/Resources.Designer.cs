@@ -61,6 +61,24 @@ namespace Warehouse_Management.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customer.
+        /// </summary>
+        public static string CustomerLabel {
+            get {
+                return ResourceManager.GetString("CustomerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string DateLabel {
+            get {
+                return ResourceManager.GetString("DateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Map.
         /// </summary>
         public static string MapTabHeader {
@@ -98,11 +116,29 @@ namespace Warehouse_Management.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Semitrailer.
+        /// </summary>
+        public static string SemitrailerLabel {
+            get {
+                return ResourceManager.GetString("SemitrailerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Semitrailers.
         /// </summary>
         public static string SemitrailersLabel {
             get {
                 return ResourceManager.GetString("SemitrailersLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Truck.
+        /// </summary>
+        public static string TruckLabel {
+            get {
+                return ResourceManager.GetString("TruckLabel", resourceCulture);
             }
         }
         
@@ -116,12 +152,30 @@ namespace Warehouse_Management.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string ValueLabel {
+            get {
+                return ResourceManager.GetString("ValueLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] warehouseIcon {
             get {
                 object obj = ResourceManager.GetObject("warehouseIcon", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warehouse.
+        /// </summary>
+        public static string WarehouseLabel {
+            get {
+                return ResourceManager.GetString("WarehouseLabel", resourceCulture);
             }
         }
     }

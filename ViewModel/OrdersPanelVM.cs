@@ -12,11 +12,12 @@ using Warehouse_Management.ViewModel.EntitiesVM;
 
 namespace Warehouse_Management.ViewModel
 {
+    using R = Properties.Resources;
+
     internal class OrdersPanelVM : BaseViewModel
     {
-        public readonly MainVM mainVM;
-
         private ObservableCollection<OrderVM> orders;
+        private WarehouseManagementData data;
 
         public ObservableCollection<OrderVM> Orders
         {
@@ -28,19 +29,23 @@ namespace Warehouse_Management.ViewModel
             }
         }
 
-        public OrdersPanelVM(MainVM mainVM)
+        public OrdersPanelVM(WarehouseManagementData data)
         {
-            this.mainVM = mainVM;
-            LoadData();
+            this.data = data;
+            LoadOrders();
         }
 
-        private void LoadData()
+        public string DateLabel { get; } = R.DateLabel;
+        public string ValueLabel { get; } = R.ValueLabel;
+        public string WarehouseLabel { get; } = R.WarehouseLabel;
+        public string TruckLabel { get; } = R.TruckLabel;
+        public string SemitrailerLabel { get; } = R.SemitrailerLabel;
+        public string ProductsLabel { get; } = R.ProductsLabel;
+        public string CustomerLabel { get; } = R.CustomerLabel;
+
+        private void LoadOrders()
         {
-            using (var db = new WarehouseManagementData())
-            {
-                Orders = new ObservableCollection<OrderVM>();
-                db.OrderRepo.GetAll().ForEach(x => Orders.Add(new OrderVM(x)));
-            }
+            // to do
         }
     }
 }

@@ -13,33 +13,14 @@ namespace Warehouse_Management.ViewModel
 
     internal class MainVM : BaseViewModel
     {
+        public WarehouseManagementData data = new WarehouseManagementData();
         public MapVM MapVM { get; set; }
         public OrdersPanelVM OrdersPanelVM { get; set; }
 
-        public ObservableCollection<WarehouseVM> Warehouses { get; set; }
-        public ObservableCollection<CityVM> Cities { get; set; }
-        public ObservableCollection<CustomerVM> Customers { get; set; }
-
         public MainVM()
         {
-            LoadData();
-            MapVM = new MapVM(this);
-            OrdersPanelVM = new OrdersPanelVM(this);
-        }
-
-        private void LoadData()
-        {
-            using (WarehouseManagementData db = new WarehouseManagementData())
-            {
-                Warehouses = new ObservableCollection<WarehouseVM>();
-                db.WarehouseRepo.GetAll().ForEach(x => Warehouses.Add(new WarehouseVM(x)));
-
-                Cities = new ObservableCollection<CityVM>();
-                db.CityRepo.GetAll().ForEach(x => Cities.Add(new CityVM(x)));
-
-                Customers = new ObservableCollection<CustomerVM>();
-                db.CustomerRepo.GetAll().ForEach(x => Customers.Add(new CustomerVM(x)));
-            }
+            MapVM = new MapVM(data);
+            OrdersPanelVM = new OrdersPanelVM(data);
         }
 
         public string MapTabHeader { get; } = R.MapTabHeader;
