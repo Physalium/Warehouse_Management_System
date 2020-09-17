@@ -14,7 +14,6 @@
         <ListBox ItemsSource="{Binding Orders}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*" />
@@ -26,8 +25,8 @@
                             <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <Label Content="{Binding DateLabel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
-                            <Label Content="{Binding Date}" />
+                            <!-- <Label Content="{Binding DateLabel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
+                            <Label Content="{Binding Date}" /> -->
                         </StackPanel>
                         <StackPanel
                             Grid.Row="0"

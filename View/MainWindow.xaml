@@ -102,5 +102,16 @@
                 SemitrailerLabel="{Binding SemitrailerLabel}"
                 WarehouseLabel="{Binding WarehouseLabel}" />
         </TabItem>
+        <TabItem Header="{Binding Path=SupplyTabHeader}">
+            <local:SupplyPanel
+                DataContext="{Binding Path=OrdersPanelVM}"
+                CustomerLabel = "{Binding CustomerLabel}"
+                DateLabel="{Binding DateLabel}"
+                ValueLabel="{Binding ValueLabel}"
+                Supplies ="{Binding Supplies}"
+                ProductsLabel="{Binding ProductsLabel}"
+                SemitrailerLabel="{Binding SemitrailerLabel}"
+                WarehouseLabel="{Binding WarehouseLabel}" />
+        </TabItem>
     </dragablz:TabablzControl>
 </Window>

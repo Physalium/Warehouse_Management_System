@@ -97,7 +97,7 @@ namespace Warehouse_Management.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Orders.
+        ///   Looks up a localized string similar to Supplies.
         /// </summary>
         public static string SupplyTabHeader {
             get {
