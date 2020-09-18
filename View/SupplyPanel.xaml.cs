@@ -24,19 +24,47 @@ namespace Warehouse_Management.View
             InitializeComponent();
         }
 
-        public static readonly DependencyProperty SuppliesProperty =
+        public static readonly DependencyProperty WarehousesListProperty =
           DependencyProperty.Register(
-              "Supplies",
+              "WarehousesList",
               typeof(IEnumerable),
               typeof(SupplyPanel),
               new FrameworkPropertyMetadata(null)
           );
 
-        public IEnumerable Supplies
+        public IEnumerable WarehousesList
         {
-            get { return (IEnumerable)GetValue(SuppliesProperty); }
-            set { SetValue(SuppliesProperty, value); }
+            get { return (IEnumerable)GetValue(WarehousesListProperty); }
+            set { SetValue(WarehousesListProperty, value); }
         }
+
+        //public static readonly DependencyProperty WarehousesListProperty =
+        //  DependencyProperty.Register(
+        //      "WarehousesList",
+        //      typeof(IEnumerable),
+        //      typeof(SupplyPanel),
+        //      new FrameworkPropertyMetadata(null)
+        //  );
+
+        //public IEnumerable WarehousesList
+        //{
+        //    get { return (IEnumerable)GetValue(WarehousesListProperty); }
+        //    set { SetValue(WarehousesListProperty, value); }
+        //}
+
+        //public static readonly DependencyProperty WarehousesListProperty =
+        //  DependencyProperty.Register(
+        //      "WarehousesList",
+        //      typeof(IEnumerable),
+        //      typeof(SupplyPanel),
+        //      new FrameworkPropertyMetadata(null)
+        //  );
+
+        //public IEnumerable WarehousesList
+        //{
+        //    get { return (IEnumerable)GetValue(WarehousesListProperty); }
+        //    set { SetValue(WarehousesListProperty, value); }
+        //}
 
         #region Label properties
 

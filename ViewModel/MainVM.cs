@@ -17,10 +17,13 @@ namespace Warehouse_Management.ViewModel
         public MapVM MapVM { get; set; }
         public OrdersPanelVM OrdersPanelVM { get; set; }
 
+        public SuppliesPanelVM SuppliesPanelVM { get; set;  }
+
         public MainVM()
         {
             MapVM = new MapVM(data);
             OrdersPanelVM = new OrdersPanelVM(data);
+            SuppliesPanelVM = new SuppliesPanelVM(data);
         }
 
         public string MapTabHeader { get; } = R.MapTabHeader;

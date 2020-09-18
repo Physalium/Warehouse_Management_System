@@ -104,11 +104,11 @@
         </TabItem>
         <TabItem Header="{Binding Path=SupplyTabHeader}">
             <local:SupplyPanel
-                DataContext="{Binding Path=OrdersPanelVM}"
+                DataContext="{Binding Path=SupplyPanelVM}"
                 CustomerLabel = "{Binding CustomerLabel}"
+                WarehousesList= "{Binding data.Warehouses}"
                 DateLabel="{Binding DateLabel}"
                 ValueLabel="{Binding ValueLabel}"
-                Supplies ="{Binding Supplies}"
                 ProductsLabel="{Binding ProductsLabel}"
                 SemitrailerLabel="{Binding SemitrailerLabel}"
                 WarehouseLabel="{Binding WarehouseLabel}" />
