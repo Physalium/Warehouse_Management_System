@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
+using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
+
+using Warehouse_Management.Model;
 using Warehouse_Management.ViewModel.Base;
 
 namespace Warehouse_Management.ViewModel.EntitiesVM
@@ -52,8 +55,11 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
 
         #endregion Properties
 
-        public TruckVM(Model.Truck truck)
+        public Truck DataModel;
+
+        public TruckVM(Truck truck)
         {
+            DataModel = truck;
             Mileage = truck.Mileage;
             Model = truck.Model;
             ModelYear = truck.ModelYear;

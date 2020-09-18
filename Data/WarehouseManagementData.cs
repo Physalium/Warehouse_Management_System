@@ -27,6 +27,7 @@ namespace Warehouse_Management.Data
             LoadTrucks();
             LoadSemitrailers();
             LoadWarehouses();
+            LoadWarehouseRelations();
         }
 
         #region LoadEntities
@@ -87,5 +88,47 @@ namespace Warehouse_Management.Data
         }
 
         #endregion LoadEntities
+
+        private void LoadWarehouseRelations()
+        {
+            void LoadProducts(WarehouseVM wh)
+            {
+                if (wh.Model.Products.Count == 0) return;
+
+                wh.Model.Products.ToList().ForEach(p =>
+                {
+                    var product = Products.Where(s => s.Model.Id == p.Id).FirstOrDefault();
+                    {
+                        product.Quantity = (from x in wh.Model.Products where x.Equals(p) select x).Count();
+                    };
+                    wh.Products.Add(product);
+                });
+            }
+            void LoadTrucks(WarehouseVM wh)
+            {
+                if (wh.Model.Trucks.Count == 0) return;
+                wh.Model.Trucks.ToList().ForEach(x =>
+                {
+                    var truck = Trucks.Where(t => t.DataModel.Id == x.Id).FirstOrDefault();
+                    wh.Trucks.Add(truck);
+                });
+            }
+            void LoadSemitrailers(WarehouseVM wh)
+            {
+                if (wh.Model.Semitrailers.Count == 0) return;
+                wh.Model.Semitrailers.ToList().ForEach(x =>
+                {
+                    var semitrailer = Semitrailers.Where(t => t.Model.Id == x.Id).FirstOrDefault();
+                    wh.Semitrailers.Add(semitrailer);
+                });
+            }
+
+            foreach (var wh in Warehouses)
+            {
+                LoadProducts(wh);
+                LoadTrucks(wh);
+                LoadSemitrailers(wh);
+            }
+        }
     }
 }

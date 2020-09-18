@@ -5,8 +5,11 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
 {
     internal class ProductVM : BaseViewModel
     {
+        public Product Model;
+
         public ProductVM(Product x)
         {
+            Model = x;
             Price = x.Price;
             Name = x.Name;
             Volume = x.Volume;

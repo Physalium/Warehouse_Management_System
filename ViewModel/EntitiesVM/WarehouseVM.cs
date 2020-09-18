@@ -73,48 +73,13 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
 
         #endregion Properties
 
+        public Warehouse Model;
+
         public WarehouseVM(Warehouse x)
         {
+            Model = x;
             WarehouseName = x.Name;
             City = x.City;
-            LoadProducts(x);
-            LoadTrucks(x);
-            LoadSemitrailers(x);
-        }
-
-        private void LoadProducts(Warehouse wh)
-        {
-            wh.Products.ToList().ForEach(x =>
-            {
-                var product = new ProductVM(x)
-                {
-                    Quantity = (from p in wh.Products where p.Equals(x) select p).Count()
-                };
-                Products.Add(product);
-            });
-        }
-
-        private void LoadTrucks(Warehouse wh)
-        {
-            wh.Trucks.ToList().ForEach(x =>
-            {
-                var truck = new TruckVM(x);
-                Trucks.Add(truck);
-            });
-        }
-
-        private void LoadSemitrailers(Warehouse wh)
-        {
-            wh.Semitrailers.ToList().ForEach(x =>
-            {
-                var sm = new SemitrailerVM(x)
-                {
-                    Quantity = (from s in wh.Semitrailers
-                                where s.Equals(x)
-                                select s).Count()
-                };
-                Semitrailers.Add(sm);
-            });
         }
     }
 }

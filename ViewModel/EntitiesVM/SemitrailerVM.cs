@@ -9,8 +9,11 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
 {
     internal class SemitrailerVM : BaseViewModel
     {
+        public Semitrailer Model;
+
         public SemitrailerVM(Semitrailer st)
         {
+            Model = st;
             MaxAxleLoad = st.MaxAxleLoad;
             MaxVolume = st.MaxVolume;
         }
