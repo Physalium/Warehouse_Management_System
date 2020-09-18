@@ -24,9 +24,18 @@
                         <RowDefinition Height="10*" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-                    <Border Grid.ColumnSpan="3" Grid.Row="0" BorderBrush="{StaticResource brush}" BorderThickness="1 1 1 1">
-                        <TextBlock> Tutaj bydzie lista z Warehousami</TextBlock>
-                    </Border>
+                    <Grid Background="{DynamicResource MaterialDesignDarkBackground}" Grid.ColumnSpan="3" Margin="0,0,0,374" Grid.RowSpan="2">
+                    <Label Content="{Binding DateLabel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
+                    <ListBox ItemsSource="{Binding WarehousesList}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                    <Label Content="{Binding Name}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    </Grid>
                     <Border Grid.Column="0" Grid.Row="1" BorderBrush="{StaticResource brush}" BorderThickness="1 1 1 1">
                         <TextBlock> TIRY </TextBlock>
                     </Border>
