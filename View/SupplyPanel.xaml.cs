@@ -38,33 +38,47 @@ namespace Warehouse_Management.View
             set { SetValue(WarehousesListProperty, value); }
         }
 
-        //public static readonly DependencyProperty WarehousesListProperty =
-        //  DependencyProperty.Register(
-        //      "WarehousesList",
-        //      typeof(IEnumerable),
-        //      typeof(SupplyPanel),
-        //      new FrameworkPropertyMetadata(null)
-        //  );
+        public static readonly DependencyProperty TrucksListProperty =
+          DependencyProperty.Register(
+              "TrucksList",
+              typeof(IEnumerable),
+              typeof(SupplyPanel),
+              new FrameworkPropertyMetadata(null)
+          );
 
-        //public IEnumerable WarehousesList
-        //{
-        //    get { return (IEnumerable)GetValue(WarehousesListProperty); }
-        //    set { SetValue(WarehousesListProperty, value); }
-        //}
+        public IEnumerable TrucksList
+        {
+            get { return (IEnumerable)GetValue(TrucksListProperty); }
+            set { SetValue(TrucksListProperty, value); }
+        }
 
-        //public static readonly DependencyProperty WarehousesListProperty =
-        //  DependencyProperty.Register(
-        //      "WarehousesList",
-        //      typeof(IEnumerable),
-        //      typeof(SupplyPanel),
-        //      new FrameworkPropertyMetadata(null)
-        //  );
+        public static readonly DependencyProperty SemitrailersListProperty =
+          DependencyProperty.Register(
+              "SemitrailersList",
+              typeof(IEnumerable),
+              typeof(SupplyPanel),
+              new FrameworkPropertyMetadata(null)
+          );
 
-        //public IEnumerable WarehousesList
-        //{
-        //    get { return (IEnumerable)GetValue(WarehousesListProperty); }
-        //    set { SetValue(WarehousesListProperty, value); }
-        //}
+        public IEnumerable SemitrailersList
+        {
+            get { return (IEnumerable)GetValue(SemitrailersListProperty); }
+            set { SetValue(SemitrailersListProperty, value); }
+        }
+
+        public static readonly DependencyProperty ProductsListProperty =
+          DependencyProperty.Register(
+              "ProductsList",
+              typeof(IEnumerable),
+              typeof(SupplyPanel),
+              new FrameworkPropertyMetadata(null)
+          );
+
+        public IEnumerable ProductsList
+        {
+            get { return (IEnumerable)GetValue(ProductsListProperty); }
+            set { SetValue(ProductsListProperty, value); }
+        }
 
         #region Label properties
 

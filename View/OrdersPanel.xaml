@@ -43,7 +43,6 @@
                             Orientation="Horizontal">
                             <Label Content="{Binding CustomerLabel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
                             <Label Content="{Binding Customer.Name}" />
-
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

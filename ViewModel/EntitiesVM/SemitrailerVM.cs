@@ -14,23 +14,24 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
         public SemitrailerVM(Semitrailer st)
         {
             Model = st;
+            Id = st.Id;
             MaxAxleLoad = st.MaxAxleLoad;
             MaxVolume = st.MaxVolume;
         }
 
         #region Properties
+        private int id;
 
-        private int quantity;
-
-        public int Quantity
+        public int Id
         {
-            get { return quantity; }
+            get { return id; }
             set
             {
-                quantity = value;
-                OnPropertyChanged(nameof(Quantity));
+                id = value;
+                OnPropertyChanged(nameof(Id));
             }
         }
+
 
         private int maxVolume;
 

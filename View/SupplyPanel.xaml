@@ -35,39 +35,54 @@
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <Label Content="{Binding WarehouseName}" />
-
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-
-        <Border
+        <ListBox  ItemsSource="{Binding TrucksList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
             Grid.Row="1"
             Grid.Column="0"
-            BorderBrush="{StaticResource brush}"
-            BorderThickness="1,1,1,1">
-            <TextBlock>TIRY</TextBlock>
-        </Border>
-        <Border
+            Style="{StaticResource MaterialDesignListBox}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Label Content="{Binding Manafacturer}" ContentStringFormat="Marka: {0}" />
+                        <Label Content="{Binding Model}" ContentStringFormat="Model: {0}" />
+                        <Label Content="{Binding ModelYear}" ContentStringFormat="Rocznik: {0}" />
+                        <Label Content="{Binding Mileage}" ContentStringFormat="Przebieg: {0} km" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox  ItemsSource="{Binding SemitrailersList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
             Grid.Row="1"
             Grid.Column="1"
-            BorderBrush="{StaticResource brush}"
-            BorderThickness="1,1,1,1">
-            <TextBlock>NACZEPY</TextBlock>
-        </Border>
-        <Border
+            Style="{StaticResource MaterialDesignListBox}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Label Content="{Binding Id}" ContentStringFormat="Przyczepa {0} " />
+                        <Label Content="{Binding MaxAxleLoad}" ContentStringFormat="Max pojemnosc: {0} " />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox  ItemsSource="{Binding ProductsList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
             Grid.Row="1"
             Grid.Column="2"
-            BorderBrush="{StaticResource brush}"
-            BorderThickness="1,1,1,1">
-            <TextBlock>PRODUKTY</TextBlock>
-        </Border>
-        <Border
-            Grid.Row="2"
-            Grid.ColumnSpan="3"
-            BorderBrush="{StaticResource brush}"
-            BorderThickness="1,1,1,1">
-            <TextBlock>ADD BUTTON</TextBlock>
-        </Border>
+            Style="{StaticResource MaterialDesignListBox}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Label Content="{Binding Name}" ContentStringFormat="Nazwa: {0}" />
+                        <Label Content="{Binding Price}" ContentStringFormat="Cena: {0}zl" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        
     </Grid>
 </UserControl>

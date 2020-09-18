@@ -111,7 +111,11 @@
                 SemitrailerLabel="{Binding SemitrailerLabel}"
                 ValueLabel="{Binding ValueLabel}"
                 WarehouseLabel="{Binding WarehouseLabel}"
-                WarehousesList="{Binding data.Warehouses}" />
+                WarehousesList="{Binding data.Warehouses}" 
+                TrucksList="{Binding data.Trucks}"
+                SemitrailersList="{Binding data.Semitrailers}"
+                ProductsList="{Binding data.Products}"
+                />
         </TabItem>
     </dragablz:TabablzControl>
 </Window>
