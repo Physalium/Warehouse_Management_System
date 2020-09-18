@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-
+using System.Windows.Input;
 using Microsoft.EntityFrameworkCore;
 
 using Warehouse_Management.Data;
@@ -17,40 +17,7 @@ namespace Warehouse_Management.ViewModel
 
     internal class SuppliesPanelVM : BaseViewModel
     {
-        private ObservableCollection<ProductVM> products;
-        private ObservableCollection<TruckVM> trucks;
-        private ObservableCollection<SemitrailerVM> semitrailers;
         public WarehouseManagementData data { get; set; }
-
-        public ObservableCollection<ProductVM> Products
-        {
-            get { return products; }
-            set
-            {
-                products = value;
-                OnPropertyChanged(nameof(Products));
-            }
-        }
-
-        public ObservableCollection<TruckVM> Trucks
-        {
-            get { return trucks; }
-            set
-            {
-                trucks = value;
-                OnPropertyChanged(nameof(Trucks));
-            }
-        }
-
-        public ObservableCollection<SemitrailerVM> Semitrailers
-        {
-            get { return semitrailers; }
-            set
-            {
-                semitrailers = value;
-                OnPropertyChanged(nameof(Semitrailers));
-            }
-        }
 
         public SuppliesPanelVM(WarehouseManagementData data)
         {

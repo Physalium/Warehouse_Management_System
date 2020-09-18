@@ -90,6 +90,20 @@ namespace Warehouse_Management.View
               new FrameworkPropertyMetadata(null)
           );
 
+        #region AddToWarehouse
+        public static readonly DependencyProperty AddToWarehouseProperty =
+            DependencyProperty.Register(
+                "AddToWarehouse",
+                typeof(ICommand),
+                typeof(SupplyPanel),
+                new UIPropertyMetadata(null));
+        public ICommand AddToWarehouse
+        {
+            get { return (ICommand)GetValue(AddToWarehouseProperty); }
+            set { SetValue(AddToWarehouseProperty, value); }
+        }
+        #endregion
+
         public string DateLabel
         {
             get { return (string)GetValue(DateLabelProperty); }

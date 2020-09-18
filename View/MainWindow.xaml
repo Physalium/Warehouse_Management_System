@@ -116,6 +116,7 @@
                 TrucksList="{Binding data.Trucks}"
                 SemitrailersList="{Binding data.Semitrailers}"
                 ProductsList="{Binding data.Products}"
+                AddToWarehouse="{Binding AddToWarehouse}"
                 />
         </TabItem>
     </dragablz:TabablzControl>

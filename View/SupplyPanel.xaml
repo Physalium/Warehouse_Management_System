@@ -83,6 +83,10 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        
+        <StackPanel
+            Grid.Row="2"
+            Grid.Column="1">
+            <Button Command="{Binding AddToWarehouse, ElementName=root}">Dodaj</Button>
+        </StackPanel>
     </Grid>
 </UserControl>
