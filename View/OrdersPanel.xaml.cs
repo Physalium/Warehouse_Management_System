@@ -38,6 +38,8 @@ namespace Warehouse_Management.View
             set { SetValue(OrdersProperty, value); }
         }
 
+   
+
         #region Label properties
 
         public static readonly DependencyProperty DateLabelProperty =
