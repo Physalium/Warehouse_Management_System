@@ -11,6 +11,8 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
 {
     internal class TruckVM : BaseViewModel
     {
+        public WarehouseVM Warehouse;
+
         #region Properties
 
         private int modelYear;

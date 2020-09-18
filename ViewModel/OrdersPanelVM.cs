@@ -16,23 +16,11 @@ namespace Warehouse_Management.ViewModel
 
     internal class OrdersPanelVM : BaseViewModel
     {
-        private ObservableCollection<OrderVM> orders;
-        private WarehouseManagementData data;
-
-        public ObservableCollection<OrderVM> Orders
-        {
-            get { return orders; }
-            set
-            {
-                orders = value;
-                OnPropertyChanged(nameof(Orders));
-            }
-        }
+        public WarehouseManagementData data { get; set; }
 
         public OrdersPanelVM(WarehouseManagementData data)
         {
             this.data = data;
-            LoadOrders();
         }
 
         public string DateLabel { get; } = R.DateLabel;
@@ -42,10 +30,5 @@ namespace Warehouse_Management.ViewModel
         public string SemitrailerLabel { get; } = R.SemitrailerLabel;
         public string ProductsLabel { get; } = R.ProductsLabel;
         public string CustomerLabel { get; } = R.CustomerLabel;
-
-        private void LoadOrders()
-        {
-            // to do
-        }
     }
 }

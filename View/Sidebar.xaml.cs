@@ -67,6 +67,18 @@ namespace Warehouse_Management.View
                 typeof(Sidebar),
                 new FrameworkPropertyMetadata(null));
 
+        public static readonly DependencyProperty CityProperty =
+            DependencyProperty.Register(nameof(City),
+                typeof(string),
+                typeof(Sidebar),
+                new FrameworkPropertyMetadata(null));
+
+        public string City
+        {
+            get { return (string)GetValue(CityProperty); }
+            set { SetValue(CityProperty, value); }
+        }
+
         public IEnumerable Products
         {
             get { return (IEnumerable)GetValue(ProductsProperty); }

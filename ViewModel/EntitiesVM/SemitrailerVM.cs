@@ -10,6 +10,7 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
     internal class SemitrailerVM : BaseViewModel
     {
         public Semitrailer Model;
+        public WarehouseVM Warehouse;
 
         public SemitrailerVM(Semitrailer st)
         {
