@@ -18,6 +18,7 @@ namespace Warehouse_Management.Data
         public ObservableCollection<ProductVM> Products { get; set; }
         public ObservableCollection<SemitrailerVM> Semitrailers { get; set; }
         public ObservableCollection<TruckVM> Trucks { get; set; }
+        public ObservableCollection<OrderVM> Orders { get; set; }
 
         public WarehouseManagementData()
         {
@@ -25,9 +26,11 @@ namespace Warehouse_Management.Data
             LoadCustomers();
             LoadProducts();
             LoadTrucks();
+            LoadOrders();
             LoadSemitrailers();
             LoadWarehouses();
             LoadWarehouseRelations();
+            LoadOrdersRelations();
         }
 
         #region LoadEntities
@@ -38,6 +41,15 @@ namespace Warehouse_Management.Data
             {
                 Cities = new ObservableCollection<CityVM>();
                 db.Cities.ToList().ForEach(x => Cities.Add(new CityVM(x)));
+            }
+        }
+
+        private void LoadOrders()
+        {
+            using (WarehousemanagementContext db = new WarehousemanagementContext())
+            {
+                Orders = new ObservableCollection<OrderVM>();
+                db.Orders.ToList().ForEach(x => Orders.Add(new OrderVM(x)));
             }
         }
 
@@ -100,6 +112,7 @@ namespace Warehouse_Management.Data
                     var product = Products.Where(s => s.Model.Id == p.Id).FirstOrDefault();
                     {
                         product.Quantity = (from x in wh.Model.Products where x.Equals(p) select x).Count();
+                        product.Warehouse = wh;
                     };
                     wh.Products.Add(product);
                 });
@@ -110,6 +123,7 @@ namespace Warehouse_Management.Data
                 wh.Model.Trucks.ToList().ForEach(x =>
                 {
                     var truck = Trucks.Where(t => t.DataModel.Id == x.Id).FirstOrDefault();
+                    truck.Warehouse = wh;
                     wh.Trucks.Add(truck);
                 });
             }
@@ -119,6 +133,7 @@ namespace Warehouse_Management.Data
                 wh.Model.Semitrailers.ToList().ForEach(x =>
                 {
                     var semitrailer = Semitrailers.Where(t => t.Model.Id == x.Id).FirstOrDefault();
+                    semitrailer.Warehouse = wh;
                     wh.Semitrailers.Add(semitrailer);
                 });
             }
@@ -128,6 +143,62 @@ namespace Warehouse_Management.Data
                 LoadProducts(wh);
                 LoadTrucks(wh);
                 LoadSemitrailers(wh);
+            }
+        }
+
+        private void LoadOrdersRelations()
+        {
+            void LoadProducts(OrderVM order)
+            {
+                order.Model.Products.ToList().ForEach(p =>
+                {
+                    var product = Products.Where(s => s.Model.Id == p.Id).FirstOrDefault();
+                    {
+                        product.Quantity = (from x in order.Model.Products where x.Equals(p) select x).Count();
+                        product.Order = order;
+                    };
+                    order.Products.Add(product);
+                });
+            }
+
+            void LoadWarehouse(OrderVM order)
+            {
+                if (order.Model.Warehouse == null) return;
+                var warehouse = Warehouses.Where(s => s.Model.Id == order.Warehouse.Model.Id).FirstOrDefault();
+
+                order.Warehouse = warehouse;
+            }
+
+            void LoadTruck(OrderVM order)
+            {
+                if (order.Model.Truck == null) return;
+                var truck = Trucks.Where(s => s.DataModel.Id == order.Truck.DataModel.Id).FirstOrDefault();
+
+                order.Truck = truck;
+            }
+
+            void LoadSemitrailer(OrderVM order)
+            {
+                if (order.Model.Semitrailer == null) return;
+                var semitrailer = Semitrailers.Where(s => s.Model.Id == order.Semitrailer.Model.Id).FirstOrDefault();
+
+                order.Semitrailer = semitrailer;
+            }
+
+            void LoadCustomer(OrderVM order)
+            {
+                if (order.Model.Customer == null) return;
+                var customer = Customers.Where(s => s.Model.Id == order.Customer.Model.Id).FirstOrDefault();
+
+                order.Customer = customer;
+            }
+            foreach (var o in Orders)
+            {
+                LoadProducts(o);
+                LoadTruck(o);
+                LoadCustomer(o);
+                LoadWarehouse(o);
+                LoadSemitrailer(o);
             }
         }
     }

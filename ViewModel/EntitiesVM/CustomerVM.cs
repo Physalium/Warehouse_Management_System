@@ -8,8 +8,11 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
 {
     internal class CustomerVM : BaseViewModel
     {
+        public Customer Model;
+
         public CustomerVM(Customer customer)
         {
+            Model = customer;
             Name = customer.Name;
             City = customer.CityName;
             LoadOrders(customer);

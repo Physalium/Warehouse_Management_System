@@ -10,6 +10,7 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
     internal class SemitrailerVM : BaseViewModel
     {
         public Semitrailer Model;
+        public WarehouseVM Warehouse;
 
         public SemitrailerVM(Semitrailer st)
         {
@@ -19,18 +20,6 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
         }
 
         #region Properties
-
-        private int quantity;
-
-        public int Quantity
-        {
-            get { return quantity; }
-            set
-            {
-                quantity = value;
-                OnPropertyChanged(nameof(Quantity));
-            }
-        }
 
         private int maxVolume;
 

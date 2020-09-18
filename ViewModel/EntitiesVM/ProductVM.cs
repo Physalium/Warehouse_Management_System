@@ -16,6 +16,9 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
             Weight = x.Weight;
         }
 
+        public WarehouseVM Warehouse;
+        public OrderVM Order;
+
         #region Properties
 
         private float price;

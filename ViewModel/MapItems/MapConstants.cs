@@ -13,9 +13,9 @@ namespace Warehouse_Management.ViewModel.MapItems
             (xPos: 0.43200000000000005, yPos: 0.16, name: "Gdańsk"),
             (xPos: 0.628, yPos: 0.688, name: "Kielce"),
             (xPos: 0.35, yPos: 0.444, name: "Gniezno"),
-            (xPos: 0.512, yPos: 0.768, name: "Dąbrowa Górnicza"),
+            (xPos: 0.38, yPos: 0.69, name: "Opole"),
+        (xPos: 0.512, yPos: 0.768, name: "Dąbrowa Górnicza"),
             (xPos: 0.42200000000000004, yPos: 0.742, name: "Bytom"),
-
             (xPos: 0.664, yPos: 0.49, name: "Warszawa"),
             (xPos: 0.478, yPos: 0.774, name: "Katowice"),
             (xPos: 0.5660000000000001, yPos: 0.8079999999999999, name: "Kraków"),

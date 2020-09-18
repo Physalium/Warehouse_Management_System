@@ -11,14 +11,13 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
 {
     internal class OrderVM : BaseViewModel
     {
+        public Order Model;
+
         public OrderVM(Order order)
         {
+            Model = order;
             Date = order.Date;
             Value = order.Value;
-            // Customer = new CustomerVM(order.Customer);
-            //Truck = new TruckVM(order.Truck);
-            //Semitrailer = new SemitrailerVM(order.Semitrailer);
-            LoadProducts(order);
         }
 
         #region Props
@@ -116,17 +115,5 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
         }
 
         #endregion Props
-
-        private void LoadProducts(Order order)
-        {
-            order.Products.ToList().ForEach(x =>
-            {
-                var product = new ProductVM(x)
-                {
-                    Quantity = (from p in order.Products where p.Equals(x) select p).Count()
-                };
-                Products.Add(product);
-            });
-        }
     }
 }

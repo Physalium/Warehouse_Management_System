@@ -54,12 +54,17 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="10*" />
         </Grid.RowDefinitions>
-        <TextBlock
-            x:Name="warehouseName"
-            Grid.Row="0"
-            HorizontalAlignment="Center"
-            Style="{StaticResource MaterialDesignHeadline4TextBlock}"
-            Text="{Binding WarehouseName, Mode=TwoWay, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+            <TextBlock
+                x:Name="warehouseName"
+                HorizontalAlignment="Center"
+                Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                Text="{Binding WarehouseName, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
+            <TextBlock
+                HorizontalAlignment="Center"
+                Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                Text="{Binding City, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
+        </StackPanel>
         <Grid x:Name="grid" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
@@ -75,10 +80,10 @@
                     Text="{Binding ProductsLabel, Mode=TwoWay, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
 
                 <ListView
+                    ItemsSource="{Binding Products, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                     HorizontalAlignment="Center"
                     Foreground="Black"
                     ItemContainerStyle="{StaticResource listViewItemStyle}"
-                    ItemsSource="{Binding Products, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                     ScrollViewer.CanContentScroll="True"
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
                     Style="{DynamicResource MaterialDesignListView}">
@@ -112,10 +117,10 @@
                     Text="{Binding TrucksLabel, Mode=TwoWay, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
 
                 <ListView
+                    ItemsSource="{Binding Trucks, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                     HorizontalAlignment="Center"
                     Foreground="Black"
                     ItemContainerStyle="{StaticResource listViewItemStyle}"
-                    ItemsSource="{Binding Trucks, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                     ScrollViewer.CanContentScroll="True"
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
                     Style="{DynamicResource MaterialDesignListView}">
@@ -148,10 +153,10 @@
                     Text="{Binding SemitrailersLabel, Mode=TwoWay, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
 
                 <ListView
+                    ItemsSource="{Binding Semitrailers, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                     HorizontalAlignment="Center"
                     Foreground="Black"
                     ItemContainerStyle="{StaticResource listViewItemStyle}"
-                    ItemsSource="{Binding Semitrailers, UpdateSourceTrigger=Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                     ScrollViewer.CanContentScroll="True"
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
                     Style="{DynamicResource MaterialDesignListView}">
