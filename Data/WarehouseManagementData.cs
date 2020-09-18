@@ -216,5 +216,25 @@ namespace Warehouse_Management.Data
                 db.SaveChanges();
             }
         }
+
+        public void LinkTruckToWarehouse(TruckVM truck, WarehouseVM warehouse)
+        {
+            truck.Warehouse = warehouse;
+            using (WarehousemanagementContext db = new WarehousemanagementContext())
+            {
+                db.Trucks.Find(truck.DataModel).Warehouse = warehouse.Model;
+                db.SaveChanges();
+            }
+        }
+
+        public void LinkSemitrailerToWarehouse(SemitrailerVM semitrailer, WarehouseVM warehouse)
+        {
+            semitrailer.Warehouse = warehouse;
+            using (WarehousemanagementContext db = new WarehousemanagementContext())
+            {
+                db.Semitrailers.Find(semitrailer.DataModel).Warehouse = warehouse.Model;
+                db.SaveChanges();
+            }
+        }
     }
 }
