@@ -27,6 +27,7 @@
 
         <ComboBox
             ItemsSource="{Binding WarehousesList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+            SelectedItem="{Binding SelectedWarehouse}"
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="3"
@@ -72,6 +73,7 @@
         <ListBox  ItemsSource="{Binding ProductsList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
             Grid.Row="1"
             Grid.Column="2"
+            SelectedItem="{Binding SelectedProduct}"
             Style="{StaticResource MaterialDesignListBox}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -86,7 +88,8 @@
         <StackPanel
             Grid.Row="2"
             Grid.Column="1">
-            <Button Command="{Binding AddToWarehouse, ElementName=root}">Dodaj</Button>
+            <Button Command="{Binding AddToWarehouse}">Dodaj</Button>
+            
         </StackPanel>
     </Grid>
 </UserControl>

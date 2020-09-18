@@ -210,9 +210,12 @@ namespace Warehouse_Management.Data
         public void LinkProductToWarehouse(ProductVM product, WarehouseVM warehouse)
         {
             product.Warehouse = warehouse;
+            product.Quantity += 1;
+            warehouse.Products.Add(product);
+            
             using (WarehousemanagementContext db = new WarehousemanagementContext())
             {
-                db.Products.Find(product.DataModel).Warehouse = warehouse.Model;
+                db.Products.Where(s => s.Id == product.DataModel.Id).FirstOrDefault().Warehouse = warehouse.Model;
                 db.SaveChanges();
             }
         }

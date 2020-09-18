@@ -24,6 +24,54 @@ namespace Warehouse_Management.ViewModel
             this.data = data;
         }
 
+        private ProductVM selectedProduct;
+
+        public ProductVM SelectedProduct
+        {
+            get { return selectedProduct; }
+            set
+            {
+                selectedProduct = value;
+                OnPropertyChanged(nameof(SelectedProduct));
+            }
+        }
+
+        private WarehouseVM selectedWarehouse;
+
+        public WarehouseVM SelectedWarehouse
+        {
+            get { return selectedWarehouse; }
+            set
+            {
+                selectedWarehouse = value;
+                OnPropertyChanged(nameof(SelectedWarehouse));
+            }
+        }
+
+        private ICommand addToWarehousemClick;
+
+        public ICommand AddToWarehouse
+        {
+            get
+            {
+                if (addToWarehousemClick is null)
+                {
+                    addToWarehousemClick = new RelayCommand(
+                           execute =>
+                           {
+                               data.LinkProductToWarehouse(selectedProduct, selectedWarehouse);
+                           },
+                           canExecute =>
+                           {
+                               return true;
+                           });
+                }
+                return addToWarehousemClick;
+            }
+            set { addToWarehousemClick = value; }
+        }
+
+
         public string DateLabel { get; } = R.DateLabel;
         public string ValueLabel { get; } = R.ValueLabel;
         public string WarehouseLabel { get; } = R.WarehouseLabel;

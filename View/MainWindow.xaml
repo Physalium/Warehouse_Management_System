@@ -25,7 +25,6 @@
     mc:Ignorable="d">
     <Window.Resources>
         <materialDesign:BooleanToVisibilityConverter x:Key="BoolToVisConv" />
-
     </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="ItemClicked" SourceName="map">
@@ -116,10 +115,9 @@
                 ValueLabel="{Binding ValueLabel}"
                 WarehouseLabel="{Binding WarehouseLabel}"
                 WarehousesList="{Binding data.Warehouses}" 
-                TrucksList="{Binding data.Trucks}"
-                SemitrailersList="{Binding data.Semitrailers}"
-                ProductsList="{Binding data.Products}"
                 AddToWarehouse="{Binding AddToWarehouse}"
+                SelectedProduct="{Binding SelectedProduct}"
+                SelectedWarehouse="{Binding SelectedWarehouse}"
                 />
         </TabItem>
     </dragablz:TabablzControl>

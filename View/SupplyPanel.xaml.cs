@@ -80,6 +80,35 @@ namespace Warehouse_Management.View
             set { SetValue(ProductsListProperty, value); }
         }
 
+        public static readonly DependencyProperty SelectedProductProperty =
+            DependencyProperty.Register(
+                "SelectedProduct",
+                typeof(object),
+                typeof(SupplyPanel),
+                new FrameworkPropertyMetadata(null)
+            );
+
+        public object SelectedProduct
+        {
+            get { return GetValue(SelectedProductProperty); }
+            set { SetValue(SelectedProductProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectedWarehouseProperty =
+            DependencyProperty.Register(
+                "SelectedWarehouse",
+                typeof(object),
+                typeof(SupplyPanel),
+                new FrameworkPropertyMetadata(null)
+            );
+
+        public object SelectedWarehouse
+        {
+            get { return GetValue(SelectedWarehouseProperty); }
+            set { SetValue(SelectedWarehouseProperty, value); }
+        }
+
+
         #region Label properties
 
         public static readonly DependencyProperty DateLabelProperty =
