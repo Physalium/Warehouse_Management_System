@@ -112,7 +112,7 @@ namespace Warehouse_Management.Data
 
                 wh.Model.Products.ToList().ForEach(p =>
                 {
-                    var product = Products.Where(s => s.Model.Id == p.Id).FirstOrDefault();
+                    var product = Products.Where(s => s.DataModel.Id == p.Id).FirstOrDefault();
                     {
                         product.Quantity = (from x in wh.Model.Products where x.Equals(p) select x).Count();
                         product.Warehouse = wh;
@@ -135,7 +135,7 @@ namespace Warehouse_Management.Data
                 if (wh.Model.Semitrailers.Count == 0) return;
                 wh.Model.Semitrailers.ToList().ForEach(x =>
                 {
-                    var semitrailer = Semitrailers.Where(t => t.Model.Id == x.Id).FirstOrDefault();
+                    var semitrailer = Semitrailers.Where(t => t.DataModel.Id == x.Id).FirstOrDefault();
                     semitrailer.Warehouse = wh;
                     wh.Semitrailers.Add(semitrailer);
                 });
@@ -155,7 +155,7 @@ namespace Warehouse_Management.Data
             {
                 order.Model.Products.ToList().ForEach(p =>
                 {
-                    var product = Products.Where(s => s.Model.Id == p.Id).FirstOrDefault();
+                    var product = Products.Where(s => s.DataModel.Id == p.Id).FirstOrDefault();
                     {
                         product.Quantity = (from x in order.Model.Products where x.Equals(p) select x).Count();
                         product.Order = order;
@@ -183,7 +183,7 @@ namespace Warehouse_Management.Data
             void LoadSemitrailer(OrderVM order)
             {
                 if (order.Model.Semitrailer == null) return;
-                var semitrailer = Semitrailers.Where(s => s.Model.Id == order.Model.Semitrailer.Id).FirstOrDefault();
+                var semitrailer = Semitrailers.Where(s => s.DataModel.Id == order.Model.Semitrailer.Id).FirstOrDefault();
 
                 order.Semitrailer = semitrailer;
             }
@@ -207,8 +207,14 @@ namespace Warehouse_Management.Data
 
         #endregion LoadRelations
 
-        public void AddToWarehouse<T>(T entity) where T : BaseViewModel
+        public void LinkProductToWarehouse(ProductVM product, WarehouseVM warehouse)
         {
+            product.Warehouse = warehouse;
+            using (WarehousemanagementContext db = new WarehousemanagementContext())
+            {
+                db.Products.Find(product.DataModel).Warehouse = warehouse.Model;
+                db.SaveChanges();
+            }
         }
     }
 }
