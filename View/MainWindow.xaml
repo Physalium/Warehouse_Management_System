@@ -37,8 +37,8 @@
         <dragablz:TabablzControl.InterTabController>
             <dragablz:InterTabController />
         </dragablz:TabablzControl.InterTabController>
-        <TabItem  Header="{Binding Path=MapTabHeader}">
-            <Grid Background="AliceBlue" DataContext="{Binding Path=MapVM}">
+        <TabItem Header="{Binding Path=MapTabHeader}">
+            <Grid DataContext="{Binding Path=MapVM}" Background="AliceBlue">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
@@ -96,22 +96,22 @@
                 DataContext="{Binding Path=OrdersPanelVM}"
                 CustomerLabel="{Binding CustomerLabel}"
                 DateLabel="{Binding DateLabel}"
-                ValueLabel="{Binding ValueLabel}"
                 Orders="{Binding Orders}"
                 ProductsLabel="{Binding ProductsLabel}"
                 SemitrailerLabel="{Binding SemitrailerLabel}"
+                ValueLabel="{Binding ValueLabel}"
                 WarehouseLabel="{Binding WarehouseLabel}" />
         </TabItem>
         <TabItem Header="{Binding Path=SupplyTabHeader}">
             <local:SupplyPanel
-                DataContext="{Binding Path=SupplyPanelVM}"
-                CustomerLabel = "{Binding CustomerLabel}"
-                WarehousesList= "{Binding data.Warehouses}"
+                DataContext="{Binding Path=SuppliesPanelVM}"
+                CustomerLabel="{Binding CustomerLabel}"
                 DateLabel="{Binding DateLabel}"
-                ValueLabel="{Binding ValueLabel}"
                 ProductsLabel="{Binding ProductsLabel}"
                 SemitrailerLabel="{Binding SemitrailerLabel}"
-                WarehouseLabel="{Binding WarehouseLabel}" />
+                ValueLabel="{Binding ValueLabel}"
+                WarehouseLabel="{Binding WarehouseLabel}"
+                WarehousesList="{Binding data.Warehouses}" />
         </TabItem>
     </dragablz:TabablzControl>
 </Window>

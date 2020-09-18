@@ -9,44 +9,65 @@
     xmlns:vm="clr-namespace:Warehouse_Management.ViewModel.EntitiesVM"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    mc:Ignorable="d">  
-                <Grid>
-                    <Grid.Resources>
-                        <SolidColorBrush x:Key="brush" Color="White"/>
-                    </Grid.Resources>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="1*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="10*" />
-                        <RowDefinition Height="1*" />
-                    </Grid.RowDefinitions>
-                    <Grid Background="{DynamicResource MaterialDesignDarkBackground}" Grid.ColumnSpan="3" Margin="0,0,0,374" Grid.RowSpan="2">
-                    <Label Content="{Binding DateLabel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
-                    <ListBox ItemsSource="{Binding WarehousesList}">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                    <Label Content="{Binding Name}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                    </Grid>
-                    <Border Grid.Column="0" Grid.Row="1" BorderBrush="{StaticResource brush}" BorderThickness="1 1 1 1">
-                        <TextBlock> TIRY </TextBlock>
-                    </Border>
-                    <Border Grid.Column="1" Grid.Row="1" BorderBrush="{StaticResource brush}" BorderThickness="1 1 1 1">
-                        <TextBlock> NACZEPY </TextBlock>
-                    </Border>
-                    <Border Grid.Column="2" Grid.Row="1" BorderBrush="{StaticResource brush}" BorderThickness="1 1 1 1">
-                        <TextBlock> PRODUKTY </TextBlock>
-                    </Border>
-                    <Border Grid.ColumnSpan="3" Grid.Row="2" BorderBrush="{StaticResource brush}" BorderThickness="1 1 1 1">
-                        <TextBlock> ADD BUTTON </TextBlock>
-                    </Border>
-                </Grid>
+    mc:Ignorable="d">
+    <Grid Background="{StaticResource MaterialDesignDarkBackground}" ShowGridLines="True">
+        <Grid.Resources>
+            <SolidColorBrush x:Key="brush" Color="White" />
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <ComboBox
+            ItemsSource="{Binding WarehousesList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            SelectedIndex="0"
+            Style="{StaticResource MaterialDesignComboBox}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding WarehouseName}" />
+
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+
+        <Border
+            Grid.Row="1"
+            Grid.Column="0"
+            BorderBrush="{StaticResource brush}"
+            BorderThickness="1,1,1,1">
+            <TextBlock>TIRY</TextBlock>
+        </Border>
+        <Border
+            Grid.Row="1"
+            Grid.Column="1"
+            BorderBrush="{StaticResource brush}"
+            BorderThickness="1,1,1,1">
+            <TextBlock>NACZEPY</TextBlock>
+        </Border>
+        <Border
+            Grid.Row="1"
+            Grid.Column="2"
+            BorderBrush="{StaticResource brush}"
+            BorderThickness="1,1,1,1">
+            <TextBlock>PRODUKTY</TextBlock>
+        </Border>
+        <Border
+            Grid.Row="2"
+            Grid.ColumnSpan="3"
+            BorderBrush="{StaticResource brush}"
+            BorderThickness="1,1,1,1">
+            <TextBlock>ADD BUTTON</TextBlock>
+        </Border>
+    </Grid>
 </UserControl>
