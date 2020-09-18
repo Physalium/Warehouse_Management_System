@@ -124,10 +124,10 @@ namespace Warehouse_Management.ViewModel
         public MapVM(WarehouseManagementData data)
         {
             mapImage = ByteArrayConverter.byteArrayToBitmap(R.PolandMapHQ);
+            this.data = data;
             LoadData();
             SidebarVM = new SidebarVM();
             SelectedItem = MapItems[0];
-            this.data = data;
         }
 
         private void LoadData()
