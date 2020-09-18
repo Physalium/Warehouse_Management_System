@@ -13,16 +13,14 @@ namespace Warehouse_Management.ViewModel
 
     internal class MainVM : BaseViewModel
     {
-        public WarehouseData warehouseData = new WarehouseData();
-        public CustomersData customersData = new CustomersData();
-        public OrdersData ordersData = new OrdersData();
+        public WarehouseManagementData data = new WarehouseManagementData();
         public MapVM MapVM { get; set; }
         public OrdersPanelVM OrdersPanelVM { get; set; }
 
         public MainVM()
         {
-            MapVM = new MapVM(warehouseData, customersData);
-            OrdersPanelVM = new OrdersPanelVM(ordersData);
+            MapVM = new MapVM(data);
+            OrdersPanelVM = new OrdersPanelVM(data);
         }
 
         public string MapTabHeader { get; } = R.MapTabHeader;

@@ -17,7 +17,7 @@ namespace Warehouse_Management.ViewModel
     internal class OrdersPanelVM : BaseViewModel
     {
         private ObservableCollection<OrderVM> orders;
-        private OrdersData data;
+        private WarehouseManagementData data;
 
         public ObservableCollection<OrderVM> Orders
         {
@@ -29,7 +29,7 @@ namespace Warehouse_Management.ViewModel
             }
         }
 
-        public OrdersPanelVM(OrdersData data)
+        public OrdersPanelVM(WarehouseManagementData data)
         {
             this.data = data;
             LoadOrders();

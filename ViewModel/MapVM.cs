@@ -14,8 +14,7 @@ namespace Warehouse_Management.ViewModel
 
     internal class MapVM : BaseViewModel
     {
-        private WarehouseData warehouseData;
-        private readonly CustomersData customersData;
+        private readonly WarehouseManagementData data;
 
         public SidebarVM SidebarVM { get; set; }
 
@@ -122,23 +121,22 @@ namespace Warehouse_Management.ViewModel
 
         #endregion Commands
 
-        public MapVM(WarehouseData warehouseData, CustomersData customersData)
+        public MapVM(WarehouseManagementData data)
         {
-            this.warehouseData = warehouseData;
-            this.customersData = customersData;
             mapImage = ByteArrayConverter.byteArrayToBitmap(R.PolandMapHQ);
             LoadData();
             SidebarVM = new SidebarVM();
             SelectedItem = MapItems[0];
+            this.data = data;
         }
 
         private void LoadData()
         {
-            foreach (WarehouseVM wh in warehouseData.Warehouses)
+            foreach (WarehouseVM wh in data.Warehouses)
             {
                 AddIcon(wh);
             }
-            foreach (CustomerVM cs in customersData.Customers)
+            foreach (CustomerVM cs in data.Customers)
             {
                 AddIcon2(cs);
             }
