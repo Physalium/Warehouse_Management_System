@@ -9,18 +9,19 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
 {
     internal class SemitrailerVM : BaseViewModel
     {
-        public Semitrailer Model;
-        public WarehouseVM Warehouse;
+        public Semitrailer DataModel { get; set; }
+        public WarehouseVM Warehouse { get; set; }
 
         public SemitrailerVM(Semitrailer st)
         {
-            Model = st;
+            DataModel = st;
             Id = st.Id;
             MaxAxleLoad = st.MaxAxleLoad;
             MaxVolume = st.MaxVolume;
         }
 
         #region Properties
+
         private int id;
 
         public int Id
@@ -32,7 +33,6 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
                 OnPropertyChanged(nameof(Id));
             }
         }
-
 
         private int maxVolume;
 

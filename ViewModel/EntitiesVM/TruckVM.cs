@@ -11,7 +11,7 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
 {
     internal class TruckVM : BaseViewModel
     {
-        public WarehouseVM Warehouse;
+        public WarehouseVM Warehouse { get; set; }
 
         #region Properties
 
@@ -57,7 +57,7 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
 
         #endregion Properties
 
-        public Truck DataModel;
+        public Truck DataModel { get; set; }
 
         public TruckVM(Truck truck)
         {

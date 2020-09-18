@@ -5,18 +5,18 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
 {
     internal class ProductVM : BaseViewModel
     {
-        public Product Model;
+        public Product DataModel { get; set; }
 
         public ProductVM(Product x)
         {
-            Model = x;
+            DataModel = x;
             Price = x.Price;
             Name = x.Name;
             Volume = x.Volume;
             Weight = x.Weight;
         }
 
-        public WarehouseVM Warehouse;
+        public WarehouseVM Warehouse { get; set; }
         public OrderVM Order;
 
         #region Properties
