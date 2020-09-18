@@ -6,6 +6,7 @@ using System.Text;
 
 using Microsoft.EntityFrameworkCore;
 
+using Warehouse_Management.ViewModel.Base;
 using Warehouse_Management.ViewModel.EntitiesVM;
 
 namespace Warehouse_Management.Data
@@ -49,7 +50,7 @@ namespace Warehouse_Management.Data
             using (WarehousemanagementContext db = new WarehousemanagementContext())
             {
                 Orders = new ObservableCollection<OrderVM>();
-                db.Orders.ToList().ForEach(x => Orders.Add(new OrderVM(x)));
+                db.Orders.Include(x => x.Customer).Include(x => x.Warehouse).ToList().ForEach(x => Orders.Add(new OrderVM(x)));
             }
         }
 
@@ -100,6 +101,8 @@ namespace Warehouse_Management.Data
         }
 
         #endregion LoadEntities
+
+        #region LoadRelations
 
         private void LoadWarehouseRelations()
         {
@@ -164,7 +167,7 @@ namespace Warehouse_Management.Data
             void LoadWarehouse(OrderVM order)
             {
                 if (order.Model.Warehouse == null) return;
-                var warehouse = Warehouses.Where(s => s.Model.Id == order.Warehouse.Model.Id).FirstOrDefault();
+                var warehouse = Warehouses.Where(s => s.Model.Id == order.Model.Warehouse.Id).FirstOrDefault();
 
                 order.Warehouse = warehouse;
             }
@@ -172,7 +175,7 @@ namespace Warehouse_Management.Data
             void LoadTruck(OrderVM order)
             {
                 if (order.Model.Truck == null) return;
-                var truck = Trucks.Where(s => s.DataModel.Id == order.Truck.DataModel.Id).FirstOrDefault();
+                var truck = Trucks.Where(s => s.DataModel.Id == order.Model.Truck.Id).FirstOrDefault();
 
                 order.Truck = truck;
             }
@@ -180,7 +183,7 @@ namespace Warehouse_Management.Data
             void LoadSemitrailer(OrderVM order)
             {
                 if (order.Model.Semitrailer == null) return;
-                var semitrailer = Semitrailers.Where(s => s.Model.Id == order.Semitrailer.Model.Id).FirstOrDefault();
+                var semitrailer = Semitrailers.Where(s => s.Model.Id == order.Model.Semitrailer.Id).FirstOrDefault();
 
                 order.Semitrailer = semitrailer;
             }
@@ -188,7 +191,7 @@ namespace Warehouse_Management.Data
             void LoadCustomer(OrderVM order)
             {
                 if (order.Model.Customer == null) return;
-                var customer = Customers.Where(s => s.Model.Id == order.Customer.Model.Id).FirstOrDefault();
+                var customer = Customers.Where(s => s.Model.Id == order.Model.Customer.Id).FirstOrDefault();
 
                 order.Customer = customer;
             }
@@ -200,6 +203,12 @@ namespace Warehouse_Management.Data
                 LoadWarehouse(o);
                 LoadSemitrailer(o);
             }
+        }
+
+        #endregion LoadRelations
+
+        public void AddToWarehouse<T>(T entity) where T : BaseViewModel
+        {
         }
     }
 }
