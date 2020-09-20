@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+
 using Microsoft.EntityFrameworkCore;
 
 using Warehouse_Management.Data;
@@ -22,6 +23,7 @@ namespace Warehouse_Management.ViewModel
         public SuppliesPanelVM(WarehouseManagementData data)
         {
             this.data = data;
+            SelectedWarehouse = data.Warehouses[0];
         }
 
         private ProductVM selectedProduct;
@@ -36,15 +38,15 @@ namespace Warehouse_Management.ViewModel
             }
         }
 
-        private SemitrailerVM selectedSemitrail;
+        private SemitrailerVM selectedSemitrailer;
 
-        public SemitrailerVM SelectedSemitrail
+        public SemitrailerVM SelectedSemitrailer
         {
-            get { return selectedSemitrail; }
+            get { return selectedSemitrailer; }
             set
             {
-                selectedSemitrail = value;
-                OnPropertyChanged(nameof(SelectedSemitrail));
+                selectedSemitrailer = value;
+                OnPropertyChanged(nameof(SelectedSemitrailer));
             }
         }
 
@@ -84,7 +86,7 @@ namespace Warehouse_Management.ViewModel
                            execute =>
                            {
                                data.LinkProductToWarehouse(selectedProduct, selectedWarehouse);
-                               data.LinkSemitrailerToWarehouse(SelectedSemitrail, selectedWarehouse);
+                               data.LinkSemitrailerToWarehouse(SelectedSemitrailer, selectedWarehouse);
                                data.LinkTruckToWarehouse(SelectedTruck, selectedWarehouse);
                            },
                            canExecute =>
@@ -96,7 +98,6 @@ namespace Warehouse_Management.ViewModel
             }
             set { addToWarehouseClick = value; }
         }
-
 
         public string DateLabel { get; } = R.DateLabel;
         public string ValueLabel { get; } = R.ValueLabel;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,34 @@ namespace Warehouse_Management.View
         public AddItemPanel()
         {
             InitializeComponent();
+        }
+
+        public static readonly DependencyProperty ItemsProperty =
+        DependencyProperty.Register(
+            "Items",
+            typeof(IEnumerable),
+            typeof(AddItemPanel),
+            new FrameworkPropertyMetadata(null)
+        );
+
+        public IEnumerable Items
+        {
+            get { return (IEnumerable)GetValue(ItemsProperty); }
+            set { SetValue(ItemsProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectedItemProperty =
+         DependencyProperty.Register(
+             "SelectedItem",
+             typeof(object),
+             typeof(AddItemPanel),
+             new FrameworkPropertyMetadata(null)
+         );
+
+        public object SelectedItem
+        {
+            get { return (object)GetValue(SelectedItemProperty); }
+            set { SetValue(SelectedItemProperty, value); }
         }
 
         public static readonly DependencyProperty FirstFieldProperty =

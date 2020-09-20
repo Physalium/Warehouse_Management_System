@@ -111,19 +111,26 @@
                 ProductsLabel="{Binding ProductsLabel}"
                 ProductsList="{Binding data.Products}"
                 SelectedProduct="{Binding SelectedProduct}"
+                SelectedSemitrailer="{Binding SelectedSemitrailer}"
+                SelectedTruck="{Binding SelectedTruck}"
                 SelectedWarehouse="{Binding SelectedWarehouse}"
                 SemitrailerLabel="{Binding SemitrailerLabel}"
                 SemitrailersList="{Binding data.Semitrailers}"
                 TrucksList="{Binding data.Trucks}"
                 ValueLabel="{Binding ValueLabel}"
                 WarehouseLabel="{Binding WarehouseLabel}"
-                WarehousesList="{Binding data.Warehouses}" 
-                AddToWarehouse="{Binding AddToWarehouse}"
-                SelectedProduct="{Binding SelectedProduct}"
-                SelectedWarehouse="{Binding SelectedWarehouse}"
-                SelectedSemitrail="{Binding SelectedSemitrail}"
-                SelectedTruck="{Binding SelectedTruck}"
-                />
+                WarehousesList="{Binding data.Warehouses}" />
+        </TabItem>
+
+        <TabItem Header="{Binding Path=AddItemTabHeader}">
+            <local:AddItemPanel
+                DataContext="{Binding AddItemVM}"
+                FirstField="{Binding FirstField}"
+                FourthField="{Binding FourthField}"
+                Items="{Binding Items}"
+                SecondField="{Binding SecondField}"
+                ThirdField="{Binding ThirdField}"
+                SelectedItem="{Binding SelectedItem}"/>
         </TabItem>
 
     </dragablz:TabablzControl>

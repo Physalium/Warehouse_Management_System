@@ -10,7 +10,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid Background="{StaticResource MaterialDesignDarkBackground}" ShowGridLines="True">
+    <Grid Background="{StaticResource MaterialDesignLightSeparatorBackground}" ShowGridLines="True">
         <Grid.Resources>
             <SolidColorBrush x:Key="brush" Color="White" />
         </Grid.Resources>
@@ -27,20 +27,27 @@
 
         <ComboBox
             ItemsSource="{Binding WarehousesList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
-            SelectedItem="{Binding SelectedWarehouse}"
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="3"
+            Background="{StaticResource MaterialDesignDarkBackground}"
+            BorderBrush="{StaticResource MaterialDesignShadowBrush}"
+            Foreground="{StaticResource MaterialDesignDarkForeground}"
+            SelectedItem="{Binding SelectedWarehouse}"
             SelectedValue="0"
-            Style="{StaticResource MaterialDesignComboBox}">
+            Style="{StaticResource MaterialDesignFilledComboBox}"
+            TextBlock.FontFamily="{StaticResource MaterialDesignFont}"
+            TextBlock.FontSize="20"
+            TextBlock.TextAlignment="Left">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding WarehouseName}"/>
+                    <Label Content="{Binding WarehouseName}" />
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <ListBox  ItemsSource="{Binding TrucksList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+        <ListBox
+            ItemsSource="{Binding TrucksList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
             Grid.Row="1"
             Grid.Column="0"
             SelectedItem="{Binding SelectedTruck}"
@@ -48,7 +55,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <Label Content="{Binding Manafacturer}" ContentStringFormat="Marka: {0}"/>
+                        <Label Content="{Binding Manafacturer}" ContentStringFormat="Marka: {0}" />
                         <Label Content="{Binding Model}" ContentStringFormat="Model: {0}" />
                         <Label Content="{Binding ModelYear}" ContentStringFormat="Rocznik: {0}" />
                         <Label Content="{Binding Mileage}" ContentStringFormat="Przebieg: {0} km" />
@@ -58,7 +65,8 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <ListBox  ItemsSource="{Binding SemitrailersList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+        <ListBox
+            ItemsSource="{Binding SemitrailersList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
             Grid.Row="1"
             Grid.Column="1"
             SelectedItem="{Binding SelectedSemitrail}"
@@ -73,7 +81,8 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <ListBox  ItemsSource="{Binding ProductsList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+        <ListBox
+            ItemsSource="{Binding ProductsList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
             Grid.Row="1"
             Grid.Column="2"
             SelectedItem="{Binding SelectedProduct}"
@@ -88,11 +97,9 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel
-            Grid.Row="2"
-            Grid.Column="1">
+        <StackPanel Grid.Row="2" Grid.Column="1">
             <Button Command="{Binding AddToWarehouse}">Dodaj</Button>
-            
+
         </StackPanel>
     </Grid>
 </UserControl>

@@ -94,18 +94,18 @@ namespace Warehouse_Management.View
             set { SetValue(SelectedProductProperty, value); }
         }
 
-        public static readonly DependencyProperty SelectedSemitrailProperty =
+        public static readonly DependencyProperty SelectedSemitrailerProperty =
             DependencyProperty.Register(
-                "SelectedSemitrail",
+                "SelectedSemitrailer",
                 typeof(object),
                 typeof(SupplyPanel),
                 new FrameworkPropertyMetadata(null)
             );
 
-        public object SelectedSemitrail
+        public object SelectedSemitrailer
         {
-            get { return GetValue(SelectedSemitrailProperty); }
-            set { SetValue(SelectedSemitrailProperty, value); }
+            get { return GetValue(SelectedSemitrailerProperty); }
+            set { SetValue(SelectedSemitrailerProperty, value); }
         }
 
         public static readonly DependencyProperty SelectedTruckProperty =
@@ -130,13 +130,11 @@ namespace Warehouse_Management.View
                 new FrameworkPropertyMetadata(null)
             );
 
-
         public object SelectedWarehouse
         {
             get { return GetValue(SelectedWarehouseProperty); }
             set { SetValue(SelectedWarehouseProperty, value); }
         }
-
 
         #region Label properties
 
@@ -149,18 +147,21 @@ namespace Warehouse_Management.View
           );
 
         #region AddToWarehouse
+
         public static readonly DependencyProperty AddToWarehouseProperty =
             DependencyProperty.Register(
                 "AddToWarehouse",
                 typeof(ICommand),
                 typeof(SupplyPanel),
                 new UIPropertyMetadata(null));
+
         public ICommand AddToWarehouse
         {
             get { return (ICommand)GetValue(AddToWarehouseProperty); }
             set { SetValue(AddToWarehouseProperty, value); }
         }
-        #endregion
+
+        #endregion AddToWarehouse
 
         public string DateLabel
         {

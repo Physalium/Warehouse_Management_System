@@ -61,6 +61,25 @@ namespace Warehouse_Management.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add item.
+        /// </summary>
+        public static string AddItemTabHeader {
+            get {
+                return ResourceManager.GetString("AddItemTabHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] customerIcon {
+            get {
+                object obj = ResourceManager.GetObject("customerIcon", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customer.
         /// </summary>
         public static string CustomerLabel {
@@ -93,15 +112,6 @@ namespace Warehouse_Management.Properties {
         public static string OrderTabHeader {
             get {
                 return ResourceManager.GetString("OrderTabHeader", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Supplies.
-        /// </summary>
-        public static string SupplyTabHeader {
-            get {
-                return ResourceManager.GetString("SupplyTabHeader", resourceCulture);
             }
         }
         
@@ -143,6 +153,15 @@ namespace Warehouse_Management.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Supplies.
+        /// </summary>
+        public static string SupplyTabHeader {
+            get {
+                return ResourceManager.GetString("SupplyTabHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Truck.
         /// </summary>
         public static string TruckLabel {
@@ -175,16 +194,6 @@ namespace Warehouse_Management.Properties {
         public static byte[] warehouseIcon {
             get {
                 object obj = ResourceManager.GetObject("warehouseIcon", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] customerIcon {
-            get {
-                object obj = ResourceManager.GetObject("customerIcon", resourceCulture);
                 return ((byte[])(obj));
             }
         }
