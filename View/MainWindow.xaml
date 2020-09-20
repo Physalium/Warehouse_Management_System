@@ -118,6 +118,8 @@
                 AddToWarehouse="{Binding AddToWarehouse}"
                 SelectedProduct="{Binding SelectedProduct}"
                 SelectedWarehouse="{Binding SelectedWarehouse}"
+                SelectedSemitrail="{Binding SelectedSemitrail}"
+                SelectedTruck="{Binding SelectedTruck}"
                 />
         </TabItem>
     </dragablz:TabablzControl>

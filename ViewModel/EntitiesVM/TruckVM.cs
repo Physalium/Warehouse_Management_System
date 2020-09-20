@@ -27,6 +27,18 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
             }
         }
 
+        private int? warehouseId;
+
+        public int? WarehouseId
+        {
+            get { return warehouseId; }
+            set
+            {
+                warehouseId = value;
+                OnPropertyChanged(nameof(WarehouseId));
+            }
+        }
+
         private string manafacturer;
 
         public string Manafacturer
@@ -66,6 +78,7 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
             Model = truck.Model;
             ModelYear = truck.ModelYear;
             Manafacturer = truck.Manufacturer;
+            WarehouseId = truck.WarehouseId;
         }
     }
 }

@@ -31,11 +31,11 @@
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="3"
-            SelectedIndex="0"
+            SelectedValue="0"
             Style="{StaticResource MaterialDesignComboBox}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding WarehouseName}" />
+                    <Label Content="{Binding WarehouseName}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
@@ -43,14 +43,16 @@
         <ListBox  ItemsSource="{Binding TrucksList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
             Grid.Row="1"
             Grid.Column="0"
+            SelectedItem="{Binding SelectedTruck}"
             Style="{StaticResource MaterialDesignListBox}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <Label Content="{Binding Manafacturer}" ContentStringFormat="Marka: {0}" />
+                        <Label Content="{Binding Manafacturer}" ContentStringFormat="Marka: {0}"/>
                         <Label Content="{Binding Model}" ContentStringFormat="Model: {0}" />
                         <Label Content="{Binding ModelYear}" ContentStringFormat="Rocznik: {0}" />
                         <Label Content="{Binding Mileage}" ContentStringFormat="Przebieg: {0} km" />
+                        <Label Content="{Binding WarehouseId}" ContentStringFormat="Id magazynu: {0}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -59,6 +61,7 @@
         <ListBox  ItemsSource="{Binding SemitrailersList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
             Grid.Row="1"
             Grid.Column="1"
+            SelectedItem="{Binding SelectedSemitrail}"
             Style="{StaticResource MaterialDesignListBox}">
             <ListBox.ItemTemplate>
                 <DataTemplate>

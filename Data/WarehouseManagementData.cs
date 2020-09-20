@@ -34,9 +34,10 @@ namespace Warehouse_Management.Data
             LoadOrdersRelations();
         }
 
+
         #region LoadEntities
 
-        private void LoadCities()
+            private void LoadCities()
         {
             using (WarehousemanagementContext db = new WarehousemanagementContext())
             {
@@ -86,8 +87,7 @@ namespace Warehouse_Management.Data
             using (WarehousemanagementContext db = new WarehousemanagementContext())
             {
                 Trucks = new ObservableCollection<TruckVM>();
-                db.Trucks.Include(s => s.
-                Warehouse).Include(s => s.Orders).ToList().ForEach(x => Trucks.Add(new TruckVM(x)));
+                db.Trucks.Include(s => s.Warehouse).Include(s => s.Orders).ToList().ForEach(x => Trucks.Add(new TruckVM(x)));
             }
         }
 
@@ -207,37 +207,53 @@ namespace Warehouse_Management.Data
 
         #endregion LoadRelations
 
+        #region LinkToWarehouse
+
         public void LinkProductToWarehouse(ProductVM product, WarehouseVM warehouse)
         {
-            product.Warehouse = warehouse;
-            product.Quantity += 1;
-            warehouse.Products.Add(product);
-            
-            using (WarehousemanagementContext db = new WarehousemanagementContext())
+            if(product != null)
             {
-                db.Products.Where(s => s.Id == product.DataModel.Id).FirstOrDefault().Warehouse = warehouse.Model;
-                db.SaveChanges();
+                product.Warehouse = warehouse;
+                product.Quantity += 1;
+                warehouse.Products.Add(product);
+                using (WarehousemanagementContext db = new WarehousemanagementContext())
+                {
+                    db.Products.Where(s => s.Id == product.DataModel.Id).FirstOrDefault().Warehouse = warehouse.Model;
+                    db.SaveChanges();
+                }
             }
+            
         }
 
         public void LinkTruckToWarehouse(TruckVM truck, WarehouseVM warehouse)
         {
-            truck.Warehouse = warehouse;
-            using (WarehousemanagementContext db = new WarehousemanagementContext())
+            if(truck != null)
             {
-                db.Trucks.Find(truck.DataModel).Warehouse = warehouse.Model;
-                db.SaveChanges();
+                truck.Warehouse = warehouse;
+                warehouse.Trucks.Add(truck);
+
+                using (WarehousemanagementContext db = new WarehousemanagementContext())
+                {
+                    db.Trucks.Where(s => s.Id == truck.DataModel.Id).FirstOrDefault().Warehouse = warehouse.Model;
+                    db.SaveChanges();
+                }
             }
         }
 
         public void LinkSemitrailerToWarehouse(SemitrailerVM semitrailer, WarehouseVM warehouse)
         {
-            semitrailer.Warehouse = warehouse;
-            using (WarehousemanagementContext db = new WarehousemanagementContext())
+            if(semitrailer != null)
             {
-                db.Semitrailers.Find(semitrailer.DataModel).Warehouse = warehouse.Model;
-                db.SaveChanges();
+                semitrailer.Warehouse = warehouse;
+                warehouse.Semitrailers.Add(semitrailer);
+                using (WarehousemanagementContext db = new WarehousemanagementContext())
+                {
+                    db.Semitrailers.Where(s => s.Id == semitrailer.DataModel.Id).FirstOrDefault().Warehouse = warehouse.Model;
+                    db.SaveChanges();
+                }
             }
         }
+
+        #endregion LinkToWarehouse
     }
 }

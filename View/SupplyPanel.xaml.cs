@@ -94,6 +94,34 @@ namespace Warehouse_Management.View
             set { SetValue(SelectedProductProperty, value); }
         }
 
+        public static readonly DependencyProperty SelectedSemitrailProperty =
+            DependencyProperty.Register(
+                "SelectedSemitrail",
+                typeof(object),
+                typeof(SupplyPanel),
+                new FrameworkPropertyMetadata(null)
+            );
+
+        public object SelectedSemitrail
+        {
+            get { return GetValue(SelectedSemitrailProperty); }
+            set { SetValue(SelectedSemitrailProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectedTruckProperty =
+            DependencyProperty.Register(
+                "SelectedTruck",
+                typeof(object),
+                typeof(SupplyPanel),
+                new FrameworkPropertyMetadata(null)
+            );
+
+        public object SelectedTruck
+        {
+            get { return GetValue(SelectedTruckProperty); }
+            set { SetValue(SelectedTruckProperty, value); }
+        }
+
         public static readonly DependencyProperty SelectedWarehouseProperty =
             DependencyProperty.Register(
                 "SelectedWarehouse",
@@ -101,6 +129,7 @@ namespace Warehouse_Management.View
                 typeof(SupplyPanel),
                 new FrameworkPropertyMetadata(null)
             );
+
 
         public object SelectedWarehouse
         {
