@@ -36,6 +36,30 @@ namespace Warehouse_Management.ViewModel
             }
         }
 
+        private SemitrailerVM selectedSemitrail;
+
+        public SemitrailerVM SelectedSemitrail
+        {
+            get { return selectedSemitrail; }
+            set
+            {
+                selectedSemitrail = value;
+                OnPropertyChanged(nameof(SelectedSemitrail));
+            }
+        }
+
+        private TruckVM selectedTruck;
+
+        public TruckVM SelectedTruck
+        {
+            get { return selectedTruck; }
+            set
+            {
+                selectedTruck = value;
+                OnPropertyChanged(nameof(SelectedTruck));
+            }
+        }
+
         private WarehouseVM selectedWarehouse;
 
         public WarehouseVM SelectedWarehouse
@@ -48,27 +72,29 @@ namespace Warehouse_Management.ViewModel
             }
         }
 
-        private ICommand addToWarehousemClick;
+        private ICommand addToWarehouseClick;
 
         public ICommand AddToWarehouse
         {
             get
             {
-                if (addToWarehousemClick is null)
+                if (addToWarehouseClick is null)
                 {
-                    addToWarehousemClick = new RelayCommand(
+                    addToWarehouseClick = new RelayCommand(
                            execute =>
                            {
                                data.LinkProductToWarehouse(selectedProduct, selectedWarehouse);
+                               data.LinkSemitrailerToWarehouse(SelectedSemitrail, selectedWarehouse);
+                               data.LinkTruckToWarehouse(SelectedTruck, selectedWarehouse);
                            },
                            canExecute =>
                            {
                                return true;
                            });
                 }
-                return addToWarehousemClick;
+                return addToWarehouseClick;
             }
-            set { addToWarehousemClick = value; }
+            set { addToWarehouseClick = value; }
         }
 
 
@@ -79,6 +105,5 @@ namespace Warehouse_Management.ViewModel
         public string SemitrailerLabel { get; } = R.SemitrailerLabel;
         public string ProductsLabel { get; } = R.ProductsLabel;
         public string CustomerLabel { get; } = R.CustomerLabel;
-
     }
 }
