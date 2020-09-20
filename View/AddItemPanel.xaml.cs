@@ -22,5 +22,61 @@ namespace Warehouse_Management.View
         {
             InitializeComponent();
         }
+
+        public static readonly DependencyProperty FirstFieldProperty =
+          DependencyProperty.Register(
+              "FirstField",
+              typeof(string),
+              typeof(AddItemPanel),
+              new FrameworkPropertyMetadata(null)
+          );
+
+        public string FirstField
+        {
+            get { return (string)GetValue(FirstFieldProperty); }
+            set { SetValue(FirstFieldProperty, value); }
+        }
+
+        public static readonly DependencyProperty SecondFieldProperty =
+          DependencyProperty.Register(
+              "SecondField",
+              typeof(string),
+              typeof(AddItemPanel),
+              new FrameworkPropertyMetadata(null)
+          );
+
+        public string SecondField
+        {
+            get { return (string)GetValue(SecondFieldProperty); }
+            set { SetValue(SecondFieldProperty, value); }
+        }
+
+        public static readonly DependencyProperty ThirdFieldProperty =
+          DependencyProperty.Register(
+              "ThirdField",
+              typeof(string),
+              typeof(AddItemPanel),
+              new FrameworkPropertyMetadata(null)
+          );
+
+        public string ThirdField
+        {
+            get { return (string)GetValue(ThirdFieldProperty); }
+            set { SetValue(ThirdFieldProperty, value); }
+        }
+
+        public static readonly DependencyProperty FourthFieldProperty =
+          DependencyProperty.Register(
+              "FourthField",
+              typeof(string),
+              typeof(AddItemPanel),
+              new FrameworkPropertyMetadata(null)
+          );
+
+        public string FourthField
+        {
+            get { return (string)GetValue(FourthFieldProperty); }
+            set { SetValue(FourthFieldProperty, value); }
+        }
     }
 }

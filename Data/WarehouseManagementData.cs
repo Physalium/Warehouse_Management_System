@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
 using Warehouse_Management.ViewModel.Base;
 using Warehouse_Management.ViewModel.EntitiesVM;
@@ -212,7 +213,7 @@ namespace Warehouse_Management.Data
             product.Warehouse = warehouse;
             product.Quantity += 1;
             warehouse.Products.Add(product);
-            
+
             using (WarehousemanagementContext db = new WarehousemanagementContext())
             {
                 db.Products.Where(s => s.Id == product.DataModel.Id).FirstOrDefault().Warehouse = warehouse.Model;
@@ -223,9 +224,10 @@ namespace Warehouse_Management.Data
         public void LinkTruckToWarehouse(TruckVM truck, WarehouseVM warehouse)
         {
             truck.Warehouse = warehouse;
+            warehouse.Trucks.Add(truck);
             using (WarehousemanagementContext db = new WarehousemanagementContext())
             {
-                db.Trucks.Find(truck.DataModel).Warehouse = warehouse.Model;
+                db.Trucks.Where(s => s.Id == truck.DataModel.Id).FirstOrDefault().Warehouse = warehouse.Model;
                 db.SaveChanges();
             }
         }
@@ -233,9 +235,10 @@ namespace Warehouse_Management.Data
         public void LinkSemitrailerToWarehouse(SemitrailerVM semitrailer, WarehouseVM warehouse)
         {
             semitrailer.Warehouse = warehouse;
+            warehouse.Semitrailers.Add(semitrailer);
             using (WarehousemanagementContext db = new WarehousemanagementContext())
             {
-                db.Semitrailers.Find(semitrailer.DataModel).Warehouse = warehouse.Model;
+                db.Semitrailers.Where(s => s.Id == semitrailer.DataModel.Id).FirstOrDefault().Warehouse = warehouse.Model;
                 db.SaveChanges();
             }
         }

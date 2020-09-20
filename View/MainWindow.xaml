@@ -105,20 +105,20 @@
         <TabItem Header="{Binding Path=SupplyTabHeader}">
             <local:SupplyPanel
                 DataContext="{Binding Path=SuppliesPanelVM}"
+                AddToWarehouse="{Binding AddToWarehouse}"
                 CustomerLabel="{Binding CustomerLabel}"
                 DateLabel="{Binding DateLabel}"
                 ProductsLabel="{Binding ProductsLabel}"
                 ProductsList="{Binding data.Products}"
+                SelectedProduct="{Binding SelectedProduct}"
+                SelectedWarehouse="{Binding SelectedWarehouse}"
                 SemitrailerLabel="{Binding SemitrailerLabel}"
                 SemitrailersList="{Binding data.Semitrailers}"
                 TrucksList="{Binding data.Trucks}"
                 ValueLabel="{Binding ValueLabel}"
                 WarehouseLabel="{Binding WarehouseLabel}"
-                WarehousesList="{Binding data.Warehouses}" 
-                AddToWarehouse="{Binding AddToWarehouse}"
-                SelectedProduct="{Binding SelectedProduct}"
-                SelectedWarehouse="{Binding SelectedWarehouse}"
-                />
+                WarehousesList="{Binding data.Warehouses}" />
         </TabItem>
+
     </dragablz:TabablzControl>
 </Window>
