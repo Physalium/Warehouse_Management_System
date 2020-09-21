@@ -66,6 +66,20 @@ namespace Warehouse_Management.View
             set { SetValue(FirstFieldProperty, value); }
         }
 
+        public static readonly DependencyProperty FirstFieldNameProperty =
+          DependencyProperty.Register(
+              "FirstFieldName",
+              typeof(string),
+              typeof(AddItemPanel),
+              new FrameworkPropertyMetadata(null)
+          );
+
+        public string FirstFieldName
+        {
+            get { return (string)GetValue(FirstFieldNameProperty); }
+            set { SetValue(FirstFieldNameProperty, value); }
+        }
+
         public static readonly DependencyProperty SecondFieldProperty =
           DependencyProperty.Register(
               "SecondField",
@@ -78,6 +92,20 @@ namespace Warehouse_Management.View
         {
             get { return (string)GetValue(SecondFieldProperty); }
             set { SetValue(SecondFieldProperty, value); }
+        }
+
+        public static readonly DependencyProperty SecondFieldNameProperty =
+         DependencyProperty.Register(
+             "SecondFieldName",
+             typeof(string),
+             typeof(AddItemPanel),
+             new FrameworkPropertyMetadata(null)
+         );
+
+        public string SecondFieldName
+        {
+            get { return (string)GetValue(SecondFieldNameProperty); }
+            set { SetValue(SecondFieldNameProperty, value); }
         }
 
         public static readonly DependencyProperty ThirdFieldProperty =
@@ -94,6 +122,23 @@ namespace Warehouse_Management.View
             set { SetValue(ThirdFieldProperty, value); }
         }
 
+        public static readonly DependencyProperty ThirdFieldNameProperty =
+         DependencyProperty.Register(
+             "ThirdFieldName",
+             typeof(string),
+             typeof(AddItemPanel),
+             new FrameworkPropertyMetadata(null)
+         );
+
+        public string ThirdFieldName
+        {
+            get { return (string)GetValue(ThirdFieldNameProperty); }
+            set
+            {
+                SetValue(ThirdFieldNameProperty, value);
+            }
+        }
+
         public static readonly DependencyProperty FourthFieldProperty =
           DependencyProperty.Register(
               "FourthField",
@@ -106,6 +151,57 @@ namespace Warehouse_Management.View
         {
             get { return (string)GetValue(FourthFieldProperty); }
             set { SetValue(FourthFieldProperty, value); }
+        }
+
+        public static readonly DependencyProperty FourthFieldNameProperty =
+         DependencyProperty.Register(
+             "FourthFieldName",
+             typeof(string),
+             typeof(AddItemPanel),
+             new FrameworkPropertyMetadata(null)
+         );
+
+        public string FourthFieldName
+        {
+            get { return (string)GetValue(FourthFieldNameProperty); }
+            set
+            {
+                SetValue(FourthFieldNameProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty FourthFieldVisProperty =
+         DependencyProperty.Register(
+             "FourthFieldVis",
+             typeof(Visibility),
+             typeof(AddItemPanel),
+             new FrameworkPropertyMetadata(null)
+         );
+
+        public Visibility FourthFieldVis
+        {
+            get { return (Visibility)GetValue(FourthFieldVisProperty); }
+            set
+            {
+                SetValue(FourthFieldVisProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty ThirdFieldVisProperty =
+        DependencyProperty.Register(
+            "ThirdFieldVis",
+            typeof(Visibility),
+            typeof(AddItemPanel),
+            new FrameworkPropertyMetadata(null)
+        );
+
+        public Visibility ThirdFieldVis
+        {
+            get { return (Visibility)GetValue(ThirdFieldVisProperty); }
+            set
+            {
+                SetValue(ThirdFieldVisProperty, value);
+            }
         }
     }
 }

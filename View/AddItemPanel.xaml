@@ -9,6 +9,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+
     <Grid Background="{StaticResource MaterialDesignLightSeparatorBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -37,6 +38,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Margin="10">
+            <Label Content="{Binding FirstFieldName}" FontSize="15" />
 
             <Border x:Name="firstFieldBorder">
                 <TextBox
@@ -50,6 +52,7 @@
             </Border>
         </StackPanel>
         <StackPanel Grid.Row="2" Margin="10">
+            <Label Content="{Binding SecondFieldName}" FontSize="15" />
             <Border x:Name="secondFieldBorder">
                 <TextBox
                     x:Name="secondField"
@@ -61,7 +64,15 @@
                     Text="{Binding Path=SecondField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
             </Border>
         </StackPanel>
-        <StackPanel Grid.Row="3" Margin="10">
+        <StackPanel
+            Grid.Row="3"
+            Margin="10"
+            Visibility="{Binding ThirdFieldVis, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
+
+            <Label
+                x:Name="thirdFieldName"
+                Content="{Binding ThirdFieldName}"
+                FontSize="15" />
             <Border x:Name="thirdFieldBorder">
                 <TextBox
                     x:Name="thirdField"
@@ -73,7 +84,14 @@
                     Text="{Binding Path=ThirdField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
             </Border>
         </StackPanel>
-        <StackPanel Grid.Row="4" Margin="10">
+        <StackPanel
+            Grid.Row="4"
+            Margin="10"
+            Visibility="{Binding FourthFieldVis, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
+            <Label
+                x:Name="fourthFieldName"
+                Content="{Binding FourthFieldName}"
+                FontSize="15" />
             <Border x:Name="fourthFieldBorder">
                 <TextBox
                     x:Name="fourthField"

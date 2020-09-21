@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Warehouse_Management.Data;
 using Warehouse_Management.ViewModel.Base;
@@ -34,6 +33,58 @@ namespace Warehouse_Management.ViewModel
             }
         }
 
+        #region Field Names
+
+        private string firstFieldName;
+
+        public string FirstFieldName
+        {
+            get { return firstFieldName; }
+            set
+            {
+                firstFieldName = value;
+                OnPropertyChanged(nameof(FirstFieldName));
+            }
+        }
+
+        private string secondFieldName;
+
+        public string SecondFieldName
+        {
+            get { return secondFieldName; }
+            set
+            {
+                secondFieldName = value;
+                OnPropertyChanged(nameof(SecondFieldName));
+            }
+        }
+
+        private string thirdFieldName;
+
+        public string ThirdFieldName
+        {
+            get { return thirdFieldName; }
+            set
+            {
+                thirdFieldName = value;
+                OnPropertyChanged(nameof(ThirdFieldName));
+            }
+        }
+
+        private string fourthFieldName;
+
+        public string FourthFieldName
+        {
+            get { return fourthFieldName; }
+            set
+            {
+                fourthFieldName = value;
+                OnPropertyChanged(nameof(FourthFieldName));
+            }
+        }
+
+        #endregion Field Names
+
         private string selectedItem;
 
         public string SelectedItem
@@ -42,9 +93,66 @@ namespace Warehouse_Management.ViewModel
             set
             {
                 selectedItem = value;
+                UpdateFields();
                 OnPropertyChanged(nameof(SelectedItem));
             }
         }
+
+        private void UpdateFields()
+        {
+            FirstField = SecondField = ThirdField = FourthField = "";
+            switch (selectedItem)
+            {
+                case "Product":
+                    FirstFieldName = "Name";
+                    SecondFieldName = "Price";
+                    ThirdFieldName = "Volume";
+                    ThirdFieldVis = true;
+                    FourthFieldVis = true;
+                    FourthFieldName = "Weight";
+                    break;
+
+                case "Truck":
+                    FirstFieldName = "Model";
+                    SecondFieldName = "Model year";
+                    ThirdFieldName = "Mileage";
+                    FourthFieldName = "Manafacturer";
+                    ThirdFieldVis = true;
+                    FourthFieldVis = true;
+                    break;
+
+                case "Semitrailer":
+                    FirstFieldName = "Max axle load";
+                    SecondFieldName = "Max volume";
+                    ThirdFieldName = "";
+                    FourthFieldName = "";
+                    ThirdFieldVis = false;
+                    FourthFieldVis = false;
+                    break;
+            }
+        }
+
+        private bool fourthFieldVis;
+        private bool thirdFieldVis;
+
+        public bool FourthFieldVis
+        {
+            get => fourthFieldVis; set
+            {
+                fourthFieldVis = value;
+                OnPropertyChanged(nameof(FourthFieldVis));
+            }
+        }
+
+        public bool ThirdFieldVis
+        {
+            get => thirdFieldVis; set
+            {
+                thirdFieldVis = value; OnPropertyChanged(nameof(ThirdFieldVis));
+            }
+        }
+
+        #region Fields
 
         private string firstField;
 
@@ -93,5 +201,7 @@ namespace Warehouse_Management.ViewModel
                 OnPropertyChanged(nameof(FourthField));
             }
         }
+
+        #endregion Fields
     }
 }

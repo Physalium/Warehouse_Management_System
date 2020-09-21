@@ -24,7 +24,8 @@
     WindowStyle="SingleBorderWindow"
     mc:Ignorable="d">
     <Window.Resources>
-        <materialDesign:BooleanToVisibilityConverter x:Key="BoolToVisConv" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisConv" />
+        <materialDesign:BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
     </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="ItemClicked" SourceName="map">
@@ -86,7 +87,7 @@
                     SemitrailersLabel="{Binding SemitrailersLabel}"
                     Trucks="{Binding Path=SelectedWarehouse.Trucks}"
                     TrucksLabel="{Binding TrucksLabel}"
-                    Visibility="{Binding SidebarVisible, Converter={StaticResource BoolToVisConv}}"
+                    Visibility="{Binding SidebarVisible, Converter={StaticResource BoolToVisConverter}}"
                     WarehouseName="{Binding Path=SelectedWarehouse.WarehouseName}" />
 
             </Grid>
@@ -126,11 +127,17 @@
             <local:AddItemPanel
                 DataContext="{Binding AddItemVM}"
                 FirstField="{Binding FirstField}"
-                FourthField="{Binding FourthField}"
+                FirstFieldName="{Binding FirstFieldName}"
+                FourthField="{Binding FourthField, Mode=TwoWay}"
+                FourthFieldName="{Binding FourthFieldName}"
+                FourthFieldVis="{Binding Path=FourthFieldVis, Converter={StaticResource BoolToVisConverter}}"
                 Items="{Binding Items}"
                 SecondField="{Binding SecondField}"
-                ThirdField="{Binding ThirdField}"
-                SelectedItem="{Binding SelectedItem}"/>
+                SecondFieldName="{Binding SecondFieldName}"
+                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                ThirdField="{Binding ThirdField, Mode=TwoWay}"
+                ThirdFieldName="{Binding ThirdFieldName}"
+                ThirdFieldVis="{Binding Path=ThirdFieldVis, Converter={StaticResource BoolToVisConverter}}" />
         </TabItem>
 
     </dragablz:TabablzControl>
