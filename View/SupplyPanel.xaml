@@ -55,11 +55,10 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <Label Content="{Binding Manafacturer}" ContentStringFormat="Marka: {0}" />
+                        <Label Content="{Binding Manafacturer}" ContentStringFormat="Brand: {0}" />
                         <Label Content="{Binding Model}" ContentStringFormat="Model: {0}" />
-                        <Label Content="{Binding ModelYear}" ContentStringFormat="Rocznik: {0}" />
-                        <Label Content="{Binding Mileage}" ContentStringFormat="Przebieg: {0} km" />
-                        <Label Content="{Binding WarehouseId}" ContentStringFormat="Id magazynu: {0}" />
+                        <Label Content="{Binding ModelYear}" ContentStringFormat="Production year: {0}" />
+                        <Label Content="{Binding Mileage}" ContentStringFormat="Mileage: {0} km" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -74,9 +73,14 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
+<<<<<<< HEAD
                         <Label Content="{Binding Id}" ContentStringFormat="Przyczepa {0} " />
                         <Label Content="{Binding MaxAxleLoad}" ContentStringFormat="Max nacisk: {0} " />
                         <Label Content="{Binding MaxVolume}" ContentStringFormat="Max pojemnosc: {0} " />
+=======
+                        <Label Content="{Binding Id}" ContentStringFormat="Semitrailer n0 {0} " />
+                        <Label Content="{Binding MaxAxleLoad}" ContentStringFormat="Max Axle Load: {0} " />
+>>>>>>> orders labels
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -91,15 +95,15 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <Label Content="{Binding Name}" ContentStringFormat="Nazwa: {0}" />
-                        <Label Content="{Binding Price}" ContentStringFormat="Cena: {0}zl" />
+                        <Label Content="{Binding Name}" ContentStringFormat="Name: {0}" />
+                        <Label Content="{Binding Price}" ContentStringFormat="Price: {0}zl" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <Button Command="{Binding AddToWarehouse}">Dodaj</Button>
+            <Button Command="{Binding AddToWarehouse}">Add</Button>
 
         </StackPanel>
     </Grid>

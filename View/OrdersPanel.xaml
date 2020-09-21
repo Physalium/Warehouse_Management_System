@@ -11,7 +11,24 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid Background="{DynamicResource MaterialDesignDarkBackground}">
-        <ListBox ItemsSource="{Binding Orders, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
+    <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="20*" />
+    </Grid.RowDefinitions>
+    <TextBox 
+    Grid.Row="0" 
+    FontFamily="Century Gothic"
+    FontSize="12"
+    FontStretch="UltraExpanded"
+    FontStyle="Italic"
+    FontWeight="UltraBold"
+    TextAlignment="Center"
+    Foreground="White"  
+    >  
+        List of completed orders 
+    </TextBox> 
+
+        <ListBox Grid.Row = "1" ItemsSource="{Binding Orders, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -26,31 +43,29 @@
                             <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <Label Content="{Binding DateLabel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
-                            <Label Content="{Binding Date}" />
+                            <Label Content="{Binding DateLabel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" ContentStringFormat="{}{0}:"/>
+                            <Label Content="{Binding Date}" ContentStringFormat="{}{0}, " />
                         </StackPanel>
                         <StackPanel
                             Grid.Row="0"
                             Grid.Column="1"
                             Orientation="Horizontal">
-                            <Label Content="{Binding ValueLabel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
-                            <Label Content="{Binding Value}" />
-
+                            <Label Content="{Binding ValueLabel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" ContentStringFormat="{}{0}: " />
+                            <Label Content="{Binding Value}" ContentStringFormat="{}{0}, "/>
                         </StackPanel>
-
                         <StackPanel
                             Grid.Row="0"
                             Grid.Column="2"
                             Orientation="Horizontal">
-                            <Label Content="{Binding CustomerLabel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
-                            <Label Content="{Binding Customer.Name}" />
+                            <Label Content="{Binding CustomerLabel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" ContentStringFormat="{}{0}: "/>
+                            <Label Content="{Binding Customer.Name}" ContentStringFormat="{}{0}, "/>
                         </StackPanel>
                         <StackPanel
                             Grid.Row="0"
                             Grid.Column="3"
                             Orientation="Horizontal">
-                            <Label Content="{Binding WarehouseLabel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
-                            <Label Content="{Binding Path=Warehouse.WarehouseName}" />
+                            <Label Content="{Binding WarehouseLabel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" ContentStringFormat="{}{0}: " />
+                            <Label Content="{Binding Path=Warehouse.WarehouseName}" ContentStringFormat="{}{0}"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
