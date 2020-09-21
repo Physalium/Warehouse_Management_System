@@ -52,6 +52,8 @@ namespace Warehouse_Management.View
             set { SetValue(SelectedItemProperty, value); }
         }
 
+        #region Fields
+
         public static readonly DependencyProperty FirstFieldProperty =
           DependencyProperty.Register(
               "FirstField",
@@ -178,6 +180,10 @@ namespace Warehouse_Management.View
              new FrameworkPropertyMetadata(null)
          );
 
+        #endregion Fields
+
+        #region Visibility
+
         public Visibility FourthFieldVis
         {
             get { return (Visibility)GetValue(FourthFieldVisProperty); }
@@ -203,5 +209,53 @@ namespace Warehouse_Management.View
                 SetValue(ThirdFieldVisProperty, value);
             }
         }
+
+        #endregion Visibility
+
+        #region Button
+
+        public static readonly DependencyProperty ButtonTextProperty =
+          DependencyProperty.Register(
+              "ButtonText",
+              typeof(string),
+              typeof(AddItemPanel),
+              new FrameworkPropertyMetadata(null)
+          );
+
+        public string ButtonText
+        {
+            get { return (string)GetValue(ButtonTextProperty); }
+            set { SetValue(ButtonTextProperty, value); }
+        }
+
+        public static readonly DependencyProperty MessageTextProperty =
+          DependencyProperty.Register(
+              "MessageText",
+              typeof(string),
+              typeof(AddItemPanel),
+              new FrameworkPropertyMetadata(null)
+          );
+
+        public string MessageText
+        {
+            get { return (string)GetValue(MessageTextProperty); }
+            set { SetValue(MessageTextProperty, value); }
+        }
+
+        public static readonly DependencyProperty ButtonCommandProperty =
+          DependencyProperty.Register(
+              "ButtonCommand",
+              typeof(ICommand),
+              typeof(AddItemPanel),
+              new FrameworkPropertyMetadata(null)
+          );
+
+        public ICommand ButtonCommand
+        {
+            get { return (ICommand)GetValue(ButtonCommandProperty); }
+            set { SetValue(ButtonCommandProperty, value); }
+        }
+
+        #endregion Button
     }
 }

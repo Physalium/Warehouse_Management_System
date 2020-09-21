@@ -166,4 +166,10 @@
   <data name="AddItemTabHeader" xml:space="preserve">
     <value>Add item</value>
   </data>
+  <data name="ErrorInvalidArguments" xml:space="preserve">
+    <value>Error! Arguments are of wrong type.</value>
+  </data>
+  <data name="ItemAddSuccess" xml:space="preserve">
+    <value>Item was added successfully!</value>
+  </data>
 </root>

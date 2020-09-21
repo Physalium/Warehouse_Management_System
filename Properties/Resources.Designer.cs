@@ -98,6 +98,24 @@ namespace Warehouse_Management.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error! Arguments are of wrong type..
+        /// </summary>
+        public static string ErrorInvalidArguments {
+            get {
+                return ResourceManager.GetString("ErrorInvalidArguments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item was added successfully!.
+        /// </summary>
+        public static string ItemAddSuccess {
+            get {
+                return ResourceManager.GetString("ItemAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Map.
         /// </summary>
         public static string MapTabHeader {

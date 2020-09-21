@@ -126,18 +126,21 @@
         <TabItem Header="{Binding Path=AddItemTabHeader}">
             <local:AddItemPanel
                 DataContext="{Binding AddItemVM}"
-                FirstField="{Binding FirstField}"
+                FirstField="{Binding FirstField, Mode=TwoWay}"
                 FirstFieldName="{Binding FirstFieldName}"
                 FourthField="{Binding FourthField, Mode=TwoWay}"
                 FourthFieldName="{Binding FourthFieldName}"
                 FourthFieldVis="{Binding Path=FourthFieldVis, Converter={StaticResource BoolToVisConverter}}"
                 Items="{Binding Items}"
-                SecondField="{Binding SecondField}"
+                SecondField="{Binding SecondField, Mode=TwoWay}"
                 SecondFieldName="{Binding SecondFieldName}"
                 SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                 ThirdField="{Binding ThirdField, Mode=TwoWay}"
                 ThirdFieldName="{Binding ThirdFieldName}"
-                ThirdFieldVis="{Binding Path=ThirdFieldVis, Converter={StaticResource BoolToVisConverter}}" />
+                ThirdFieldVis="{Binding Path=ThirdFieldVis, Converter={StaticResource BoolToVisConverter}}"
+                    MessageText="{Binding Message, Mode=TwoWay}"
+                ButtonText="{Binding ButtonText}"
+                ButtonCommand="{Binding AddItem}"/>
         </TabItem>
 
     </dragablz:TabablzControl>

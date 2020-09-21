@@ -7,6 +7,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
+using Warehouse_Management.Model;
 using Warehouse_Management.ViewModel.Base;
 using Warehouse_Management.ViewModel.EntitiesVM;
 
@@ -37,7 +38,7 @@ namespace Warehouse_Management.Data
 
         #region LoadEntities
 
-            private void LoadCities()
+        private void LoadCities()
         {
             using (WarehousemanagementContext db = new WarehousemanagementContext())
             {
@@ -211,7 +212,7 @@ namespace Warehouse_Management.Data
 
         public void LinkProductToWarehouse(ProductVM product, WarehouseVM warehouse)
         {
-            if(product != null)
+            if (product != null)
             {
                 product.Warehouse = warehouse;
                 product.Quantity += 1;
@@ -226,7 +227,7 @@ namespace Warehouse_Management.Data
 
         public void LinkTruckToWarehouse(TruckVM truck, WarehouseVM warehouse)
         {
-            if(truck != null)
+            if (truck != null)
             {
                 truck.Warehouse = warehouse;
                 warehouse.Trucks.Add(truck);
@@ -241,7 +242,7 @@ namespace Warehouse_Management.Data
 
         public void LinkSemitrailerToWarehouse(SemitrailerVM semitrailer, WarehouseVM warehouse)
         {
-            if(semitrailer != null)
+            if (semitrailer != null)
             {
                 semitrailer.Warehouse = warehouse;
                 warehouse.Semitrailers.Add(semitrailer);
@@ -254,5 +255,35 @@ namespace Warehouse_Management.Data
         }
 
         #endregion LinkToWarehouse
+
+        #region Add items
+
+        public bool AddProduct(string Name, float Price, int Weight, int Volume)
+        {
+            using (WarehousemanagementContext db = new WarehousemanagementContext())
+            {
+                var product = new Product()
+                {
+                    Name = Name,
+                    Price = Price,
+                    Weight = Weight,
+                    Volume = Volume
+                };
+                try
+                {
+                    Products.Add(new ProductVM(product));
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+                db.Products.Add(product);
+                db.SaveChanges();
+
+                return true;
+            }
+        }
+
+        #endregion Add items
     }
 }

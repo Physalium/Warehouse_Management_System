@@ -17,6 +17,7 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="10">
@@ -102,6 +103,24 @@
                     Foreground="{StaticResource MaterialDesignLightForeground}"
                     Text="{Binding Path=FourthField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" />
             </Border>
+        </StackPanel>
+        <StackPanel Grid.Row="5">
+            <Label
+                VerticalAlignment="Center"
+                Content="{Binding MessageText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                FontSize="13"
+                Style="{StaticResource MaterialDesignLabel}"
+                TextBlock.FontFamily="{StaticResource MaterialDesignFont}"
+                TextBlock.FontStretch="Expanded"
+                TextBlock.TextAlignment="Center"
+                TextElement.FontSize="15" />
+            <Button
+                Width="100"
+                Height="60"
+                Margin="0,0,0,10"
+                Command="{Binding Path=ButtonCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                Content="{Binding Path=ButtonText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                Style="{StaticResource MaterialDesignFloatingActionButton}" />
         </StackPanel>
     </Grid>
 </UserControl>

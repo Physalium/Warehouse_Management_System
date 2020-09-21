@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 
 using Warehouse_Management.Data;
 using Warehouse_Management.ViewModel.Base;
+using Warehouse_Management.ViewModel.EntitiesVM;
 
 namespace Warehouse_Management.ViewModel
 {
+    using R = Properties.Resources;
+
     internal class AddItemVM : BaseViewModel
     {
         public WarehouseManagementData Data { get; }
@@ -15,7 +19,84 @@ namespace Warehouse_Management.ViewModel
         {
             Data = data;
             SelectedItem = Items.First();
+            ButtonText = "Add";
         }
+
+        private ICommand addItem;
+
+        public ICommand AddItem
+        {
+            get
+            {
+                if (addItem is null)
+                {
+                    addItem = new RelayCommand(
+                           execute =>
+                           {
+                               switch (selectedItem)
+                               {
+                                   case "Product":
+                                       try
+                                       {
+                                           Data.AddProduct(FirstField, float.Parse(SecondField), int.Parse(ThirdField), int.Parse(FourthField));
+                                       }
+                                       catch (Exception)
+                                       {
+                                           Message = R.ErrorInvalidArguments;
+                                           break;
+                                       }
+                                       Message = R.ItemAddSuccess;
+                                       break;
+
+                                   case "Truck":
+
+                                       break;
+
+                                   case "Semitrailer":
+
+                                       break;
+                               }
+                           },
+                           canExecute =>
+                           {
+                               var FirstAndSecond = (!String.IsNullOrWhiteSpace(FirstField) && !String.IsNullOrWhiteSpace(SecondField));
+                               var ThirdAndFourth = (!String.IsNullOrWhiteSpace(ThirdField) && !String.IsNullOrWhiteSpace(FourthField));
+
+                               if (FirstAndSecond && ThirdAndFourth) return true;
+                               if (FirstAndSecond && !(ThirdFieldVis)) return true;
+                               return false;
+                           });
+                }
+                return addItem;
+            }
+            set { addItem = value; }
+        }
+
+        private string message;
+
+        public string Message
+        {
+            get { return message; }
+            set
+            {
+                message = value;
+                OnPropertyChanged(nameof(Message));
+            }
+        }
+
+        private string buttonText;
+
+        public string ButtonText
+        {
+            get { return buttonText; }
+            set
+            {
+                buttonText = value;
+                OnPropertyChanged(nameof(ButtonText));
+            }
+        }
+
+        #region Items
 
         private enum SelectableItems
         {
@@ -32,6 +113,21 @@ namespace Warehouse_Management.ViewModel
                 return Enum.GetNames(typeof(SelectableItems));
             }
         }
+
+        private string selectedItem;
+
+        public string SelectedItem
+        {
+            get { return selectedItem; }
+            set
+            {
+                selectedItem = value;
+                UpdateFields();
+                OnPropertyChanged(nameof(SelectedItem));
+            }
+        }
+
+        #endregion Items
 
         #region Field Names
 
@@ -85,18 +181,7 @@ namespace Warehouse_Management.ViewModel
 
         #endregion Field Names
 
-        private string selectedItem;
-
-        public string SelectedItem
-        {
-            get { return selectedItem; }
-            set
-            {
-                selectedItem = value;
-                UpdateFields();
-                OnPropertyChanged(nameof(SelectedItem));
-            }
-        }
+        #region private methods
 
         private void UpdateFields()
         {
@@ -106,10 +191,10 @@ namespace Warehouse_Management.ViewModel
                 case "Product":
                     FirstFieldName = "Name";
                     SecondFieldName = "Price";
-                    ThirdFieldName = "Volume";
+                    ThirdFieldName = "Weight";
                     ThirdFieldVis = true;
                     FourthFieldVis = true;
-                    FourthFieldName = "Weight";
+                    FourthFieldName = "Volume";
                     break;
 
                 case "Truck":
@@ -132,6 +217,10 @@ namespace Warehouse_Management.ViewModel
             }
         }
 
+        #endregion private methods
+
+        #region Field visibility
+
         private bool fourthFieldVis;
         private bool thirdFieldVis;
 
@@ -151,6 +240,8 @@ namespace Warehouse_Management.ViewModel
                 thirdFieldVis = value; OnPropertyChanged(nameof(ThirdFieldVis));
             }
         }
+
+        #endregion Field visibility
 
         #region Fields
 
