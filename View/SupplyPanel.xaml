@@ -74,9 +74,14 @@
                 <DataTemplate>
                     <StackPanel>
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <Label Content="{Binding Id}" ContentStringFormat="Przyczepa {0} " />
                         <Label Content="{Binding MaxAxleLoad}" ContentStringFormat="Max nacisk: {0} " />
                         <Label Content="{Binding MaxVolume}" ContentStringFormat="Max pojemnosc: {0} " />
+=======
+                        <Label Content="{Binding Id}" ContentStringFormat="Semitrailer n0 {0} " />
+                        <Label Content="{Binding MaxAxleLoad}" ContentStringFormat="Max Axle Load: {0} " />
+>>>>>>> orders labels
 =======
                         <Label Content="{Binding Id}" ContentStringFormat="Semitrailer n0 {0} " />
                         <Label Content="{Binding MaxAxleLoad}" ContentStringFormat="Max Axle Load: {0} " />
