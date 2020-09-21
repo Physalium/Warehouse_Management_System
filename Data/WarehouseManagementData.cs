@@ -336,6 +336,36 @@ namespace Warehouse_Management.Data
             }
         }
 
+        public bool CreateOrder(DateTime Date, float Value, ObservableCollection<ProductVM> Products, WarehouseVM Warehouse, SemitrailerVM Semitrailer, TruckVM Truck, CustomerVM Customer)
+        {
+            using (WarehousemanagementContext db = new WarehousemanagementContext())
+            {
+                var order = new Order()
+                {
+                    Customer = Customer.Model,
+                    Date = Date,
+                    Value = Value,
+                    Warehouse = Warehouse.Model,
+                    Semitrailer = Semitrailer.DataModel,
+                    Truck = Truck.DataModel,
+                };
+                Products.ToList().ForEach(p => order.Products.Add(p.DataModel));
+
+                db.Orders.Add(order);
+                try
+                {
+                    Orders.Add(new OrderVM(order));
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+                db.SaveChanges();
+
+                return true;
+            }
+        }
+
         #endregion Add items
     }
 }

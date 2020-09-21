@@ -16,6 +16,7 @@ namespace Warehouse_Management.ViewModel
         public WarehouseManagementData data;
         public MapVM MapVM { get; set; }
         public OrdersPanelVM OrdersPanelVM { get; set; }
+        public AddOrderVM AddOrderVM { get; set; }
 
         public SuppliesPanelVM SuppliesPanelVM { get; set; }
 
@@ -28,11 +29,13 @@ namespace Warehouse_Management.ViewModel
             OrdersPanelVM = new OrdersPanelVM(data);
             SuppliesPanelVM = new SuppliesPanelVM(data);
             AddItemVM = new AddItemVM(data);
+            AddOrderVM = new AddOrderVM(data);
         }
 
         public string MapTabHeader { get; } = R.MapTabHeader;
         public string OrdersTabHeader { get; } = R.OrderTabHeader;
         public string SupplyTabHeader { get; } = R.SupplyTabHeader;
         public string AddItemTabHeader { get; } = R.AddItemTabHeader;
+        public string CreateOrderTabHeader { get; } = R.CreateOrderTabHeader;
     }
 }

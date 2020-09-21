@@ -66,18 +66,6 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
             }
         }
 
-        private int quantity;
-
-        public int Quantity
-        {
-            get { return quantity; }
-            set
-            {
-                quantity = value;
-                OnPropertyChanged(nameof(Quantity));
-            }
-        }
-
         private SemitrailerVM semitrailer;
 
         public SemitrailerVM Semitrailer

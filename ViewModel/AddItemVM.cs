@@ -121,7 +121,6 @@ namespace Warehouse_Management.ViewModel
             Product,
             Truck,
             Semitrailer,
-            Order
         }
 
         public IEnumerable<string> Items

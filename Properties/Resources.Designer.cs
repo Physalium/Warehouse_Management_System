@@ -70,6 +70,15 @@ namespace Warehouse_Management.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create order.
+        /// </summary>
+        public static string CreateOrderTabHeader {
+            get {
+                return ResourceManager.GetString("CreateOrderTabHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] customerIcon {

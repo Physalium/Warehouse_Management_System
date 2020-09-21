@@ -62,7 +62,6 @@ namespace Warehouse_Management.ViewModel.EntitiesVM
             {
                 var order = new OrderVM(x)
                 {
-                    Quantity = (from o in customer.Orders where o.Equals(x) select o).Count()
                 };
                 Orders.Add(order);
             });

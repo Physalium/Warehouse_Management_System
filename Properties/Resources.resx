@@ -172,4 +172,7 @@
   <data name="ItemAddSuccess" xml:space="preserve">
     <value>Item was added successfully!</value>
   </data>
+  <data name="CreateOrderTabHeader" xml:space="preserve">
+    <value>Create order</value>
+  </data>
 </root>

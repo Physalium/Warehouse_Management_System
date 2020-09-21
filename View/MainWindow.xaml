@@ -126,21 +126,41 @@
         <TabItem Header="{Binding Path=AddItemTabHeader}">
             <local:AddItemPanel
                 DataContext="{Binding AddItemVM}"
+                ButtonCommand="{Binding AddItem}"
+                ButtonText="{Binding ButtonText}"
                 FirstField="{Binding FirstField, Mode=TwoWay}"
                 FirstFieldName="{Binding FirstFieldName}"
                 FourthField="{Binding FourthField, Mode=TwoWay}"
                 FourthFieldName="{Binding FourthFieldName}"
                 FourthFieldVis="{Binding Path=FourthFieldVis, Converter={StaticResource BoolToVisConverter}}"
                 Items="{Binding Items}"
+                MessageText="{Binding Message, Mode=TwoWay}"
                 SecondField="{Binding SecondField, Mode=TwoWay}"
                 SecondFieldName="{Binding SecondFieldName}"
                 SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                 ThirdField="{Binding ThirdField, Mode=TwoWay}"
                 ThirdFieldName="{Binding ThirdFieldName}"
-                ThirdFieldVis="{Binding Path=ThirdFieldVis, Converter={StaticResource BoolToVisConverter}}"
-                    MessageText="{Binding Message, Mode=TwoWay}"
-                ButtonText="{Binding ButtonText}"
-                ButtonCommand="{Binding AddItem}"/>
+                ThirdFieldVis="{Binding Path=ThirdFieldVis, Converter={StaticResource BoolToVisConverter}}" />
+        </TabItem>
+
+        <TabItem Header="{Binding Path=CreateOrderTabHeader}">
+            <local:AddOrderPanel
+                DataContext="{Binding Path=AddOrderVM}"
+                CreateOrder="{Binding CreateOrder}"
+                CustomerLabel="{Binding CustomerLabel}"
+                DateLabel="{Binding DateLabel}"
+                ProductsLabel="{Binding ProductsLabel}"
+                ProductsList="{Binding data.Products}"
+                SelectedProduct="{Binding SelectedProduct}"
+                SelectedSemitrailer="{Binding SelectedSemitrailer}"
+                SelectedTruck="{Binding SelectedTruck}"
+                SelectedWarehouse="{Binding SelectedWarehouse}"
+                SemitrailerLabel="{Binding SemitrailerLabel}"
+                SemitrailersList="{Binding data.Semitrailers}"
+                TrucksList="{Binding data.Trucks}"
+                ValueLabel="{Binding ValueLabel}"
+                WarehouseLabel="{Binding WarehouseLabel}"
+                WarehousesList="{Binding data.Warehouses}" />
         </TabItem>
 
     </dragablz:TabablzControl>
