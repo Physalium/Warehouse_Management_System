@@ -75,7 +75,8 @@
                 <DataTemplate>
                     <StackPanel>
                         <Label Content="{Binding Id}" ContentStringFormat="Przyczepa {0} " />
-                        <Label Content="{Binding MaxAxleLoad}" ContentStringFormat="Max pojemnosc: {0} " />
+                        <Label Content="{Binding MaxAxleLoad}" ContentStringFormat="Max nacisk: {0} " />
+                        <Label Content="{Binding MaxVolume}" ContentStringFormat="Max pojemnosc: {0} " />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

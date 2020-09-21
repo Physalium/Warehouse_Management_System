@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows.Media.TextFormatting;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
@@ -278,6 +279,57 @@ namespace Warehouse_Management.Data
                     return false;
                 }
                 db.Products.Add(product);
+                db.SaveChanges();
+
+                return true;
+            }
+        }
+
+        public bool AddTruck(string Model, int ModelYear, int Mileage, string Manafacturer)
+        {
+            using (WarehousemanagementContext db = new WarehousemanagementContext())
+            {
+                var truck = new Truck()
+                {
+                    Model = Model,
+                    ModelYear = ModelYear,
+                    Mileage = Mileage,
+                    Manufacturer = Manafacturer
+                };
+                try
+                {
+                    Trucks.Add(new TruckVM(truck));
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+                db.Trucks.Add(truck);
+                db.SaveChanges();
+
+                return true;
+            }
+        }
+
+        public bool AddSemitrailer(int MaxAxleLoad, int MaxVolume)
+        {
+            using (WarehousemanagementContext db = new WarehousemanagementContext())
+            {
+                var semitrailer = new Semitrailer()
+                {
+                    MaxAxleLoad = MaxAxleLoad,
+                    MaxVolume = MaxVolume
+                };
+
+                db.Semitrailers.Add(semitrailer);
+                try
+                {
+                    Semitrailers.Add(new SemitrailerVM(semitrailer));
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
                 db.SaveChanges();
 
                 return true;

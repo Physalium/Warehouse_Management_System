@@ -49,11 +49,29 @@ namespace Warehouse_Management.ViewModel
                                        break;
 
                                    case "Truck":
-
+                                       try
+                                       {
+                                           Data.AddTruck(FirstField, int.Parse(SecondField), int.Parse(ThirdField), FourthField);
+                                       }
+                                       catch (Exception)
+                                       {
+                                           Message = R.ErrorInvalidArguments;
+                                           break;
+                                       }
+                                       Message = R.ItemAddSuccess;
                                        break;
 
                                    case "Semitrailer":
-
+                                       try
+                                       {
+                                           Data.AddSemitrailer(int.Parse(FirstField), int.Parse(SecondField));
+                                       }
+                                       catch (Exception)
+                                       {
+                                           Message = R.ErrorInvalidArguments;
+                                           break;
+                                       }
+                                       Message = R.ItemAddSuccess;
                                        break;
                                }
                            },
