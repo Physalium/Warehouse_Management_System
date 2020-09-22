@@ -1,8 +1,9 @@
 ﻿using System.Configuration;
 
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Extensions.Logging;
 using Warehouse_Management.Model;
+using Microsoft.Extensions.Logging.Console;
 
 namespace Warehouse_Management.Data
 {

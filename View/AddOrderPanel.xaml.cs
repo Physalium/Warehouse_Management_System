@@ -38,6 +38,20 @@ namespace Warehouse_Management.View
             set { SetValue(WarehouseListProperty, value); }
         }
 
+        public static readonly DependencyProperty CustomersListProperty =
+          DependencyProperty.Register(
+              "CustomersList",
+              typeof(IEnumerable),
+              typeof(AddOrderPanel),
+              new FrameworkPropertyMetadata(null)
+          );
+
+        public IEnumerable CustomersList
+        {
+            get { return (IEnumerable)GetValue(CustomersListProperty); }
+            set { SetValue(CustomersListProperty, value); }
+        }
+
         public static readonly DependencyProperty TrucksListProperty =
           DependencyProperty.Register(
               "TrucksList",
@@ -80,18 +94,32 @@ namespace Warehouse_Management.View
             set { SetValue(ProductsListProperty, value); }
         }
 
-        public static readonly DependencyProperty SelectedProductProperty =
+        public static readonly DependencyProperty SelectedProductsProperty =
             DependencyProperty.Register(
-                "SelectedProduct",
-                typeof(object),
+                "SelectedProducts",
+                typeof(IList),
                 typeof(AddOrderPanel),
                 new FrameworkPropertyMetadata(null)
             );
 
-        public object SelectedProduct
+        public static readonly DependencyProperty MessageTextProperty =
+         DependencyProperty.Register(
+             "MessageText",
+             typeof(string),
+             typeof(AddOrderPanel),
+             new FrameworkPropertyMetadata(null)
+         );
+
+        public string MessageText
         {
-            get { return GetValue(SelectedProductProperty); }
-            set { SetValue(SelectedProductProperty, value); }
+            get { return (string)GetValue(MessageTextProperty); }
+            set { SetValue(MessageTextProperty, value); }
+        }
+
+        public IList SelectedProducts
+        {
+            get { return (IList)GetValue(SelectedProductsProperty); }
+            set { SetValue(SelectedProductsProperty, value); }
         }
 
         public static readonly DependencyProperty SelectedSemitrailerProperty =
@@ -134,6 +162,20 @@ namespace Warehouse_Management.View
         {
             get { return GetValue(SelectedWarehouseProperty); }
             set { SetValue(SelectedWarehouseProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectedCustomerProperty =
+            DependencyProperty.Register(
+                "SelectedCustomer",
+                typeof(object),
+                typeof(AddOrderPanel),
+                new FrameworkPropertyMetadata(null)
+            );
+
+        public object SelectedCustomer
+        {
+            get { return GetValue(SelectedCustomerProperty); }
+            set { SetValue(SelectedCustomerProperty, value); }
         }
 
         #region Label properties
@@ -254,5 +296,19 @@ namespace Warehouse_Management.View
         }
 
         #endregion Label properties
+
+        public static readonly DependencyProperty SelectedDateProperty =
+          DependencyProperty.Register(
+              "SelectedDate",
+              typeof(DateTime),
+              typeof(AddOrderPanel),
+              new FrameworkPropertyMetadata(null)
+          );
+
+        public DateTime SelectedDate
+        {
+            get { return (DateTime)GetValue(SelectedDateProperty); }
+            set { SetValue(SelectedDateProperty, value); }
+        }
     }
 }

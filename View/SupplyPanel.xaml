@@ -68,19 +68,17 @@
             ItemsSource="{Binding SemitrailersList, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
             Grid.Row="1"
             Grid.Column="1"
-            SelectedItem="{Binding SelectedSemitrail}"
+            SelectedItem="{Binding SelectedSemitrailer}"
             Style="{StaticResource MaterialDesignListBox}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-<<<<<<< HEAD
-                        <Label Content="{Binding Id}" ContentStringFormat="Przyczepa {0} " />
-                        <Label Content="{Binding MaxAxleLoad}" ContentStringFormat="Max nacisk: {0} " />
-                        <Label Content="{Binding MaxVolume}" ContentStringFormat="Max pojemnosc: {0} " />
-=======
+
+
                         <Label Content="{Binding Id}" ContentStringFormat="Semitrailer n0 {0} " />
                         <Label Content="{Binding MaxAxleLoad}" ContentStringFormat="Max Axle Load: {0} " />
->>>>>>> orders labels
+                        <Label Content="{Binding MaxVolume}" ContentStringFormat="Max volume: {0} " />
+
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

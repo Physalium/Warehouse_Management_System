@@ -53,7 +53,7 @@ namespace Warehouse_Management.Data
             using (WarehousemanagementContext db = new WarehousemanagementContext())
             {
                 Orders = new ObservableCollection<OrderVM>();
-                db.Orders.Include(x => x.Customer).Include(x => x.Warehouse).ToList().ForEach(x => Orders.Add(new OrderVM(x)));
+                db.Orders.Include(x => x.Customer).Include(x => x.Warehouse).Include(x => x.Truck).Include(x => x.Semitrailer).Include(x => x.Products).ToList().ForEach(x => Orders.Add(new OrderVM(x)));
             }
         }
 
@@ -62,7 +62,7 @@ namespace Warehouse_Management.Data
             using (WarehousemanagementContext db = new WarehousemanagementContext())
             {
                 Customers = new ObservableCollection<CustomerVM>();
-                db.Customers.ToList().ForEach(x => Customers.Add(new CustomerVM(x)));
+                db.Customers.Include(x => x.Orders).ToList().ForEach(x => Customers.Add(new CustomerVM(x)));
             }
         }
 
@@ -336,7 +336,7 @@ namespace Warehouse_Management.Data
             }
         }
 
-        public bool CreateOrder(DateTime Date, float Value, ObservableCollection<ProductVM> Products, WarehouseVM Warehouse, SemitrailerVM Semitrailer, TruckVM Truck, CustomerVM Customer)
+        public bool CreateOrder(DateTime Date, float Value, IList<ProductVM> Products, WarehouseVM Warehouse, SemitrailerVM Semitrailer, TruckVM Truck, CustomerVM Customer)
         {
             using (WarehousemanagementContext db = new WarehousemanagementContext())
             {
@@ -349,17 +349,37 @@ namespace Warehouse_Management.Data
                     Semitrailer = Semitrailer.DataModel,
                     Truck = Truck.DataModel,
                 };
-                Products.ToList().ForEach(p => order.Products.Add(p.DataModel));
 
-                db.Orders.Add(order);
-                try
+                Products.ToList().ForEach(p =>
                 {
-                    Orders.Add(new OrderVM(order));
-                }
-                catch (Exception)
+                    order.Products.Add(p.DataModel);
+                    p.DataModel.Order = order;
+                });
+                OrderVM orderVm = new OrderVM(order);
+                orderVm.Customer = Customer;
+                orderVm.Warehouse = Warehouse;
+                orderVm.Truck = Truck;
+                orderVm.Semitrailer = Semitrailer;
+                foreach (var product in Products)
                 {
-                    return false;
+                    orderVm.Products.Add(product);
                 }
+
+                Orders.Add(orderVm);
+
+                Customer.Model.Orders.Add(order);
+                Warehouse.Model.Orders.Add(order);
+                Semitrailer.DataModel.Orders.Add(order);
+                Truck.DataModel.Orders.Add(order);
+
+                int new_num = 0;
+                if (db.Orders.Any())
+                {
+                    new_num = db.Orders.Max(a => a.Id) + 1;
+                }
+                order.Id = new_num;
+                db.Entry(order);
+
                 db.SaveChanges();
 
                 return true;

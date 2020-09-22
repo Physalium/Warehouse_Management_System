@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Warehouse_Management.Model
 {
@@ -10,7 +11,9 @@ namespace Warehouse_Management.Model
             Products = new HashSet<Product>();
         }
 
+        [Key]
         public int Id { get; set; }
+
         public DateTime Date { get; set; }
         public float Value { get; set; }
         public int CustomerId { get; set; }

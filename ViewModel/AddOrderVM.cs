@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 
@@ -19,17 +21,19 @@ namespace Warehouse_Management.ViewModel
         {
             this.data = data;
             SelectedWarehouse = data.Warehouses[0];
+            SelectedCustomer = data.Customers[0];
+            SelectedDate = DateTime.Now;
         }
 
-        private ProductVM selectedProduct;
+        private IList<ProductVM> selectedProducts;
 
-        public ProductVM SelectedProduct
+        public IList<ProductVM> SelectedProducts
         {
-            get { return selectedProduct; }
+            get { return selectedProducts; }
             set
             {
-                selectedProduct = value;
-                OnPropertyChanged(nameof(SelectedProduct));
+                selectedProducts = value;
+                OnPropertyChanged(nameof(SelectedProducts));
             }
         }
 
@@ -57,6 +61,18 @@ namespace Warehouse_Management.ViewModel
             }
         }
 
+        private DateTime selectedDate;
+
+        public DateTime SelectedDate
+        {
+            get { return selectedDate; }
+            set
+            {
+                selectedDate = value;
+                OnPropertyChanged(nameof(SelectedDate));
+            }
+        }
+
         private WarehouseVM selectedWarehouse;
 
         public WarehouseVM SelectedWarehouse
@@ -66,6 +82,18 @@ namespace Warehouse_Management.ViewModel
             {
                 selectedWarehouse = value;
                 OnPropertyChanged(nameof(SelectedWarehouse));
+            }
+        }
+
+        private CustomerVM selectedCustomer;
+
+        public CustomerVM SelectedCustomer
+        {
+            get { return selectedCustomer; }
+            set
+            {
+                selectedCustomer = value;
+                OnPropertyChanged(nameof(SelectedCustomer));
             }
         }
 
@@ -80,16 +108,41 @@ namespace Warehouse_Management.ViewModel
                     createOrder = new RelayCommand(
                            execute =>
                            {
-                               //data.CreateOrder();
+                               try
+                               {
+                                   data.CreateOrder(SelectedDate, SelectedProducts.Sum(x => x.Price), SelectedProducts, SelectedWarehouse, SelectedSemitrailer, SelectedTruck, SelectedCustomer);
+                               }
+                               catch (Exception e)
+                               {
+                                   Message = R.ErrorInvalidArguments;
+                                   return;
+                               }
+                               Message = R.ItemAddSuccess;
                            },
                            canExecute =>
                            {
-                               return true;
+                               if (SelectedCustomer != null && SelectedDate != null && SelectedSemitrailer != null && SelectedProducts != null && SelectedTruck != null)
+                               {
+                                   return true;
+                               }
+                               return false;
                            });
                 }
                 return createOrder;
             }
             set { createOrder = value; }
+        }
+
+        private string message;
+
+        public string Message
+        {
+            get { return message; }
+            set
+            {
+                message = value;
+                OnPropertyChanged(nameof(Message));
+            }
         }
 
         public string DateLabel { get; } = R.DateLabel;
