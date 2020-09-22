@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
-namespace mini_tc.ViewModel.Base
+namespace Warehouse_Management.ViewModel.Base
 {
-    class BaseViewModel : INotifyPropertyChanged
+    internal class BaseViewModel : INotifyPropertyChanged
     {
         //zdarzenie informujące o zmiane własności w obiekcie ViewModelu
         public event PropertyChangedEventHandler PropertyChanged;
@@ -22,7 +16,7 @@ namespace mini_tc.ViewModel.Base
                 //wywołanie zdarzenia dla wszsytkich zgłoszonych do aktualizacji własności
                 //w ten sposób powiadamiamy widok o zmianie stanu własności
                 //w modelu widoku
-                foreach (var prop in namesOfProperties)
+                foreach (string prop in namesOfProperties)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs(prop));
                 }
