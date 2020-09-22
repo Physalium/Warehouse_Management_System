@@ -88,6 +88,9 @@ namespace Warehouse_Management.ViewModel
                                data.LinkProductToWarehouse(selectedProduct, selectedWarehouse);
                                data.LinkSemitrailerToWarehouse(SelectedSemitrailer, selectedWarehouse);
                                data.LinkTruckToWarehouse(SelectedTruck, selectedWarehouse);
+                               SelectedProduct = null;
+                               SelectedSemitrailer = null;
+                               SelectedTruck = null;
                            },
                            canExecute =>
                            {
